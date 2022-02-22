@@ -18,6 +18,7 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="190" />
+                <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="150" />
             </Grid.ColumnDefinitions>
@@ -29,8 +30,25 @@
                 Source="/Resourses/Pictures/TitleBar/Top_logo@4x.png"
                 Stretch="Fill" />
 
+
+
+            <Button
+                Grid.Column="1"
+                Width="50"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#3a3e46"
+                BorderThickness="0"
+                Command="{Binding GoBackCommand}">
+                <StackPanel>
+                    <Image Source="/Resourses/Pictures/TitleBar/Top_back.png" />
+                </StackPanel>
+            </Button>
+
+
+
             <StackPanel
-                Grid.Column="2"
+                Grid.Column="3"
                 HorizontalAlignment="Right"
                 Orientation="Horizontal">
 

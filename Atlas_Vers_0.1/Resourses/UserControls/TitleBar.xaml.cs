@@ -35,6 +35,8 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
             ResizeWindow();
         });
 
+        public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
+
         private void ShutDownApp()
         {
             Application.Current.Shutdown();
@@ -52,5 +54,6 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
+
     }
 }
