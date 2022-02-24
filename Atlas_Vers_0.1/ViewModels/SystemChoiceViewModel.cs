@@ -15,8 +15,6 @@ namespace Atlas_Vers_0._1.ViewModels
         public ICommand ChangeFrameToUURS => new LambdaCommand((param) => Navigation.Navigation.GoTo(new InProgress()));      // Переход на страницу ...
 
         public ICommand ChangeFrameToUURS_CP => new LambdaCommand((param) => Navigation.Navigation.GoTo(new InProgress()));   // Переход на страницу ...
-
-
     }
 }
 

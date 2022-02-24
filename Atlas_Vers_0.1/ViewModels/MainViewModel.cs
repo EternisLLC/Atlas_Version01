@@ -8,7 +8,6 @@ namespace Atlas_Vers_0._1.ViewModels
     {
         public ICommand ChangeFrame => new LambdaCommand((param) => Navigation.Navigation.GoTo(new BURlogin()));    // Пока не используется
 
-        
 
         //public ICommand MinimizeWindowCommand => new LambdaCommand((param) => Navigation.WindowStateManager.MinimizeWindow());
     }

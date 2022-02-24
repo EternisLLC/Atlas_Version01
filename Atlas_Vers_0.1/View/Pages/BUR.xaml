@@ -51,16 +51,18 @@
                         FontSize="20"
                         GotFocus="btnCondition_GotFocus"
                         LostFocus="btnCondition_LostFocus"
-                        Style="{DynamicResource BTNChooseBUR1}">
+                        Style="{DynamicResource BURmainBTN}">
 
                         <Grid Width="190">
                             <Image
+                                Name="ImageCondition"
                                 Height="50"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/State_Grey@4x.png" />
 
                             <Label
+                                Name="Condition"
                                 Width="120"
                                 Margin="0,5,8,0"
                                 HorizontalAlignment="Right"
@@ -87,16 +89,20 @@
                         Cursor="Hand"
                         FontFamily="Elektra Pro"
                         FontSize="20"
-                        Style="{DynamicResource BTNChooseBUR1}">
+                        GotFocus="btnControl_GotFocus"
+                        LostFocus="btnControl_LostFocus"
+                        Style="{DynamicResource BURmainBTN}">
 
                         <Grid Width="190">
                             <Image
+                                Name="ImageControl"
                                 Height="50"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/Control_Grey@4x.png" />
 
                             <Label
+                                Name="Control"
                                 Width="120"
                                 Margin="0,5,8,0"
                                 HorizontalAlignment="Right"
@@ -122,16 +128,20 @@
                         Cursor="Hand"
                         FontFamily="Elektra Pro"
                         FontSize="20"
-                        Style="{DynamicResource BTNChooseBUR1}">
+                        GotFocus="btnSettings_GotFocus"
+                        LostFocus="btnSettings_LostFocus"
+                        Style="{DynamicResource BURmainBTN}">
 
                         <Grid Width="190">
                             <Image
+                                Name="ImageSettings"
                                 Height="50"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/Settings_Grey@4x.png" />
 
                             <Label
+                                Name="Settings"
                                 Width="120"
                                 Margin="0,5,8,0"
                                 HorizontalAlignment="Right"
@@ -157,16 +167,20 @@
                         Cursor="Hand"
                         FontFamily="Elektra Pro"
                         FontSize="20"
-                        Style="{DynamicResource BTNChooseBUR1}">
+                        GotFocus="btnArchive_GotFocus"
+                        LostFocus="btnArchive_LostFocus"
+                        Style="{DynamicResource BURmainBTN}">
 
                         <Grid Width="190">
                             <Image
+                                Name="ImageArchive"
                                 Height="50"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/Archive_Grey@4x.png" />
 
                             <Label
+                                Name="Archive"
                                 Width="120"
                                 Margin="0,5,8,0"
                                 HorizontalAlignment="Right"
