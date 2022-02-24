@@ -37,6 +37,8 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
 
         public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
 
+        public static bool CanGoBack = true;  // Флажок для возвращения
+
         private void ShutDownApp()
         {
             Application.Current.Shutdown();

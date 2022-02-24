@@ -1,6 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Atlas_Vers_0._1.View.Pages
 {
@@ -16,45 +19,52 @@ namespace Atlas_Vers_0._1.View.Pages
 
         private void btnCondition_LostFocus(object sender, RoutedEventArgs e)
         {
-
             ConditionFrame.Visibility = Visibility.Hidden;
-
-            //if (!btnCondition.IsFocused)
-            //{
-            //    borderCondition.Visibility = Visibility.Hidden;
-            //    borderFireSituation.Visibility = Visibility.Hidden;
-            //}
-
-            //if (!btnControl.IsFocused && !btnSettings.IsFocused && !btnArchive.IsFocused)
-            //{
-            //    if (btnFireSituation.IsFocused || btnBurCondition.IsFocused || btnWirelessCondition.IsFocused)
-            //    {
-            //        FocusManager.SetFocusedElement(focusScope, btnCondition);
-            //    }
-            //}
+            Condition.Foreground = Brushes.Gray;
+            ImageCondition.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\State_Grey@4x.png", UriKind.Relative));
         }
 
         private void btnCondition_GotFocus(object sender, RoutedEventArgs e)
         {
             ConditionFrame.Visibility = Visibility.Visible;
-            //borderCondition.Visibility = Visibility.Visible;
-            //borderFireSituation.Visibility = Visibility.Visible;
+            Condition.Foreground = Brushes.White;
+            ImageCondition.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\State_White@4x.png", UriKind.Relative));
         }
 
-        private void btnFireSituation_GotFocus(object sender, RoutedEventArgs e)
+        private void btnControl_GotFocus(object sender, RoutedEventArgs e)
         {
-            //borderFireSituation.Visibility = Visibility.Visible;
+            Control.Foreground = Brushes.White;
+            ImageControl.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Control_White@4x.png", UriKind.Relative));
         }
 
-        private void btnBurCondition_GotFocus(object sender, RoutedEventArgs e)
+        private void btnControl_LostFocus(object sender, RoutedEventArgs e)
         {
-            //borderFireSituation.Visibility = Visibility.Hidden;
-            //BURFrameCondition.Visibility = Visibility.Visible;
+            Control.Foreground = Brushes.Gray;
+            ImageControl.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Control_grey@4x.png", UriKind.Relative));
         }
 
-        private void btnBurCondition_LostFocus(object sender, RoutedEventArgs e)
+        private void btnSettings_GotFocus(object sender, RoutedEventArgs e)
         {
-            //BURFrameCondition.Visibility = Visibility.Hidden;
+            Settings.Foreground = Brushes.White;
+            ImageSettings.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Settings_White@4x.png", UriKind.Relative));
+        }
+
+        private void btnSettings_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Settings.Foreground = Brushes.Gray;
+            ImageSettings.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Settings_Grey@4x.png", UriKind.Relative));
+        }
+
+        private void btnArchive_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Archive.Foreground = Brushes.White;
+            ImageArchive.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Archive_White@4x.png", UriKind.Relative));
+        }
+
+        private void btnArchive_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Archive.Foreground = Brushes.Gray;
+            ImageArchive.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Archive_Grey@4x.png", UriKind.Relative));
         }
     }
 }
