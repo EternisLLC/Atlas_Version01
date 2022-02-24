@@ -11,6 +11,8 @@
             SystemChoiceVM = new SystemChoiceViewModel();
 
             InstructionVM = new InstructionViewModel();
+
+            TitleBarViewModel = new TitleBarViewModel();
         }
 
         public ViewModel MainVM { get; set;}
@@ -20,5 +22,7 @@
         public ViewModel SystemChoiceVM { get; set;}
 
         public ViewModel InstructionVM { get; set;}
+
+        public ViewModel TitleBarViewModel { get; set; }
     }
 }

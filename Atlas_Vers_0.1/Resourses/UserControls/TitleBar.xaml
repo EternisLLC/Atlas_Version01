@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wsm="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
+    DataContext="{Binding TitleBarViewModel, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
     <Border
@@ -44,8 +45,6 @@
                     <Image Source="/Resourses/Pictures/TitleBar/Top_back.png" />
                 </StackPanel>
             </Button>
-
-
 
             <StackPanel
                 Grid.Column="3"

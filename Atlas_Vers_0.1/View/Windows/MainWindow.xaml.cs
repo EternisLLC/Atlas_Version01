@@ -12,8 +12,6 @@ namespace Atlas_Vers_0._1
         public MainWindow()
         {
             InitializeComponent();
-
-            TitleBar.CanGoBack = false;
         }
 
         private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -21,7 +19,5 @@ namespace Atlas_Vers_0._1
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
-
-
     }
 }

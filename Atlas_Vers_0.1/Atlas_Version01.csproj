@@ -82,6 +82,7 @@
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SystemChoiceViewModel.cs" />
+    <Compile Include="ViewModels\TitleBarViewModel.cs" />
     <Compile Include="View\Pages\BUR.xaml.cs">
       <DependentUpon>BUR.xaml</DependentUpon>
     </Compile>
