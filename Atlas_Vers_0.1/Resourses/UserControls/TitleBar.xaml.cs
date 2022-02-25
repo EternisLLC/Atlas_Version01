@@ -12,8 +12,6 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
         public TitleBar()
         {
             InitializeComponent();
-
-            DataContext = this;
         }
     }
 }

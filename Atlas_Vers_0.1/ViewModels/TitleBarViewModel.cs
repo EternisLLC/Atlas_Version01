@@ -24,6 +24,8 @@ namespace Atlas_Vers_0._1.ViewModels
             ResizeWindow();
         });
 
+        public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
+
 
         private void ShutDownApp()
         {
@@ -42,8 +44,6 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
-
-        public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
 
         public static bool CanGoBack = true;  // Флажок для возвращения
     }

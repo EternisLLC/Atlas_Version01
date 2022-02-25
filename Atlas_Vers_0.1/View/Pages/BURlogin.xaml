@@ -144,7 +144,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"
                 BorderThickness="0"
-                Command="{Binding JustGoNextPageCommand}"
+                Command="{Binding AuthorizationCommand}"
                 FontSize="22"
                 Style="{DynamicResource BTNGoNextLogin}"
                 TabIndex="2">

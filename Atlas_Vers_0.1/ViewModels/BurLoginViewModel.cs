@@ -41,6 +41,8 @@ namespace Atlas_Vers_0._1.ViewModels
             //TODO: Если порт отключился во время подключения, обработать ошибки
             string messageResult = SendMessage(port, "checkPass ", password) + "\r";
 
+            System.Threading.Thread.Sleep(100);
+
             if (messageResult.Contains("checkedPass true\r"))
             {
                 Navigation.Navigation.GoTo(new BUR());
@@ -50,6 +52,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
+            System.Threading.Thread.Sleep(100);
             MessageResult += GetMessageForSerialPort(sender);
         }
 
@@ -100,11 +103,11 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Команды
 
-        public ICommand JustGoNextPageCommand => new LambdaCommand((param) =>
-        {
-            Navigation.Navigation.GoTo(new BUR());
-        },  // кнопка может работать, если true
-            (param) => SelectedComPort != null && Password != "");
+        //public ICommand JustGoNextPageCommand => new LambdaCommand((param) =>
+        //{
+        //    Navigation.Navigation.GoTo(new BUR());
+        //},  // кнопка может работать, если true
+        //    (param) => SelectedComPort != null && Password != "");
 
         public ICommand AuthorizationCommand => new LambdaCommand((param) =>
         {
@@ -144,7 +147,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             port.WriteLine(command + value + "\r\n");
 
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             string messageResult = GetMessageForSerialPort(port);
 
