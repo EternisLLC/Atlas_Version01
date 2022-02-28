@@ -2,10 +2,10 @@
 {
     public class RadioChannelDevice
     {
-        private bool ConnectionStatus = false;
-        private double SignalPower = 0.0;
-        private int RadioChannelDeviceID = 0;
-        private int RadioChannelDeviceShortAdress = 0;
+        private bool ConnectionStatus { get; }
+        private double SignalPower { get; }
+        private int RadioChannelDeviceID { get; }
+        private int RadioChannelDeviceShortAdress { get; }
 
         public RadioChannelDevice(bool connectionStatus, double signalPower, int radioChannelDeviceID, int radioChannelDeviceShortAdress)
         {

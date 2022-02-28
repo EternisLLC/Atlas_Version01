@@ -465,8 +465,63 @@
                 <ListView
                     Grid.Row="2"
                     Grid.Column="1"
-                    Background="#2c2c2c"
-                    Style="{DynamicResource lvFireSituation}" />
+                    Background="#2c2c2c">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <Border Background="#3a3e46" CornerRadius="2">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="3" />
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="50" />
+                                            <RowDefinition Height="3" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3" />
+                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="3" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Content="TestData"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="14" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            HorizontalContentAlignment="Right"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="14" />
+
+                                        <Image
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Source="/Resourses/Pictures/BUR/Device_Black@4x.png" />
+
+                                        <ProgressBar
+                                            Grid.Row="2"
+                                            Grid.Column="3"
+                                            VerticalAlignment="Center" />
+
+                                        <ProgressBar
+                                            Grid.Row="2"
+                                            Grid.Column="3"
+                                            VerticalAlignment="Bottom" />
+
+                                    </Grid>
+                                </Border>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <Grid Grid.Row="3" Grid.Column="1">
                     <Grid.RowDefinitions>

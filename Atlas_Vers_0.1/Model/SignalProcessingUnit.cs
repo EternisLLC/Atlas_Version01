@@ -5,8 +5,8 @@
         private CommunitationLineStatus FirstFireDetectorCommunicationLineStatus = CommunitationLineStatus.normal;
         private CommunitationLineStatus SecondFireDetectorCommunicationLineStatus = CommunitationLineStatus.normal;
         private CommunitationLineStatus ActivatorCommunicationLineStatus = CommunitationLineStatus.normal;
-        private double FirstFireDetectorTemperature = 0.0;
-        private double SecondFireDetectorTemperature = 0.0;
+        private double FirstFireDetectorTemperature { get; }
+        private double SecondFireDetectorTemperature { get; }
         private FireSituation CurrentFireSituation = FireSituation.normal;
         private BattaryStatus MainBattaryStatus = BattaryStatus.normal;
         private BattaryStatus ReserveBattaryStatus = BattaryStatus.ready;
