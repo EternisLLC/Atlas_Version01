@@ -13,7 +13,13 @@ namespace Atlas_Vers_0._1.Navigation
 
         public static bool GoTo(Page page) => _instance == null ? throw new InvalidOperationException("Can't go, instance is null") : _instance.Navigate(page);
 
-        public static void GoBack() => _instance?.GoBack();
+        public static void GoBack()
+        {
+            if (_instance.CanGoBack)
+            {
+                _instance?.GoBack();
+            }
+        }
 
         public static NavigationService GetInstance() => _instance;
     }
