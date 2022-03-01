@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding BurVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
     <Grid MinWidth="810">
 
@@ -465,7 +466,8 @@
                 <ListView
                     Grid.Row="2"
                     Grid.Column="1"
-                    Background="#2c2c2c">
+                    Background="#2c2c2c"
+                    ItemsSource="{Binding Units}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">

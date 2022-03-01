@@ -683,7 +683,7 @@
                                 CornerRadius="2" />
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="Orientation" Value="Vertical">
+                            <Trigger Property="Orientation" Value="Horizontal">
                                 <Setter TargetName="TemplateRoot" Property="LayoutTransform">
                                     <Setter.Value>
                                         <RotateTransform Angle="-90" />
