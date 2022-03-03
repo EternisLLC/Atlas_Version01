@@ -20,14 +20,14 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
             Units = new ObservableCollection<Unit>
             {
                 new Unit {Id = 1, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 15, secondTemp = 30},
-                new Unit {Id = 2, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 17, secondTemp = 40},
-                new Unit {Id = 3, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 18, secondTemp = 50},
+                new Unit {Id = 2, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = -17, secondTemp = 40},
+                new Unit {Id = 3, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = -18, secondTemp = 50},
                 new Unit {Id = 4, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 19, secondTemp = 60},
                 new Unit {Id = 5, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 70},
                 new Unit {Id = 6, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 70},
-                new Unit {Id = 7, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 70},
+                new Unit {Id = 7, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 90},
                 new Unit {Id = 8, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 70},
-                new Unit {Id = 9, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 70}
+                new Unit {Id = 9, Image="/Resourses/Pictures/BUR/BUR_Break_Transparent@4x.png", firstTemp = 30, secondTemp = 130}
             };
             FireSituationList.ItemsSource = Units;
 

@@ -508,20 +508,20 @@
             </Setter>
         </Style>
 
-        
-        <!-- Тест шаблона ProgressBar -->
+
+        <!--  Тест шаблона ProgressBar  -->
 
         <LinearGradientBrush x:Key="ProgressBarBorderBrush" StartPoint="0,0" EndPoint="0,1">
             <LinearGradientBrush.GradientStops>
-                <GradientStop Offset="0" Color="#B2B2B2" />
-                <GradientStop Offset="1" Color="#8C8C8C" />
+                <GradientStop Offset="0" Color="#2c2c2c" />
+                <GradientStop Offset="1" Color="#2c2c2c" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="ProgressBarBackground" StartPoint="0,0" EndPoint="1,0">
             <LinearGradientBrush.GradientStops>
-                <GradientStop Offset="0" Color="#BABABA" />
-                <GradientStop Offset="0.5" Color="#C7C7C7" />
-                <GradientStop Offset="1" Color="#BABABA" />
+                <GradientStop Offset="0" Color="#EE352b" />
+                <GradientStop Offset="0.5" Color="#EE352b" />
+                <GradientStop Offset="1" Color="#EE352b" />
             </LinearGradientBrush.GradientStops>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="ProgressBarTopHighlight" StartPoint="0,0" EndPoint="0,1">
@@ -600,13 +600,8 @@
                                 RadiusY="2" />
                             <Border
                                 Margin="1"
-                                Background="{StaticResource ProgressBarGlassyHighlight}"
+                                Background="#2c2c2c"
                                 CornerRadius="2" />
-                            <Border
-                                Margin="1"
-                                Background="{StaticResource ProgressBarTopHighlight}"
-                                BorderBrush="#80FFFFFF"
-                                BorderThickness="1,0,1,1" />
                             <Rectangle Name="PART_Track" Margin="1" />
 
                             <Decorator

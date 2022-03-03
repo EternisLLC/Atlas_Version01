@@ -471,12 +471,12 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
-                                <Border Background="#3a3e46" CornerRadius="2">
+                                <Border Background="#3a3e46" CornerRadius="5">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="10*" />
                                             <RowDefinition Height="80*" />
-                                            <RowDefinition Height="3" />
+                                            <RowDefinition Height="5" />
                                         </Grid.RowDefinitions>
 
                                         <Grid.ColumnDefinitions>
@@ -495,37 +495,38 @@
                                             FontSize="12"
                                             Foreground="White" />
 
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="3"
-                                            HorizontalContentAlignment="Right"
-                                            Content="{Binding Path=firstTemp}"
-                                            FontFamily="Elektra Pro"
-                                            FontSize="36" />
-
                                         <Image
                                             Grid.Row="1"
                                             Grid.Column="1"
                                             VerticalAlignment="Bottom"
                                             Source="{Binding Path=Image}" />
 
-                                        <ProgressBar
+                                        <StackPanel
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            Height="20"
-                                            VerticalAlignment="Center"
-                                            Maximum="100"
-                                            Minimum="0"
-                                            Value="{Binding Path=firstTemp}" />
+                                            VerticalAlignment="Bottom">
+                                            <ProgressBar
+                                                Height="20"
+                                                Margin="3"
+                                                Background="#2c2c2c"
+                                                Maximum="130"
+                                                Minimum="-30"
+                                                Orientation="Vertical"
+                                                Value="{Binding Path=firstTemp}" />
 
-                                        <ProgressBar
-                                            Grid.Row="1"
-                                            Grid.Column="3"
-                                            Height="20"
-                                            VerticalAlignment="Bottom"
-                                            Maximum="100"
-                                            Minimum="0"
-                                            Value="{Binding Path=secondTemp}" />
+                                            <ProgressBar
+                                                Width="400"
+                                                Height="20"
+                                                Margin="3"
+                                                Background="#2c2c2c"
+                                                Maximum="130"
+                                                Minimum="-30"
+                                                Orientation="Vertical"
+                                                Value="{Binding Path=secondTemp}" />
+
+                                        </StackPanel>
+
+
 
                                     </Grid>
                                 </Border>
