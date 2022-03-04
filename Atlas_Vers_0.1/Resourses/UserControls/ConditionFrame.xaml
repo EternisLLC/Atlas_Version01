@@ -107,7 +107,11 @@
                     </Border>
                 </Grid>
 
-                <Grid Grid.Row="3" Grid.Column="1">
+                <Grid
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    FocusManager.FocusedElement="{Binding ElementName=btnFireSituation}"
+                    FocusManager.IsFocusScope="True">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5" />
                         <ColumnDefinition Width="*" />

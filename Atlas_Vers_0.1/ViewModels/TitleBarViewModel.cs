@@ -44,7 +44,5 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
-
-        public static bool CanGoBack = true;  // Флажок для возвращения
     }
 }
