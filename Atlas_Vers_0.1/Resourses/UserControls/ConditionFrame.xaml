@@ -471,7 +471,9 @@
                     Name="FireSituationList"
                     Grid.Row="2"
                     Grid.Column="1"
-                    Background="#2c2c2c">
+                    Background="#2c2c2c"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
@@ -508,24 +510,26 @@
                                         <StackPanel
                                             Grid.Row="1"
                                             Grid.Column="3"
+                                            Width="400"
                                             VerticalAlignment="Bottom">
                                             <ProgressBar
-                                                Height="20"
+                                                Height="27"
                                                 Margin="3"
                                                 Background="#2c2c2c"
                                                 Maximum="130"
                                                 Minimum="-30"
-                                                Orientation="Vertical"
+                                                Style="{DynamicResource progressbarFireSituation}"
                                                 Value="{Binding Path=firstTemp}" />
 
+
+
                                             <ProgressBar
-                                                Width="400"
-                                                Height="20"
+                                                Height="27"
                                                 Margin="3"
                                                 Background="#2c2c2c"
                                                 Maximum="130"
                                                 Minimum="-30"
-                                                Orientation="Vertical"
+                                                Style="{DynamicResource progressbarFireSituation}"
                                                 Value="{Binding Path=secondTemp}" />
 
                                         </StackPanel>
