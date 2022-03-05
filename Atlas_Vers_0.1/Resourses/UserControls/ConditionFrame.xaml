@@ -489,7 +489,7 @@
                                             <ColumnDefinition Width="3" />
                                             <ColumnDefinition Width="70" />
                                             <ColumnDefinition Width="10" />
-                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="3" />
                                         </Grid.ColumnDefinitions>
 
@@ -510,10 +510,9 @@
                                         <StackPanel
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            Width="400"
                                             VerticalAlignment="Bottom">
                                             <ProgressBar
-                                                Height="27"
+                                                Height="25"
                                                 Margin="3"
                                                 Background="#2c2c2c"
                                                 Maximum="130"
@@ -521,26 +520,25 @@
                                                 Style="{DynamicResource progressbarFireSituation}"
                                                 Value="{Binding Path=firstTemp}" />
 
-
-
                                             <ProgressBar
-                                                Height="27"
+                                                Height="25"
                                                 Margin="3"
                                                 Background="#2c2c2c"
                                                 Maximum="130"
                                                 Minimum="-30"
                                                 Style="{DynamicResource progressbarFireSituation}"
                                                 Value="{Binding Path=secondTemp}" />
-
                                         </StackPanel>
-
-
-
                                     </Grid>
                                 </Border>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
 
                 <Grid Grid.Row="3" Grid.Column="1">

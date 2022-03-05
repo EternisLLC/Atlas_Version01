@@ -508,7 +508,6 @@
             </Setter>
         </Style>
 
-
         <!--  Тест шаблона ProgressBar  -->
 
         <Style x:Key="progressbarFireSituation" TargetType="{x:Type ProgressBar}">
@@ -519,14 +518,14 @@
                         <Grid x:Name="TemplateRoot">
                             <Border
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderBrush="#2c2c2c"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="15" />
+                                CornerRadius="0,15,15,0" />
                             <Rectangle x:Name="PART_Track" />
                             <Grid
                                 x:Name="PART_Indicator"
                                 HorizontalAlignment="Left"
-                                ClipToBounds="true">
+                                ClipToBounds="False">
                                 <Rectangle
                                     x:Name="Indicator"
                                     Fill="#EE352B"
