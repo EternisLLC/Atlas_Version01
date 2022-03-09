@@ -472,8 +472,7 @@
                     Grid.Row="2"
                     Grid.Column="1"
                     Background="#2c2c2c"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
@@ -507,28 +506,51 @@
                                             VerticalAlignment="Bottom"
                                             Source="{Binding Path=Image}" />
 
-                                        <StackPanel
+                                        <ProgressBar
+                                            Name="firstTemp"
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            VerticalAlignment="Bottom">
-                                            <ProgressBar
-                                                Height="25"
-                                                Margin="3"
-                                                Background="#2c2c2c"
-                                                Maximum="130"
-                                                Minimum="-30"
-                                                Style="{DynamicResource progressbarFireSituation}"
-                                                Value="{Binding Path=firstTemp}" />
+                                            Height="25"
+                                            Margin="0,10,0,25"
+                                            VerticalAlignment="Center"
+                                            Background="#2c2c2c"
+                                            Maximum="130"
+                                            Minimum="-30"
+                                            Style="{DynamicResource progressbarFireSituationGrey}"
+                                            Value="{Binding Path=firstTemp}" />
 
-                                            <ProgressBar
-                                                Height="25"
-                                                Margin="3"
-                                                Background="#2c2c2c"
-                                                Maximum="130"
-                                                Minimum="-30"
-                                                Style="{DynamicResource progressbarFireSituation}"
-                                                Value="{Binding Path=secondTemp}" />
-                                        </StackPanel>
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Margin="5,10,0,22"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="22"
+                                            Foreground="White"
+                                            Text="{Binding ElementName=firstTemp, Path=Value, StringFormat={}{0:0} ºС}" />
+
+                                        <ProgressBar
+                                            Name="secondTemp"
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Height="25"
+                                            VerticalAlignment="Bottom"
+                                            Background="#2c2c2c"
+                                            Maximum="130"
+                                            Minimum="-30"
+                                            Style="{DynamicResource progressbarFireSituationRed}"
+                                            Value="{Binding Path=secondTemp}" />
+
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Margin="5,10,0,-1"
+                                            VerticalAlignment="Bottom"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="22"
+                                            Foreground="White"
+                                            Text="{Binding ElementName=secondTemp, Path=Value, StringFormat={}{0:0} ºС}" />
                                     </Grid>
                                 </Border>
                             </StackPanel>
