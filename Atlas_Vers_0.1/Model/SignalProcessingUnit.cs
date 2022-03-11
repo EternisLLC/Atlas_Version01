@@ -9,7 +9,7 @@
         private double SecondFireDetectorTemperature { get; }
         private FireSituation CurrentFireSituation = FireSituation.normal;
         private BattaryStatus MainBattaryStatus = BattaryStatus.normal;
-        private BattaryStatus ReserveBattaryStatus = BattaryStatus.ready;
+        private BattaryStatus ReserveBattaryStatus = BattaryStatus.reserve;
 
         public SignalProcessingUnit
         (
@@ -41,29 +41,28 @@
 
         public void Test()
         {
-            
+
         }
     }
 
     public enum CommunitationLineStatus
     {
+        normal,
         shortCircuit,
-        breakage,
-        normal
+        breakage
     }
 
     public enum FireSituation
     {
-        fire,
+        normal,
         attention,
-        normal
+        fire
     }
 
     public enum BattaryStatus
     {
+        normal,
         low,
-        ready,
-        isDead,
-        normal
+        reserve
     }
 }

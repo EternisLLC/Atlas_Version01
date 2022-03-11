@@ -432,7 +432,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Hidden">
+            Visibility="Visible">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -1165,7 +1165,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Visible">
+            Visibility="Hidden">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -1201,11 +1201,13 @@
                 </Border>
 
                 <ListView
+                    Name="listviewFireSituation"
                     Grid.Row="2"
                     Grid.Column="1"
                     Background="#2c2c2c"
                     BorderBrush="White"
                     BorderThickness="1"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     Style="{DynamicResource lvFireSituation}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -1226,6 +1228,23 @@
                                             <ColumnDefinition Width="3" />
                                         </Grid.ColumnDefinitions>
 
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Content="{Binding Path=Id}"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="12"
+                                            Foreground="White" />
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="3"
+                                            HorizontalAlignment="Right"
+                                            Content="{Binding Path=Id}"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="12"
+                                            Foreground="White" />
+
                                         <Image
                                             Grid.Row="1"
                                             Grid.Column="1"
@@ -1235,8 +1254,9 @@
                                         <StackPanel
                                             Grid.Row="1"
                                             Grid.Column="3"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center">
+                                            Orientation="Horizontal" >
+
+                                            <!--  Питание  -->
 
                                             <Image>
                                                 <Image.Style>
@@ -1259,82 +1279,67 @@
                                                 </Image.Style>
                                             </Image>
 
+                                            <Label Content="Питание" FontSize="14" Grid.Row="1" Grid.Column="3"/>
+
+                                            <!--  ШС1  -->
+
                                             <Image>
                                                 <Image.Style>
                                                     <Style TargetType="Image">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="2">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=FirstFireDetectorCommunicationLineStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png" />
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="1">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Break_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=FirstFireDetectorCommunicationLineStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="0">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Fail_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=FirstFireDetectorCommunicationLineStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Image.Style>
                                             </Image>
 
+                                            <!--  ШС2  -->
+
                                             <Image>
                                                 <Image.Style>
                                                     <Style TargetType="Image">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="normal">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=SecondFireDetectorCommunicationLineStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png" />
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="breakage">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=SecondFireDetectorCommunicationLineStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="shortCircuit">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=SecondFireDetectorCommunicationLineStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Image.Style>
                                             </Image>
 
+                                            <!--  Активатор  -->
+
                                             <Image>
                                                 <Image.Style>
                                                     <Style TargetType="Image">
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="normal">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=ActivatorCommunicationLineStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png" />
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="breakage">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=ActivatorCommunicationLineStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                                             </DataTrigger>
-                                                            <DataTrigger Binding="{Binding Path=communitationLineStatus}" Value="shortCircuit">
-                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            <DataTrigger Binding="{Binding Path=ActivatorCommunicationLineStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Image.Style>
                                             </Image>
-
-
-                                            <!--<Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="3" />
-                                                    <RowDefinition Height="50*" />
-                                                    <RowDefinition Height="3" />
-                                                    <RowDefinition Height="10" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*" />
-                                                    <ColumnDefinition Width="10" />
-                                                    <ColumnDefinition Width="50*" />
-                                                    <ColumnDefinition Width="10" />
-                                                    <ColumnDefinition Width="50*" />
-                                                    <ColumnDefinition Width="10" />
-                                                    <ColumnDefinition Width="50*" />
-                                                    <ColumnDefinition Width="3" />
-                                                </Grid.ColumnDefinitions>
-
-
-
-                                            </Grid>-->
 
                                         </StackPanel>
 
