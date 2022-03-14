@@ -520,7 +520,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="#2c2c2c"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="0,15,15,0" />
+                                CornerRadius="0,0,0,0" />
                             <Rectangle x:Name="PART_Track" />
                             <Grid
                                 x:Name="PART_Indicator"
@@ -589,7 +589,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="#2c2c2c"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="0,15,15,0" />
+                                CornerRadius="0,0,0,0" />
                             <Rectangle x:Name="PART_Track" />
                             <Grid
                                 x:Name="PART_Indicator"

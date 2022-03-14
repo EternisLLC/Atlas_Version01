@@ -159,7 +159,7 @@
 
                             <TextBlock
                                 Name="tbFireSituation"
-                                Grid.Row="1"
+                                Grid.RowSpan="4"
                                 Grid.Column="3"
                                 Width="225"
                                 Margin="10"
@@ -211,7 +211,7 @@
 
                             <TextBlock
                                 Name="tbCondition"
-                                Grid.Row="1"
+                                Grid.RowSpan="4"
                                 Grid.Column="3"
                                 Width="225"
                                 Margin="10"
@@ -263,7 +263,7 @@
 
                             <TextBlock
                                 Name="tbWirelessCondtition"
-                                Grid.Row="1"
+                                Grid.RowSpan="4"
                                 Grid.Column="3"
                                 Width="250"
                                 Margin="10"
@@ -276,6 +276,7 @@
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
+                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
                         </Grid>
 
@@ -322,7 +323,6 @@
                                 <RowDefinition Height="3" />
                                 <RowDefinition Height="30*" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
                             <TextBlock
@@ -340,6 +340,7 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
                         </Grid>
@@ -362,13 +363,13 @@
                                 <RowDefinition Height="3" />
                                 <RowDefinition Height="30*" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
                             <TextBlock
@@ -401,13 +402,13 @@
                                 <RowDefinition Height="3" />
                                 <RowDefinition Height="30*" />
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
 
                             <TextBlock
@@ -772,8 +773,6 @@
                         <RowDefinition Height="15" />
                     </Grid.RowDefinitions>
 
-
-
                     <Border
                         Grid.Row="0"
                         Grid.Column="1"
@@ -781,8 +780,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -806,8 +805,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -831,8 +830,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Short_Dark@4x.png" />
@@ -856,8 +855,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -881,8 +880,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -906,8 +905,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -931,8 +930,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -958,8 +957,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -984,8 +983,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1009,8 +1008,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1036,8 +1035,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1063,8 +1062,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1089,8 +1088,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1114,8 +1113,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1139,8 +1138,8 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
@@ -1205,7 +1204,7 @@
                     Name="listviewFireSituation"
                     Grid.Row="2"
                     Grid.Column="1"
-                    Background="#2c2c2c"
+                    Background="#3a3e46"
                     BorderBrush="#3a3e46"
                     BorderThickness="1"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -1213,7 +1212,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5">
-                                <Border Background="#3a3e46" CornerRadius="5">
+                                <Border Background="#2c2c2c" CornerRadius="5">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="10*" />
