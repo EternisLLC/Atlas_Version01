@@ -526,7 +526,7 @@
                                 x:Name="PART_Indicator"
                                 HorizontalAlignment="Left"
                                 ClipToBounds="True">
-                                <Border CornerRadius="50,50,50,50">
+                                <Border CornerRadius="110,110,110,110">
                                     <Rectangle x:Name="Animation" ClipToBounds="True">
                                         <Rectangle.Fill>
                                             <LinearGradientBrush>
