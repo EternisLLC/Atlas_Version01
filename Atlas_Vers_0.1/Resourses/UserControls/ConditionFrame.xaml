@@ -314,15 +314,15 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3" />
+                                <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="200*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="3" />
+                                <RowDefinition Height="5" />
                                 <RowDefinition Height="30*" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="5" />
                             </Grid.RowDefinitions>
 
                             <TextBlock
@@ -354,15 +354,15 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3" />
+                                <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="3" />
+                                <RowDefinition Height="5" />
                                 <RowDefinition Height="30*" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="5" />
                             </Grid.RowDefinitions>
 
                             <Image
@@ -393,15 +393,15 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3" />
+                                <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="3" />
+                                <RowDefinition Height="5" />
                                 <RowDefinition Height="30*" />
-                                <RowDefinition Height="*" />
+                                <RowDefinition Height="5" />
                             </Grid.RowDefinitions>
 
                             <Image
@@ -1171,7 +1171,8 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33" />
                     <RowDefinition Height="5" />
-                    <RowDefinition Height="800*" />
+                    <RowDefinition Height="33"/>
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="80" />
                     <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
@@ -1182,6 +1183,15 @@
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
 
+                <Border Background="#2c2c2c" Grid.Row="2" Grid.Column="1" BorderThickness="3">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    
+                </Border>
 
                 <Border
                     Grid.Row="0"
@@ -1202,11 +1212,10 @@
 
                 <ListView
                     Name="listviewFireSituation"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="1"
                     Background="#3a3e46"
                     BorderBrush="#3a3e46"
-                    BorderThickness="1"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     Style="{DynamicResource lvFireSituation}">
                     <ListView.ItemTemplate>
@@ -1407,7 +1416,7 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
 
-                <Grid Grid.Row="3" Grid.Column="1">
+                <Grid Grid.Row="4" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5" />
                         <RowDefinition Height="50" />
