@@ -1171,7 +1171,6 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33" />
                     <RowDefinition Height="5" />
-                    <RowDefinition Height="33"/>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="80" />
                     <RowDefinition Height="5" />
@@ -1182,16 +1181,6 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
-
-                <Border Background="#2c2c2c" Grid.Row="2" Grid.Column="1" BorderThickness="3">
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                    
-                </Border>
 
                 <Border
                     Grid.Row="0"
@@ -1212,29 +1201,30 @@
 
                 <ListView
                     Name="listviewFireSituation"
-                    Grid.Row="3"
+                    Grid.Row="2"
                     Grid.Column="1"
                     Background="#3a3e46"
                     BorderBrush="#3a3e46"
+                    BorderThickness="0"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     Style="{DynamicResource lvFireSituation}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="5">
+                            <StackPanel Margin="2">
                                 <Border Background="#2c2c2c" CornerRadius="5">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="10*" />
-                                            <RowDefinition Height="80*" />
-                                            <RowDefinition Height="5" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="10" />
                                         </Grid.RowDefinitions>
 
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="3" />
-                                            <ColumnDefinition Width="70" />
                                             <ColumnDefinition Width="10" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="3" />
+                                            <ColumnDefinition Width="0.7*" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="10" />
                                         </Grid.ColumnDefinitions>
 
                                         <Label
@@ -1257,24 +1247,24 @@
                                         <Image
                                             Grid.Row="1"
                                             Grid.Column="1"
-                                            VerticalAlignment="Bottom"
                                             Source="{Binding Path=Image}" />
 
                                         <Grid Grid.Row="1" Grid.Column="3">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="3" />
-                                                <ColumnDefinition Width="50*" />
-                                                <ColumnDefinition Width="3" />
-                                                <ColumnDefinition Width="50*" />
-                                                <ColumnDefinition Width="3" />
-                                                <ColumnDefinition Width="50*" />
-                                                <ColumnDefinition Width="3" />
-                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="5" />
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="8" />
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="8" />
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="8" />
+                                                <ColumnDefinition Width="40*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="50" />
+                                                <RowDefinition Height="40*" />
                                                 <RowDefinition Height="10*" />
                                             </Grid.RowDefinitions>
+
                                             <!--  Питание  -->
 
                                             <Image Grid.Row="0" Grid.Column="1">
@@ -1305,7 +1295,7 @@
                                                 VerticalContentAlignment="Center"
                                                 Content="Питание"
                                                 FontFamily="Elektra Pro"
-                                                FontSize="11"
+                                                FontSize="10"
                                                 Foreground="#b1b1b1" />
 
                                             <!--  ШС1  -->
@@ -1335,7 +1325,7 @@
                                                 VerticalContentAlignment="Center"
                                                 Content="ШС1"
                                                 FontFamily="Elektra Pro"
-                                                FontSize="11"
+                                                FontSize="10"
                                                 Foreground="#b1b1b1" />
 
                                             <!--  ШС2  -->
@@ -1365,7 +1355,7 @@
                                                 VerticalContentAlignment="Center"
                                                 Content="ШС2"
                                                 FontFamily="Elektra Pro"
-                                                FontSize="11"
+                                                FontSize="10"
                                                 Foreground="#b1b1b1" />
 
                                             <!--  Активатор  -->
@@ -1395,7 +1385,7 @@
                                                 VerticalContentAlignment="Center"
                                                 Content="Активатор"
                                                 FontFamily="Elektra Pro"
-                                                FontSize="11"
+                                                FontSize="10"
                                                 Foreground="#b1b1b1" />
                                         </Grid>
 
@@ -1416,7 +1406,7 @@
                     </ListView.ItemContainerStyle>
                 </ListView>
 
-                <Grid Grid.Row="4" Grid.Column="1">
+                <Grid Grid.Row="3" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5" />
                         <RowDefinition Height="50" />

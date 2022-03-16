@@ -19,7 +19,6 @@ namespace Atlas_Vers_0._1.ViewModels
         public CommunitationLineStatus ActivatorCommunicationLineStatus { get; set; }
         public FireSituation fireSituation { get; set; }
         public BattaryStatus battaryStatus { get; set; }
-
     }
 
     public enum CommunicationLineStatus
@@ -47,6 +46,6 @@ namespace Atlas_Vers_0._1.ViewModels
 
     public class BurViewModel : ViewModel
     {
-        
+
     }
 }
