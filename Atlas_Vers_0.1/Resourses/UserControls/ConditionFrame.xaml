@@ -36,7 +36,7 @@
                     <RowDefinition Height="5" />
                     <RowDefinition Height="60*" />
                     <RowDefinition Height="230*" />
-                    <RowDefinition Height="185*" />
+                    <RowDefinition Height="235*" />
                     <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
 
@@ -146,7 +146,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
-                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
@@ -161,7 +161,6 @@
                                 Name="tbFireSituation"
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Width="225"
                                 Margin="10"
                                 VerticalAlignment="Center"
                                 FontSize="21"
@@ -198,7 +197,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
-                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
@@ -213,7 +212,6 @@
                                 Name="tbCondition"
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Width="225"
                                 Margin="10"
                                 VerticalAlignment="Center"
                                 FontSize="21"
@@ -250,7 +248,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
-                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
@@ -265,11 +263,10 @@
                                 Name="tbWirelessCondtition"
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Width="250"
                                 Margin="10"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
-                                FontSize="21"
+                                FontSize="20"
                                 Text="Состояние беспроводных устройств"
                                 TextWrapping="Wrap" />
 
@@ -310,23 +307,26 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Background="#2c2c2c"
+                        BorderThickness="0"
                         CornerRadius="2">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3" />
                                 <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="200*" />
+                                <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="5" />
+                                <RowDefinition Height="3" />
                                 <RowDefinition Height="30*" />
-                                <RowDefinition Height="5" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
                             <TextBlock
                                 Grid.Row="1"
+                                
                                 Grid.Column="3"
                                 Margin="10"
                                 HorizontalAlignment="Left"
@@ -339,8 +339,6 @@
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
                         </Grid>
@@ -354,22 +352,21 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="5" />
+                                <RowDefinition Height="3" />
                                 <RowDefinition Height="30*" />
-                                <RowDefinition Height="5" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
                             <TextBlock
@@ -393,22 +390,21 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="3" />
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="5" />
+                                <RowDefinition Height="3" />
                                 <RowDefinition Height="30*" />
-                                <RowDefinition Height="5" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
 
                             <TextBlock

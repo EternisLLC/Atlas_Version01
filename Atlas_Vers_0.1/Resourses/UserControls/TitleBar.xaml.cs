@@ -12,6 +12,9 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
         public TitleBar()
         {
             InitializeComponent();
+            buttonBack = btnBack;
         }
+
+        public static Button buttonBack = new Button();
     }
 }

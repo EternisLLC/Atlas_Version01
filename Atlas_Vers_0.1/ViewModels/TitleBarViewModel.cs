@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using Atlas_Vers_0._1.Resourses.UserControls;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
@@ -24,6 +25,8 @@ namespace Atlas_Vers_0._1.ViewModels
             ResizeWindow();
         });
 
+        public static bool HideButtonBack = false;
+
         public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
 
 
@@ -34,10 +37,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private void ResizeWindow()
         {
-            if (Application.Current.MainWindow.WindowState != WindowState.Maximized)
-                Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            else
-                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            Application.Current.MainWindow.WindowState = Application.Current.MainWindow.WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
         }
 
         private void MinimizeWindow()

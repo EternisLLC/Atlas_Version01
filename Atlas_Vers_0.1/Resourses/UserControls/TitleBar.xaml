@@ -34,6 +34,7 @@
 
 
             <Button
+                x:Name="btnBack"
                 Grid.Column="1"
                 Width="50"
                 HorizontalAlignment="Left"
