@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using Atlas_Vers_0._1.Resourses.UserControls;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
@@ -23,6 +24,8 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             ResizeWindow();
         });
+
+        public static bool HideButtonBack = false;
 
         public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
 

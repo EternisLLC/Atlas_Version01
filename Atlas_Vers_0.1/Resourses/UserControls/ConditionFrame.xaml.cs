@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace Atlas_Vers_0._1.Resourses.UserControls
 {
@@ -20,10 +19,10 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
 
             Units = new ObservableCollection<Unit>
             {
-                new Unit
-                {
+                new Unit 
+                {   
                     Id = 1, Image="/Resourses/Pictures/BUR/Device_Black@4x.png", firstTemp = 15, secondTemp = 30,
-                    FirstFireDetectorCommunicationLineStatus = CommunicationLineStatus.normal, SecondFireDetectorCommunicationLineStatus = CommunicationLineStatus.normal,
+                    FirstFireDetectorCommunicationLineStatus = CommunicationLineStatus.normal, SecondFireDetectorCommunicationLineStatus = CommunicationLineStatus.normal, 
                     ActivatorCommunicationLineStatus = CommunitationLineStatus.breakage, battaryStatus = ViewModels.BattaryStatus.isDead, fireSituation = ViewModels.FireSituation.fire
                 },
                 new Unit
@@ -122,7 +121,5 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
             borderBURWireless.Visibility = Visibility.Hidden;
             tbWirelessCondtition.Foreground = Brushes.Black;
         }
-
-        
     }
 }
