@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
+﻿using System.Windows.Controls;
 
 namespace Atlas_Vers_0._1.Resourses.UserControls
 {
@@ -12,8 +10,9 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
         public TitleBar()
         {
             InitializeComponent();
-
-            DataContext = this;
+            buttonBack = btnBack;
         }
+
+        public static Button buttonBack = new Button();
     }
 }

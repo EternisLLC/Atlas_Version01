@@ -12,17 +12,21 @@
 
             InstructionVM = new InstructionViewModel();
 
-            TitleBarViewModel = new TitleBarViewModel();
+            TitleBarVM = new TitleBarViewModel();
+
+            BurVM = new BurViewModel();
         }
 
-        public ViewModel MainVM { get; set;}
+        public ViewModel MainVM { get; set; }
 
         public ViewModel BurLoginVM { get; set; }
 
-        public ViewModel SystemChoiceVM { get; set;}
+        public ViewModel SystemChoiceVM { get; set; }
 
-        public ViewModel InstructionVM { get; set;}
+        public ViewModel InstructionVM { get; set; }
 
-        public ViewModel TitleBarViewModel { get; set; }
+        public ViewModel TitleBarVM { get; set; }
+
+        public ViewModel BurVM { get; set; }
     }
 }

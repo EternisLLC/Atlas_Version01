@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Atlas_Vers_0._1.View.Pages;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Atlas_Vers_0._1.View.Pages;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
@@ -26,7 +25,10 @@ namespace Atlas_Vers_0._1.ViewModels
         public void SerialPortConnection(SerialPort port, string password)
         {
             if (port.IsOpen)
+            {
                 port.Close();
+            }
+
             port.BaudRate = 115200;
             port.Parity = Parity.None;
             port.StopBits = StopBits.One;
@@ -41,17 +43,24 @@ namespace Atlas_Vers_0._1.ViewModels
             //TODO: Если порт отключился во время подключения, обработать ошибки
             string messageResult = SendMessage(port, "checkPass ", password) + "\r";
 
+            System.Threading.Thread.Sleep(100);
+
             if (messageResult.Contains("checkedPass true\r"))
             {
                 Navigation.Navigation.GoTo(new BUR());
             }
+            else
+            {
+                MessageBox.Show("Неправильный пароль, попробуйте ввести другой!", "Ошибка", MessageBoxButton.OK);
+            }
         }
-        #endregion
 
         public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
+            System.Threading.Thread.Sleep(100);
             MessageResult += GetMessageForSerialPort(sender);
         }
+        #endregion
 
         #region Свойства
 
@@ -100,11 +109,11 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Команды
 
-        public ICommand JustGoNextPageCommand => new LambdaCommand((param) =>
-        {
-            Navigation.Navigation.GoTo(new BUR());
-        },  // кнопка может работать, если true
-            (param) => SelectedComPort != null && Password != "");
+        //public ICommand JustGoNextPageCommand => new LambdaCommand((param) =>
+        //{
+        //    Navigation.Navigation.GoTo(new BUR());
+        //},  // кнопка может работать, если true
+        //    (param) => SelectedComPort != null && Password != "");
 
         public ICommand AuthorizationCommand => new LambdaCommand((param) =>
         {
@@ -118,19 +127,6 @@ namespace Atlas_Vers_0._1.ViewModels
         },  // кнопка может работать, если true
             (param) => param != null && param.ToString() != "" && Password != "");
 
-        //public ICommand ChangeFrameToBURCommand => new LambdaCommand((param) =>
-        //{
-        //    if (MessageResult.Contains("test"))
-        //    {
-        //       Navigation.Navigation.GoTo(new BUR());
-        //    }
-        //});
-
-        /// <summary>
-        /// Закрытие программы
-        /// </summary>
-
-
         #endregion
 
         #region Методы
@@ -139,21 +135,31 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             port.WriteLine(command + "\r\n");
         }
-
+        /// <summary>
+        /// Отправка сообщения COM-порту и получение ответа
+        /// </summary>
+        /// <param name="port"></param>
+        /// <param name="command"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         private string SendMessage(SerialPort port, string command, object value)
         {
             port.WriteLine(command + value + "\r\n");
 
-            Thread.Sleep(1000);
+            Thread.Sleep(100);
 
             string messageResult = GetMessageForSerialPort(port);
 
             return messageResult;
         }
 
-        string _str = "";
-        string _buffer = "";
-
+        private string _str = "";
+        private string _buffer = "";
+        /// <summary>
+        /// Обработка сообщения с COM-порта
+        /// </summary>
+        /// <param name="sender">COM-порт</param>
+        /// <returns></returns>
         private string GetMessageForSerialPort(object sender)
         {
             string outdata = "";

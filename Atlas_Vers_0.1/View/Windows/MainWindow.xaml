@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="Window_MouseDoubleClick">
-            <uc:TitleBar/>
+            <uc:TitleBar />
         </Grid>
 
         <Frame

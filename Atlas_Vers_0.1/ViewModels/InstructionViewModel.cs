@@ -16,7 +16,15 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             string fileName = "InstructionForBur.pdf";
             string path = Path.Combine(Environment.CurrentDirectory, @"PDF\", fileName);
-            System.Diagnostics.Process.Start(path);
+            try
+            {
+                System.Diagnostics.Process.Start(path);
+            }
+            catch
+            {
+                MessageBox.Show("Инструкции недоступна, попробуйте перезапустить программу!", "Ошибка", MessageBoxButton.OK);
+            }
+
         }
     }
 }

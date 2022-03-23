@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding BurVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
     <Grid MinWidth="810">
 
@@ -22,6 +23,7 @@
             <RowDefinition Height="15" />
         </Grid.RowDefinitions>
 
+        <!--#region Состояние-->
         <Border
             Name="borderCondition"
             Grid.Row="1"
@@ -35,7 +37,7 @@
                     <RowDefinition Height="5" />
                     <RowDefinition Height="60*" />
                     <RowDefinition Height="230*" />
-                    <RowDefinition Height="185*" />
+                    <RowDefinition Height="235*" />
                     <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
 
@@ -56,7 +58,7 @@
                         Margin="5,0,0,0"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Content="Настройка"
+                        Content="Состояние"
                         FontFamily="Elektra Pro"
                         FontSize="20"
                         Foreground="#b1b1b1" />
@@ -106,7 +108,13 @@
                     </Border>
                 </Grid>
 
-                <Grid Grid.Row="3" Grid.Column="1">
+                <!--#region Кнопки состояния-->
+
+                <Grid
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    FocusManager.FocusedElement="{Binding ElementName=btnFireSituation}"
+                    FocusManager.IsFocusScope="True">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5" />
                         <ColumnDefinition Width="*" />
@@ -123,6 +131,7 @@
                         <RowDefinition Height="5*" />
                     </Grid.RowDefinitions>
 
+                    <!--  Кнопка пожарная обстановка  -->
                     <Button
                         Name="btnFireSituation"
                         Grid.Row="1"
@@ -131,17 +140,13 @@
                         Background="#B1B1B1"
                         BorderThickness="0"
                         Cursor="Hand"
-                        FontFamily="Elektra Pro"
-                        FontSize="9"
-                        Foreground="#3A3E46"
                         GotFocus="btnFireSituation_GotFocus"
                         LostFocus="btnFireSituation_LostFocus"
                         Style="{DynamicResource BTNChooseBUR1}">
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
-                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
@@ -152,16 +157,18 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Name="tbFireSituation"
-                                Grid.Row="1"
+                            <Viewbox
+                                Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Width="225"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontSize="21"
-                                Text="Пожарная обстановка"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Name="tbFireSituation"
+                                    Width="210"
+                                    FontSize="12"
+                                    Text="Пожарная обстановка"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
 
                             <Image
                                 Grid.Row="1"
@@ -176,6 +183,7 @@
                         </Button.Resources>
                     </Button>
 
+                    <!--  Кнопка Состояние БУР  -->
                     <Button
                         Name="btnBurCondition"
                         Grid.Row="3"
@@ -184,16 +192,13 @@
                         Background="#B1B1B1"
                         BorderThickness="0"
                         Cursor="Hand"
-                        FontFamily="Elektra Pro"
-                        FontSize="9"
-                        Foreground="#3A3E46"
                         GotFocus="btnBurCondition_GotFocus"
                         LostFocus="btnBurCondition_LostFocus"
                         Style="{DynamicResource BTNChooseBUR1}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
-                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
@@ -204,16 +209,18 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Name="tbCondition"
-                                Grid.Row="1"
+                            <Viewbox
+                                Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Width="225"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontSize="21"
-                                Text="Состояние БУР"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Name="tbCondition"
+                                    Width="200"
+                                    FontSize="12"
+                                    Text="Состояние БУР"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
 
                             <Image
                                 Grid.Row="1"
@@ -227,25 +234,22 @@
                         </Button.Resources>
                     </Button>
 
+                    <!--  Кнопка Состояние беспроводных устройств  -->
                     <Button
                         Name="btnWirelessCondition"
                         Grid.Row="5"
                         Grid.Column="1"
                         HorizontalContentAlignment="Left"
-                        VerticalContentAlignment="Top"
                         Background="#B1B1B1"
                         BorderThickness="0"
                         Cursor="Hand"
-                        FontFamily="Elektra Pro"
-                        FontSize="9"
-                        Foreground="#3A3E46"
                         GotFocus="btnWirelessCondition_GotFocus"
                         LostFocus="btnWirelessCondition_LostFocus"
                         Style="{DynamicResource BTNChooseBUR1}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
-                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
@@ -256,21 +260,23 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Name="tbWirelessCondtition"
-                                Grid.Row="1"
+                            <Viewbox
+                                Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Width="250"
                                 Margin="10"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontSize="21"
-                                Text="Состояние беспроводных устройств"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Name="tbWirelessCondtition"
+                                    Width="200"
+                                    FontSize="12"
+                                    Text="Состояние беспроводных устройств"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
 
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
+                                VerticalAlignment="Center"
                                 Source="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
                         </Grid>
 
@@ -280,8 +286,10 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
                 </Grid>
+                <!--#endregion-->
+
+                <!--#region Индикаторы состояния-->
 
                 <Grid Grid.Row="4" Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -304,13 +312,14 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Background="#2c2c2c"
+                        BorderThickness="0"
                         CornerRadius="2">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
                                 <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="200*" />
+                                <ColumnDefinition Width="170*" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
@@ -320,21 +329,25 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
                                 Grid.Column="3"
                                 Margin="10"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="21"
-                                Foreground="#b1b1b1"
-                                Text="Состояние автоматики" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="150"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="10"
+                                    Foreground="#b1b1b1"
+                                    Text="Состояние автоматики" />
+                            </Viewbox>
+
+
 
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
                         </Grid>
@@ -363,18 +376,23 @@
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
                                 Grid.Column="3"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="21"
-                                Foreground="#b1b1b1"
-                                Text="Блокировка автоматики" />
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="150"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="10"
+                                    Foreground="#b1b1b1"
+                                    Text="Блокировка автоматики" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -402,25 +420,33 @@
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
                                 Source="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
                                 Grid.Column="3"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="21"
-                                Foreground="#b1b1b1"
-                                Text="Состояние дверей" />
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="150"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="10"
+                                    Foreground="#b1b1b1"
+                                    Text="Состояние дверей" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
                 </Grid>
+                <!--#endregion-->
             </Grid>
         </Border>
+        <!--#endregion-->
 
+        <!--#region Пожарная обстановка-->
         <Border
             Name="borderFireSituation"
             Grid.Row="1"
@@ -463,18 +489,110 @@
                 </Border>
 
                 <ListView
+                    Name="FireSituationList"
                     Grid.Row="2"
                     Grid.Column="1"
                     Background="#2c2c2c"
-                    Style="{DynamicResource lvFireSituation}" />
+                    BorderBrush="#3a3e46"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <Border Background="#3a3e46" CornerRadius="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10*" />
+                                            <RowDefinition Height="80*" />
+                                            <RowDefinition Height="5" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3" />
+                                            <ColumnDefinition Width="70" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="3" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Content="{Binding Path=Id}"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="12"
+                                            Foreground="White" />
+
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Bottom"
+                                            Source="{Binding Path=Image}" />
+
+                                        <ProgressBar
+                                            Name="firstTemp"
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Height="25"
+                                            Margin="0,10,0,25"
+                                            VerticalAlignment="Center"
+                                            Background="#2c2c2c"
+                                            Maximum="130"
+                                            Minimum="0"
+                                            Style="{DynamicResource progressbarFireSituationGrey}"
+                                            Value="{Binding Path=firstTemp}" />
+
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Margin="5,10,0,22"
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="22"
+                                            Foreground="White"
+                                            Text="{Binding ElementName=firstTemp, Path=Value, StringFormat={}{0:0} ºС}" />
+
+                                        <ProgressBar
+                                            Name="secondTemp"
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Height="25"
+                                            VerticalAlignment="Bottom"
+                                            Background="#2c2c2c"
+                                            Maximum="130"
+                                            Minimum="0"
+                                            Style="{DynamicResource progressbarFireSituationRed}"
+                                            Value="{Binding Path=secondTemp}" />
+
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Grid.Column="3"
+                                            Margin="5,10,0,-1"
+                                            VerticalAlignment="Bottom"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="22"
+                                            Foreground="White"
+                                            Text="{Binding ElementName=secondTemp, Path=Value, StringFormat={}{0:0} ºС}" />
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
 
                 <Grid Grid.Row="3" Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="5" />
                         <RowDefinition Height="50" />
                         <RowDefinition Height="10" />
-                        <RowDefinition Height="65" />
-                        <RowDefinition Height="5" />
+                        <RowDefinition Height="55" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="50*" />
                     </Grid.RowDefinitions>
 
@@ -531,35 +649,50 @@
                         FontSize="30"
                         Foreground="White" />
 
-                    <TextBlock
+                    <Viewbox
                         Grid.Row="3"
                         Grid.Column="0"
-                        FontFamily="Elektra Pro"
-                        FontSize="12"
-                        Foreground="#b1b1b1"
-                        Text="События от б/п"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="События от б/п"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
 
-                    <TextBlock
+
+
+                    <Viewbox
                         Grid.Row="3"
                         Grid.Column="2"
-                        FontFamily="Elektra Pro"
-                        FontSize="12"
-                        Foreground="#b1b1b1"
-                        Text="Сигналы «Пожар» от б/п"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Сигналы «Пожар» от б/п"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
 
-                    <TextBlock
+                    <Viewbox
                         Grid.Row="3"
                         Grid.Column="4"
-                        FontFamily="Elektra Pro"
-                        FontSize="12"
-                        Foreground="#b1b1b1"
-                        Text="Приборы, совершившие пуск средств пожаротушения"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Приборы, совершившие пуск средств пожаротушения"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
 
 
                     <Image
@@ -569,16 +702,21 @@
                         VerticalAlignment="Top"
                         Source="/Resourses/Pictures/BUR/Button_Grey@4x.png" />
 
-                    <TextBlock
-                        Grid.Row="5"
+                    <Viewbox
+                        Grid.Row="6"
                         Grid.Column="0"
-                        VerticalAlignment="Bottom"
-                        FontFamily="Elektra Pro"
-                        FontSize="10"
-                        Foreground="#b1b1b1"
-                        Text="Приборы, совершившие пуск средств пожаротушения"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Приборы, совершившие пуск средств пожаротушения"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
+
 
                     <Image
                         Grid.Row="5"
@@ -587,16 +725,21 @@
                         VerticalAlignment="Top"
                         Source="/Resourses/Pictures/BUR/Button_Grey@4x.png" />
 
-                    <TextBlock
-                        Grid.Row="5"
+                    <Viewbox
+                        Grid.Row="6"
                         Grid.Column="2"
-                        VerticalAlignment="Bottom"
-                        FontFamily="Elektra Pro"
-                        FontSize="10"
-                        Foreground="#b1b1b1"
-                        Text="Запуск средств пожаротушения от ручного устройства пуска"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Запуск средств пожаротушения от ручного устройства пуска"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
+
 
                     <Image
                         Grid.Row="5"
@@ -605,21 +748,28 @@
                         VerticalAlignment="Top"
                         Source="/Resourses/Pictures/BUR/Button_Grey@4x.png" />
 
-                    <TextBlock
-                        Grid.Row="5"
+                    <Viewbox
+                        Grid.Row="6"
                         Grid.Column="4"
-                        VerticalAlignment="Bottom"
-                        FontFamily="Elektra Pro"
-                        FontSize="10"
-                        Foreground="#b1b1b1"
-                        Text="Запуск средств пожаротушения от блока управления"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Запуск средств пожаротушения от блока управления"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
+
 
                 </Grid>
             </Grid>
         </Border>
+        <!--#endregion-->
 
+        <!--#region Состояние БУР-->
         <Border
             Name="borderBURCondition"
             Grid.Row="1"
@@ -654,30 +804,28 @@
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="10" />
                         <ColumnDefinition Width="100*" />
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="100*" />
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="100*" />
-                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="10" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
                         <RowDefinition Height="15" />
                     </Grid.RowDefinitions>
 
-
-
                     <Border
                         Grid.Row="0"
                         Grid.Column="1"
@@ -685,20 +833,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Питание 1" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Питание 1"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -710,20 +864,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Питание 2" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Питание 2"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -735,20 +895,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Short_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Трансивер" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Трансивер"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -760,20 +926,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Память" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Память"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -785,20 +957,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Bluetooth" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Bluetooth"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -810,20 +988,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Часы" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Часы"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -835,22 +1019,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Подключение RS-485"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Подключение RS-485"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -862,21 +1050,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Считыватель"
-                                TextAlignment="Center" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Считыватель"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -888,20 +1081,25 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Состояние РИП" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="4"
+                                    Foreground="#b1b1b1"
+                                    Text="Состояние РИП"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -913,23 +1111,25 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь оповещателей автоматики"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap" />
-
+                                StretchDirection="Both">
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="12"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь оповещателей автоматики"
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
                         </Grid>
                     </Border>
 
@@ -940,22 +1140,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь тревожных оповещателей"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="12"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь тревожных оповещателей"
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -967,20 +1171,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь СМК" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь СМК"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -993,20 +1203,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь ИП" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь ИП"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1018,20 +1234,26 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь УДП" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь УДП"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1043,27 +1265,35 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="5" />
-                                <RowDefinition Height="45" />
                                 <RowDefinition Height="*" />
+                                <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь УВОА" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь УВОА"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
                 </Grid>
             </Grid>
         </Border>
+        <!--#endregion-->
 
+        <!--#region Состояние беспроводных устройств-->
         <Border
             Name="borderBURWireless"
             Grid.Row="1"
@@ -1076,7 +1306,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33" />
                     <RowDefinition Height="5" />
-                    <RowDefinition Height="800*" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="80" />
                     <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
@@ -1086,7 +1316,6 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
-
 
                 <Border
                     Grid.Row="0"
@@ -1106,12 +1335,215 @@
                 </Border>
 
                 <ListView
+                    Name="listviewFireSituation"
                     Grid.Row="2"
                     Grid.Column="1"
-                    Background="#2c2c2c"
-                    BorderBrush="White"
-                    BorderThickness="1"
-                    Style="{DynamicResource lvFireSituation}" />
+                    Background="#3a3e46"
+                    BorderBrush="#3a3e46"
+                    BorderThickness="0"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    Style="{DynamicResource lvFireSituation}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="2">
+                                <Border Background="#2c2c2c" CornerRadius="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10*" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="10" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="0.65*" />
+                                            <ColumnDefinition Width="10" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="10" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Content="{Binding Path=Id}"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="12"
+                                            Foreground="White" />
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="3"
+                                            HorizontalAlignment="Right"
+                                            Content="{Binding Path=Id}"
+                                            FontFamily="Elektra Pro"
+                                            FontSize="12"
+                                            Foreground="White" />
+
+                                        <Image
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Source="{Binding Path=Image}" />
+
+                                        <Grid Grid.Row="1" Grid.Column="3">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="3" />
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="7" />
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="7" />
+                                                <ColumnDefinition Width="40*" />
+                                                <ColumnDefinition Width="7" />
+                                                <ColumnDefinition Width="40*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="40*" />
+                                                <RowDefinition Height="10*" />
+                                            </Grid.RowDefinitions>
+
+                                            <!--  Питание  -->
+
+                                            <Image Grid.Row="0" Grid.Column="1">
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Path=battaryStatus}" Value="3">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=battaryStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=battaryStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Fail_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=battaryStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Wireless_Break_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+
+                                            <Viewbox Grid.Row="1" Grid.Column="1">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="Питание"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+
+
+
+                                            <!--  ШС1  -->
+
+                                            <Image Grid.Row="0" Grid.Column="3">
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Path=FirstFireDetectorCommunicationLineStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=FirstFireDetectorCommunicationLineStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=FirstFireDetectorCommunicationLineStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+
+                                            <Viewbox Grid.Row="1" Grid.Column="3">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="ШС1"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+
+
+
+                                            <!--  ШС2  -->
+
+                                            <Image Grid.Row="0" Grid.Column="5">
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Path=SecondFireDetectorCommunicationLineStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=SecondFireDetectorCommunicationLineStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=SecondFireDetectorCommunicationLineStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+
+                                            <Viewbox Grid.Row="1" Grid.Column="5">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="ШС2"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+
+
+
+                                            <!--  Активатор  -->
+
+                                            <Image Grid.Row="0" Grid.Column="7">
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Path=ActivatorCommunicationLineStatus}" Value="2">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=ActivatorCommunicationLineStatus}" Value="1">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Path=ActivatorCommunicationLineStatus}" Value="0">
+                                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+
+                                            <Viewbox Grid.Row="1" Grid.Column="7">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="Активатор"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
 
                 <Grid Grid.Row="3" Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -1208,6 +1640,7 @@
                 </Grid>
             </Grid>
         </Border>
+        <!--#endregion-->
     </Grid>
 
 </UserControl>

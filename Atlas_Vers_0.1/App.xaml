@@ -8,7 +8,7 @@
     <Application.Resources>
         <ViewModelsLocation:ViewModelLocator x:Key="Locator" />
 
-        <!--  Buttons  -->
+        <!--#region Buttons-->
 
         <Style x:Key="BURmainBTN" TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -220,8 +220,9 @@
             ImageSource="pack://application:,,,/Resourses/Pictures/btn_next_inactive_gray.png"
             Stretch="None" />
 
+        <!--#endregion-->
 
-        <!--  Labels  -->
+        <!--#region Labels-->
 
         <Style x:Key="LBLSystemChoice" TargetType="{x:Type Label}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
@@ -257,6 +258,9 @@
             </Setter>
         </Style>
 
+        <!--#endregion-->
+
+        <!--#region RoundCorner-->
 
         <Style x:Key="roundcornerpassword" TargetType="PasswordBox">
             <Setter Property="PasswordChar" Value="●" />
@@ -295,6 +299,9 @@
             </Setter>
         </Style>
 
+        <!--#endregion-->
+
+        <!--#region ComboBox-->
         <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
             <Setter Property="Template">
                 <Setter.Value>
@@ -422,6 +429,7 @@
             </Setter>
             <Style.Triggers />
         </Style>
+
         <Style x:Key="theComboBoxItem" TargetType="{x:Type ComboBoxItem}">
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -454,37 +462,14 @@
             </Setter>
         </Style>
 
+        <!--#endregion-->
+
         <ImageBrush
             x:Key="BURlogNextBTNImage"
             ImageSource="Resourses\Pictures\Button_Next_Active@4x.png"
             Stretch="None" />
 
-        <Style x:Key="MyButton2" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Background" Value="MediumAquamarine" />
-            <Setter Property="Foreground" Value="MediumBlue" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <ContentPresenter
-                                x:Name="MyContentPresenter"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Content="{TemplateBinding Content}" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="Green" />
-                    <Setter Property="Foreground" Value="DeepPink" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <!--#region ListView-->
 
         <Style x:Key="lvFireSituation" TargetType="{x:Type ListView}">
             <Setter Property="BorderThickness" Value="1" />
@@ -504,7 +489,6 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="5"
                             SnapsToDevicePixels="true">
                             <ScrollViewer Padding="{TemplateBinding Padding}" Focusable="false">
                                 <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -523,6 +507,148 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!--  Тест шаблона ProgressBar  -->
+
+        <Style x:Key="progressbarFireSituationRed" TargetType="{x:Type ProgressBar}">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid x:Name="TemplateRoot">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#2c2c2c"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0,0,0,0" />
+                            <Rectangle x:Name="PART_Track" />
+                            <Grid
+                                x:Name="PART_Indicator"
+                                HorizontalAlignment="Left"
+                                ClipToBounds="True">
+                                <Border CornerRadius="110,110,110,110">
+                                    <Rectangle x:Name="Animation" ClipToBounds="True">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush>
+                                                <GradientStop Offset="0.2 " Color="#A71E22" />
+                                                <GradientStop Offset="1" Color="#EE352B" />
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Border>
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Determinate" />
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
+                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
+                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
+                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
+                                            </PointAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter TargetName="TemplateRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="progressbarFireSituationGrey" TargetType="{x:Type ProgressBar}">
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid x:Name="TemplateRoot">
+                            <Border
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#2c2c2c"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0,0,0,0" />
+                            <Rectangle x:Name="PART_Track" />
+                            <Grid
+                                x:Name="PART_Indicator"
+                                HorizontalAlignment="Left"
+                                ClipToBounds="True">
+                                <Border CornerRadius="0,15,0,15">
+                                    <Rectangle x:Name="Animation" ClipToBounds="True">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush>
+                                                <GradientStop Offset="0.2" Color="#3A3E46" />
+                                                <GradientStop Offset="1" Color="#B1B1B1" />
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform />
+                                                <SkewTransform />
+                                                <RotateTransform />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Border>
+                            </Grid>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Determinate" />
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25" />
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25" />
+                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5" />
+                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5" />
+                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5" />
+                                            </PointAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter TargetName="TemplateRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--#endregion-->
 
     </Application.Resources>
 </Application>

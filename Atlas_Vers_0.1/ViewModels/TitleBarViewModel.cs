@@ -24,6 +24,10 @@ namespace Atlas_Vers_0._1.ViewModels
             ResizeWindow();
         });
 
+        public static bool HideButtonBack = false;
+
+        public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
+
 
         private void ShutDownApp()
         {
@@ -32,19 +36,12 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private void ResizeWindow()
         {
-            if (Application.Current.MainWindow.WindowState != WindowState.Maximized)
-                Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            else
-                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            Application.Current.MainWindow.WindowState = Application.Current.MainWindow.WindowState != WindowState.Maximized ? WindowState.Maximized : WindowState.Normal;
         }
 
         private void MinimizeWindow()
         {
             Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
-
-        public ICommand GoBackCommand => new LambdaCommand((param) => Navigation.Navigation.GoBack());
-
-        public static bool CanGoBack = true;  // Флажок для возвращения
     }
 }
