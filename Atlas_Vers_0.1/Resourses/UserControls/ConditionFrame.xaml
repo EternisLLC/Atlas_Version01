@@ -23,6 +23,7 @@
             <RowDefinition Height="15" />
         </Grid.RowDefinitions>
 
+        <!--#region Состояние-->
         <Border
             Name="borderCondition"
             Grid.Row="1"
@@ -107,6 +108,8 @@
                     </Border>
                 </Grid>
 
+                <!--#region Кнопки состояния-->
+
                 <Grid
                     Grid.Row="3"
                     Grid.Column="1"
@@ -128,6 +131,7 @@
                         <RowDefinition Height="5*" />
                     </Grid.RowDefinitions>
 
+                    <!--  Кнопка пожарная обстановка  -->
                     <Button
                         Name="btnFireSituation"
                         Grid.Row="1"
@@ -136,13 +140,9 @@
                         Background="#B1B1B1"
                         BorderThickness="0"
                         Cursor="Hand"
-                        FontFamily="Elektra Pro"
-                        FontSize="9"
-                        Foreground="#3A3E46"
                         GotFocus="btnFireSituation_GotFocus"
                         LostFocus="btnFireSituation_LostFocus"
                         Style="{DynamicResource BTNChooseBUR1}">
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
@@ -157,15 +157,18 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Name="tbFireSituation"
+                            <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontSize="21"
-                                Text="Пожарная обстановка"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Name="tbFireSituation"
+                                    Width="210"
+                                    FontSize="12"
+                                    Text="Пожарная обстановка"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
 
                             <Image
                                 Grid.Row="1"
@@ -180,6 +183,7 @@
                         </Button.Resources>
                     </Button>
 
+                    <!--  Кнопка Состояние БУР  -->
                     <Button
                         Name="btnBurCondition"
                         Grid.Row="3"
@@ -188,9 +192,6 @@
                         Background="#B1B1B1"
                         BorderThickness="0"
                         Cursor="Hand"
-                        FontFamily="Elektra Pro"
-                        FontSize="9"
-                        Foreground="#3A3E46"
                         GotFocus="btnBurCondition_GotFocus"
                         LostFocus="btnBurCondition_LostFocus"
                         Style="{DynamicResource BTNChooseBUR1}">
@@ -208,15 +209,18 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Name="tbCondition"
+                            <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontSize="21"
-                                Text="Состояние БУР"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Name="tbCondition"
+                                    Width="200"
+                                    FontSize="12"
+                                    Text="Состояние БУР"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
 
                             <Image
                                 Grid.Row="1"
@@ -230,18 +234,15 @@
                         </Button.Resources>
                     </Button>
 
+                    <!--  Кнопка Состояние беспроводных устройств  -->
                     <Button
                         Name="btnWirelessCondition"
                         Grid.Row="5"
                         Grid.Column="1"
                         HorizontalContentAlignment="Left"
-                        VerticalContentAlignment="Top"
                         Background="#B1B1B1"
                         BorderThickness="0"
                         Cursor="Hand"
-                        FontFamily="Elektra Pro"
-                        FontSize="9"
-                        Foreground="#3A3E46"
                         GotFocus="btnWirelessCondition_GotFocus"
                         LostFocus="btnWirelessCondition_LostFocus"
                         Style="{DynamicResource BTNChooseBUR1}">
@@ -259,16 +260,18 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
-                                Name="tbWirelessCondtition"
+                            <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
                                 Margin="10"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Text="Состояние беспроводных устройств"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Name="tbWirelessCondtition"
+                                    Width="200"
+                                    FontSize="12"
+                                    Text="Состояние беспроводных устройств"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
 
                             <Image
                                 Grid.Row="1"
@@ -283,8 +286,10 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-
                 </Grid>
+                <!--#endregion-->
+
+                <!--#region Индикаторы состояния-->
 
                 <Grid Grid.Row="4" Grid.Column="1">
                     <Grid.ColumnDefinitions>
@@ -324,17 +329,21 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
-                                
                                 Grid.Column="3"
                                 Margin="10"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="21"
-                                Foreground="#b1b1b1"
-                                Text="Состояние автоматики" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="150"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="10"
+                                    Foreground="#b1b1b1"
+                                    Text="Состояние автоматики" />
+                            </Viewbox>
+
+
 
                             <Image
                                 Grid.Row="1"
@@ -369,15 +378,21 @@
                                 Grid.Column="1"
                                 Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
                                 Grid.Column="3"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="21"
-                                Foreground="#b1b1b1"
-                                Text="Блокировка автоматики" />
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="150"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="10"
+                                    Foreground="#b1b1b1"
+                                    Text="Блокировка автоматики" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -407,22 +422,31 @@
                                 Grid.Column="1"
                                 Source="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
                                 Grid.Column="3"
                                 Margin="10"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="21"
-                                Foreground="#b1b1b1"
-                                Text="Состояние дверей" />
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="150"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="10"
+                                    Foreground="#b1b1b1"
+                                    Text="Состояние дверей" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
                 </Grid>
+                <!--#endregion-->
             </Grid>
         </Border>
+        <!--#endregion-->
 
+        <!--#region Пожарная обстановка-->
         <Border
             Name="borderFireSituation"
             Grid.Row="1"
@@ -566,8 +590,9 @@
                         <RowDefinition Height="5" />
                         <RowDefinition Height="50" />
                         <RowDefinition Height="10" />
-                        <RowDefinition Height="65" />
-                        <RowDefinition Height="5" />
+                        <RowDefinition Height="55" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="50*" />
                     </Grid.RowDefinitions>
 
@@ -624,35 +649,50 @@
                         FontSize="30"
                         Foreground="White" />
 
-                    <TextBlock
+                    <Viewbox
                         Grid.Row="3"
                         Grid.Column="0"
-                        FontFamily="Elektra Pro"
-                        FontSize="12"
-                        Foreground="#b1b1b1"
-                        Text="События от б/п"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="События от б/п"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
 
-                    <TextBlock
+
+
+                    <Viewbox
                         Grid.Row="3"
                         Grid.Column="2"
-                        FontFamily="Elektra Pro"
-                        FontSize="12"
-                        Foreground="#b1b1b1"
-                        Text="Сигналы «Пожар» от б/п"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Сигналы «Пожар» от б/п"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
 
-                    <TextBlock
+                    <Viewbox
                         Grid.Row="3"
                         Grid.Column="4"
-                        FontFamily="Elektra Pro"
-                        FontSize="12"
-                        Foreground="#b1b1b1"
-                        Text="Приборы, совершившие пуск средств пожаротушения"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Приборы, совершившие пуск средств пожаротушения"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
 
 
                     <Image
@@ -662,16 +702,21 @@
                         VerticalAlignment="Top"
                         Source="/Resourses/Pictures/BUR/Button_Grey@4x.png" />
 
-                    <TextBlock
-                        Grid.Row="5"
+                    <Viewbox
+                        Grid.Row="6"
                         Grid.Column="0"
-                        VerticalAlignment="Bottom"
-                        FontFamily="Elektra Pro"
-                        FontSize="10"
-                        Foreground="#b1b1b1"
-                        Text="Приборы, совершившие пуск средств пожаротушения"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Приборы, совершившие пуск средств пожаротушения"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
+
 
                     <Image
                         Grid.Row="5"
@@ -680,16 +725,21 @@
                         VerticalAlignment="Top"
                         Source="/Resourses/Pictures/BUR/Button_Grey@4x.png" />
 
-                    <TextBlock
-                        Grid.Row="5"
+                    <Viewbox
+                        Grid.Row="6"
                         Grid.Column="2"
-                        VerticalAlignment="Bottom"
-                        FontFamily="Elektra Pro"
-                        FontSize="10"
-                        Foreground="#b1b1b1"
-                        Text="Запуск средств пожаротушения от ручного устройства пуска"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Запуск средств пожаротушения от ручного устройства пуска"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
+
 
                     <Image
                         Grid.Row="5"
@@ -698,21 +748,28 @@
                         VerticalAlignment="Top"
                         Source="/Resourses/Pictures/BUR/Button_Grey@4x.png" />
 
-                    <TextBlock
-                        Grid.Row="5"
+                    <Viewbox
+                        Grid.Row="6"
                         Grid.Column="4"
-                        VerticalAlignment="Bottom"
-                        FontFamily="Elektra Pro"
-                        FontSize="10"
-                        Foreground="#b1b1b1"
-                        Text="Запуск средств пожаротушения от блока управления"
-                        TextAlignment="Center"
-                        TextWrapping="Wrap" />
+                        VerticalAlignment="Top">
+                        <TextBlock
+                            Width="150"
+                            FontFamily="Elektra Pro"
+                            FontSize="15"
+                            Foreground="#b1b1b1"
+                            Text="Запуск средств пожаротушения от блока управления"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </Viewbox>
+
+
 
                 </Grid>
             </Grid>
         </Border>
+        <!--#endregion-->
 
+        <!--#region Состояние БУР-->
         <Border
             Name="borderBURCondition"
             Grid.Row="1"
@@ -1154,7 +1211,9 @@
                 </Grid>
             </Grid>
         </Border>
+        <!--#endregion-->
 
+        <!--#region Состояние беспроводных устройств-->
         <Border
             Name="borderBURWireless"
             Grid.Row="1"
@@ -1497,6 +1556,7 @@
                 </Grid>
             </Grid>
         </Border>
+        <!--#endregion-->
     </Grid>
 
 </UserControl>
