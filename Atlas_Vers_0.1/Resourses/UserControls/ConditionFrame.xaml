@@ -804,24 +804,24 @@
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="10" />
                         <ColumnDefinition Width="100*" />
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="100*" />
                         <ColumnDefinition Width="5*" />
                         <ColumnDefinition Width="100*" />
-                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="10" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
-                        <RowDefinition Height="20*" />
+                        <RowDefinition Height="5*" />
                         <RowDefinition Height="75*" />
                         <RowDefinition Height="15" />
                     </Grid.RowDefinitions>
@@ -839,14 +839,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Питание 1" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Питание 1"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -864,14 +870,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Питание 2" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Питание 2"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -889,14 +901,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Short_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Трансивер" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Трансивер"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -914,14 +932,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Память" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Память"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -939,14 +963,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Bluetooth" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Bluetooth"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -964,14 +994,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Часы" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Часы"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -989,16 +1025,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Подключение RS-485"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Подключение RS-485"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1016,15 +1056,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Считыватель"
-                                TextAlignment="Center" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Считыватель"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1042,14 +1087,19 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Состояние РИП" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="4"
+                                    Foreground="#b1b1b1"
+                                    Text="Состояние РИП"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1067,17 +1117,19 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь оповещателей автоматики"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap" />
-
+                                StretchDirection="Both">
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="12"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь оповещателей автоматики"
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
                         </Grid>
                     </Border>
 
@@ -1094,16 +1146,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь тревожных оповещателей"
-                                TextAlignment="Center"
-                                TextWrapping="Wrap" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="12"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь тревожных оповещателей"
+                                    TextAlignment="Center"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1121,14 +1177,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь СМК" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь СМК"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1147,14 +1209,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь ИП" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь ИП"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1172,14 +1240,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь УДП" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь УДП"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1197,14 +1271,20 @@
 
                             <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png" />
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Elektra Pro"
-                                FontSize="12"
-                                Foreground="#b1b1b1"
-                                Text="Цепь УВОА" />
+                                VerticalAlignment="Center">
+                                <TextBlock
+                                    Width="60"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="8"
+                                    Foreground="#b1b1b1"
+                                    Text="Цепь УВОА"
+                                    TextAlignment="Center" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -1276,7 +1356,7 @@
 
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="10" />
-                                            <ColumnDefinition Width="0.7*" />
+                                            <ColumnDefinition Width="0.65*" />
                                             <ColumnDefinition Width="10" />
                                             <ColumnDefinition Width="2*" />
                                             <ColumnDefinition Width="10" />
@@ -1306,13 +1386,13 @@
 
                                         <Grid Grid.Row="1" Grid.Column="3">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="5" />
+                                                <ColumnDefinition Width="3" />
                                                 <ColumnDefinition Width="40*" />
-                                                <ColumnDefinition Width="8" />
+                                                <ColumnDefinition Width="7" />
                                                 <ColumnDefinition Width="40*" />
-                                                <ColumnDefinition Width="8" />
+                                                <ColumnDefinition Width="7" />
                                                 <ColumnDefinition Width="40*" />
-                                                <ColumnDefinition Width="8" />
+                                                <ColumnDefinition Width="7" />
                                                 <ColumnDefinition Width="40*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
@@ -1343,15 +1423,18 @@
                                                 </Image.Style>
                                             </Image>
 
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="1"
-                                                HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                Content="Питание"
-                                                FontFamily="Elektra Pro"
-                                                FontSize="10"
-                                                Foreground="#b1b1b1" />
+                                            <Viewbox Grid.Row="1" Grid.Column="1">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="Питание"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+
+
 
                                             <!--  ШС1  -->
 
@@ -1373,15 +1456,18 @@
                                                 </Image.Style>
                                             </Image>
 
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="3"
-                                                HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                Content="ШС1"
-                                                FontFamily="Elektra Pro"
-                                                FontSize="10"
-                                                Foreground="#b1b1b1" />
+                                            <Viewbox Grid.Row="1" Grid.Column="3">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="ШС1"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+
+
 
                                             <!--  ШС2  -->
 
@@ -1403,15 +1489,18 @@
                                                 </Image.Style>
                                             </Image>
 
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="5"
-                                                HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                Content="ШС2"
-                                                FontFamily="Elektra Pro"
-                                                FontSize="10"
-                                                Foreground="#b1b1b1" />
+                                            <Viewbox Grid.Row="1" Grid.Column="5">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="ШС2"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
+
+
 
                                             <!--  Активатор  -->
 
@@ -1433,22 +1522,17 @@
                                                 </Image.Style>
                                             </Image>
 
-                                            <Label
-                                                Grid.Row="1"
-                                                Grid.Column="7"
-                                                HorizontalContentAlignment="Center"
-                                                VerticalContentAlignment="Center"
-                                                Content="Активатор"
-                                                FontFamily="Elektra Pro"
-                                                FontSize="10"
-                                                Foreground="#b1b1b1" />
+                                            <Viewbox Grid.Row="1" Grid.Column="7">
+                                                <Label
+                                                    Width="60"
+                                                    HorizontalContentAlignment="Center"
+                                                    VerticalContentAlignment="Center"
+                                                    Content="Активатор"
+                                                    FontFamily="Elektra Pro"
+                                                    FontSize="10"
+                                                    Foreground="#b1b1b1" />
+                                            </Viewbox>
                                         </Grid>
-
-                                        <StackPanel
-                                            Grid.Row="1"
-                                            Grid.Column="3"
-                                            Orientation="Horizontal" />
-
                                     </Grid>
                                 </Border>
                             </StackPanel>
