@@ -14,7 +14,7 @@
     DataContext="{Binding MainVM, Source={StaticResource Locator}}"
     ResizeMode="CanResizeWithGrip"
     WindowStyle="None">
-    <Grid>
+    <Grid Background="#3a3e46">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
@@ -28,6 +28,6 @@
             x:Name="GlobalFrame"
             Grid.Row="1"
             NavigationUIVisibility="Hidden"
-            Source="/View/Pages/BUR.xaml" />
+            Source="/View/Pages/SystemChoice.xaml" />
     </Grid>
 </Window>

@@ -21,6 +21,13 @@
             NavigationUIVisibility="Hidden"
             Source="/Resourses/UserControls/ConditionFrame.xaml" />
 
+        <Frame
+            Name="SettingsFrame"
+            Grid.Column="1"
+            NavigationUIVisibility="Hidden"
+            Source="/Resourses/UserControls/SettingsFrame.xaml"
+            Visibility="Hidden" />
+
         <Border
             Grid.Column="0"
             Width="190"

@@ -44,12 +44,14 @@ namespace Atlas_Vers_0._1.View.Pages
 
         private void btnSettings_GotFocus(object sender, RoutedEventArgs e)
         {
+            SettingsFrame.Visibility = Visibility.Visible;
             Settings.Foreground = Brushes.White;
             ImageSettings.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Settings_White@4x.png", UriKind.Relative));
         }
 
         private void btnSettings_LostFocus(object sender, RoutedEventArgs e)
         {
+            SettingsFrame.Visibility = Visibility.Hidden;
             Settings.Foreground = Brushes.Gray;
             ImageSettings.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Settings_Grey@4x.png", UriKind.Relative));
         }
