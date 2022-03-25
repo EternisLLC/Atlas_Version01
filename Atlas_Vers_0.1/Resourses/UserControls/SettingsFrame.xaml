@@ -10,7 +10,7 @@
         <Border BorderThickness="0" CornerRadius="10,10,10,10">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="25" />
+                    <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="10" />
                     <RowDefinition Height="auto" />
@@ -160,26 +160,27 @@
                     Grid.Column="1"
                     Background="#3a3e46"
                     BorderBrush="White"
+                    FontSize="26"
                     Foreground="White"
                     Header="Установка адресов БОС исп. А">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="5" />
-                            <RowDefinition Height="20" />
+                            <RowDefinition Height="auto" />
                             <RowDefinition Height="10" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -189,6 +190,179 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="10" />
                         </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Content="Автоматическая регистрация БОС исп. А"
+                            FontFamily="Elektra Pro"
+                            FontSize="14"
+                            Foreground="White" />
+
+                        <Button
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            MinWidth="100"
+                            MinHeight="20"
+                            Background="#b1b1b1"
+                            Content="Стереть"
+                            FontFamily="Elektra Pro"
+                            FontSize="20"
+                            Foreground="White">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button
+                            Grid.Row="3"
+                            Grid.Column="3"
+                            MinWidth="100"
+                            MinHeight="20"
+                            Background="#b1b1b1"
+                            Content="Записать"
+                            FontFamily="Elektra Pro"
+                            FontSize="20"
+                            Foreground="White">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="Ручная регистрация БОС исп. А:"
+                            FontFamily="Elektra Pro"
+                            FontSize="14"
+                            Foreground="White" />
+
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="Номер ячейки памяти:"
+                            FontFamily="Elektra Pro"
+                            FontSize="14"
+                            Foreground="White" />
+
+                        <Border
+                            Grid.Row="7"
+                            Grid.Column="3"
+                            BorderBrush="White"
+                            BorderThickness="1"
+                            CornerRadius="3,3,3,3">
+                            <TextBlock FontFamily="Elektra Pro" />
+                        </Border>
+
+                        <Label
+                            Grid.Row="9"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="Серийный номер БОС исп. А:"
+                            FontFamily="Elektra Pro"
+                            FontSize="14"
+                            Foreground="White" />
+
+                        <Border
+                            Grid.Row="9"
+                            Grid.Column="3"
+                            BorderBrush="White"
+                            BorderThickness="1"
+                            CornerRadius="3,3,3,3">
+                            <TextBlock FontFamily="Elektra Pro" />
+                        </Border>
+
+                        <Button
+                            Grid.Row="11"
+                            Grid.Column="3"
+                            MinWidth="100"
+                            MinHeight="20"
+                            Background="#b1b1b1"
+                            Content="Записать"
+                            FontFamily="Elektra Pro"
+                            FontSize="20"
+                            Foreground="White">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Label
+                            Grid.Row="13"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Content="Управление базой адресов БОС исп. А:"
+                            FontFamily="Elektra Pro"
+                            FontSize="14"
+                            Foreground="White" />
+
+                        <Grid Grid.Row="15" Grid.ColumnSpan="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                Grid.Column="0"
+                                MinWidth="100"
+                                MinHeight="20"
+                                Background="#b1b1b1"
+                                Content="Сохранить"
+                                FontFamily="Elektra Pro"
+                                FontSize="20"
+                                Foreground="White">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5" />
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button
+                                Grid.Column="2"
+                                MinWidth="100"
+                                MinHeight="20"
+                                Background="#b1b1b1"
+                                Content="Прочитать"
+                                FontFamily="Elektra Pro"
+                                FontSize="20"
+                                Foreground="White">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5" />
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button
+                                Grid.Column="4"
+                                MinWidth="100"
+                                MinHeight="20"
+                                Background="#b1b1b1"
+                                Content="Очистить"
+                                FontFamily="Elektra Pro"
+                                FontSize="20"
+                                Foreground="White">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5" />
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                        </Grid>
+
                     </Grid>
                 </GroupBox>
 
@@ -197,31 +371,60 @@
                     Grid.Column="1"
                     Background="#3a3e46"
                     BorderBrush="White"
+                    FontSize="26"
                     Foreground="White"
                     Header="Установка времени задержки пуска">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="100" />
-                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10" />
-                            <RowDefinition Height="10*" />
-                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="10" />
-                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="10" />
                         </Grid.RowDefinitions>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Content="Время задержки пуска, с:"
+                            FontFamily="Elektra Pro"
+                            FontSize="14"
+                            Foreground="White" />
+
+                        <ComboBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            FontFamily="Elektra Pro"
+                            FontSize="20"
+                            Style="{DynamicResource theComboBox}" />
+
+                        <Button
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            MinWidth="100"
+                            MinHeight="20"
+                            Background="#b1b1b1"
+                            Content="Записать"
+                            FontFamily="Elektra Pro"
+                            FontSize="20"
+                            Foreground="White">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
                     </Grid>
                 </GroupBox>
-
             </Grid>
         </Border>
     </Grid>
