@@ -11,15 +11,16 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="120*" />
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="110*" />
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="110*" />
                     <RowDefinition Height="25" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="25" />
                 </Grid.ColumnDefinitions>
@@ -27,6 +28,7 @@
                 <GroupBox
                     Grid.Row="1"
                     Grid.Column="1"
+                    MinWidth="200"
                     Background="#3a3e46"
                     BorderBrush="White"
                     FontSize="26"
@@ -144,7 +146,10 @@
                             Grid.Column="5"
                             Grid.ColumnSpan="3"
                             MinWidth="100"
-                            MinHeight="20">
+                            MinHeight="20"
+                            Content="Записать"
+                            Foreground="White"
+                            Style="{DynamicResource WriteDownButtonStyle}">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5" />

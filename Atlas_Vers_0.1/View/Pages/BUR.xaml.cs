@@ -11,15 +11,17 @@ namespace Atlas_Vers_0._1.View.Pages
     /// </summary>
     public partial class BUR : Page
     {
+
         public BUR()
         {
+
             InitializeComponent();
         }
 
         private void btnCondition_LostFocus(object sender, RoutedEventArgs e)
         {
             ConditionFrame.Visibility = Visibility.Hidden;
-            Condition.Foreground = Brushes.Gray;
+            Condition.Foreground = Brushes.Transparent.Color.R(1);
             ImageCondition.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\State_Grey@4x.png", UriKind.Relative));
         }
 
