@@ -14,12 +14,12 @@
     DataContext="{Binding MainVM, Source={StaticResource Locator}}"
     ResizeMode="CanResizeWithGrip"
     ShowInTaskbar="True"
-    
+    WindowStartupLocation="CenterScreen"
     WindowStyle="None">
     <Grid Background="#3a3e46">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="Window_MouseDoubleClick">
