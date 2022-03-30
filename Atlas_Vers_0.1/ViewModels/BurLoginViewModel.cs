@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -43,7 +44,7 @@ namespace Atlas_Vers_0._1.ViewModels
             //TODO: Если порт отключился во время подключения, обработать ошибки
             string messageResult = SendMessage(port, "checkPass ", password) + "\r";
 
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
 
             if (messageResult.Contains("checkedPass true\r"))
             {
@@ -57,7 +58,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            System.Threading.Thread.Sleep(100);
+            Thread.Sleep(100);
             MessageResult += GetMessageForSerialPort(sender);
         }
         #endregion

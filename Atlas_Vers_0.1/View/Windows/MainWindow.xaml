@@ -13,8 +13,10 @@
     AllowsTransparency="True"
     DataContext="{Binding MainVM, Source={StaticResource Locator}}"
     ResizeMode="CanResizeWithGrip"
+    ShowInTaskbar="True"
+    
     WindowStyle="None">
-    <Grid>
+    <Grid Background="#3a3e46">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
