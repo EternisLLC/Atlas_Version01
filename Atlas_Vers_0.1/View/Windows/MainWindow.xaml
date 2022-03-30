@@ -13,6 +13,8 @@
     AllowsTransparency="True"
     DataContext="{Binding MainVM, Source={StaticResource Locator}}"
     ResizeMode="CanResizeWithGrip"
+    ShowInTaskbar="True"
+    
     WindowStyle="None">
     <Grid Background="#3a3e46">
         <Grid.RowDefinitions>
@@ -28,6 +30,6 @@
             x:Name="GlobalFrame"
             Grid.Row="1"
             NavigationUIVisibility="Hidden"
-            Source="/View/Pages/BURlogin.xaml" />
+            Source="/View/Pages/BUR.xaml" />
     </Grid>
 </Window>

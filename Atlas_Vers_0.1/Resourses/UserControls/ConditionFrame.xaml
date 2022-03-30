@@ -93,16 +93,21 @@
                                 <ColumnDefinition Width="5" />
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock
+                            <Viewbox
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                HorizontalAlignment="Left"
-                                FontFamily="Elektra Pro"
-                                FontSize="15"
-                                Foreground="#b1b1b1"
-                                Text="TestData"
-                                TextAlignment="Left"
-                                TextWrapping="Wrap" />
+                                HorizontalAlignment="Left">
+                                <TextBlock
+                                    Width="280"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="14"
+                                    Foreground="#b1b1b1"
+                                    Text="TestData"
+                                    TextAlignment="Left"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
+
+
 
                         </Grid>
                     </Border>
@@ -540,6 +545,7 @@
                                             Minimum="0"
                                             Style="{DynamicResource progressbarFireSituationGrey}"
                                             Value="{Binding Path=firstTemp}" />
+                                        
 
                                         <TextBlock
                                             Grid.Row="1"

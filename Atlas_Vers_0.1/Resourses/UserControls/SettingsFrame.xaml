@@ -7,80 +7,103 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid MinWidth="405">
-        <Border BorderThickness="0" CornerRadius="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="15" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25" />
+        </Grid.ColumnDefinitions>
+
+        <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            Background="#3A3E46"
+            BorderThickness="0"
+            CornerRadius="10,10,10,10">
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="75*" />
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="120*" />
+                    <RowDefinition Height="185*" />
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="110*" />
-                    <RowDefinition Height="10" />
-                    <RowDefinition Height="110*" />
-                    <RowDefinition Height="25" />
+                    <RowDefinition Height="70*" />
+                    <RowDefinition Height="5" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
 
                 <GroupBox
                     Grid.Row="1"
                     Grid.Column="1"
-                    MinWidth="200"
                     Background="#3a3e46"
                     BorderBrush="White"
-                    FontSize="26"
+                    FontSize="16"
                     Foreground="White"
                     Header="Установка сетевых параметров БУР исп. А">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="100*" />
-                            <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="100*" />
-                            <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="100*" />
-                            <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="100*" />
-                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="5" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="5" />
-                            <RowDefinition Height="10*" />
-                            <RowDefinition Height="50*" />
-                            <RowDefinition Height="5" />
-                            <RowDefinition Height="50*" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="20*" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="20*" />
                             <RowDefinition Height="5" />
                         </Grid.RowDefinitions>
 
-                        <Label
+                        <Viewbox
                             Grid.Row="1"
                             Grid.Column="1"
-                            VerticalAlignment="Bottom"
-                            Content="ID сети:"
-                            FontFamily="Elektra Pro"
-                            FontSize="10"
-                            Foreground="White" />
+                            HorizontalAlignment="Left">
+                            <TextBlock
+                                Width="100"
+                                FontFamily="Elektra Pro"
+                                FontSize="14"
+                                Foreground="White"
+                                Text="ID сети:" />
+                        </Viewbox>
 
                         <Border
                             Grid.Row="2"
                             Grid.Column="1"
                             BorderBrush="White"
                             BorderThickness="1"
-                            CornerRadius="3,3,3,3">
-                            <TextBlock FontFamily="Elektra Pro" Text="testData" />
+                            CornerRadius="3,3,3,3"
+                            IsEnabled="True">
+                            <Label />
                         </Border>
 
-                        <Label
+                        <Viewbox
                             Grid.Row="1"
                             Grid.Column="3"
-                            VerticalAlignment="Bottom"
-                            Content="№ помещения"
-                            FontFamily="Elektra Pro"
-                            FontSize="10"
-                            Foreground="White" />
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                            <TextBlock
+                                Width="100"
+                                FontFamily="Elektra Pro"
+                                FontSize="14"
+                                Foreground="White"
+                                Text="№ помещения" />
+                        </Viewbox>
 
                         <Border
                             Grid.Row="2"
@@ -88,40 +111,50 @@
                             BorderBrush="White"
                             BorderThickness="1"
                             CornerRadius="3,3,3,3">
-                            <TextBlock FontFamily="Elektra Pro" Text="testData" />
+                            <TextBlock
+                                Padding="3"
+                                FontFamily="Elektra Pro"
+                                FontSize="14"
+                                Text="testData" />
                         </Border>
 
-                        <Label
+                        <Viewbox
                             Grid.Row="1"
                             Grid.Column="5"
-                            VerticalAlignment="Bottom"
-                            Content="№ канала"
-                            FontFamily="Elektra Pro"
-                            FontSize="10"
-                            Foreground="White" />
+                            VerticalAlignment="Bottom">
+                            <TextBlock
+                                Width="100"
+                                FontFamily="Elektra Pro"
+                                FontSize="14"
+                                Foreground="White"
+                                Text="№ канала" />
+                        </Viewbox>
 
                         <ComboBox
                             Grid.Row="2"
                             Grid.Column="5"
                             FontFamily="Elektra Pro"
-                            FontSize="20"
-                            Style="{DynamicResource theComboBox}" />
+                            FontSize="14"
+                            Style="{DynamicResource SettingsComboBox}" />
 
-                        <Label
+                        <Viewbox
                             Grid.Row="1"
                             Grid.Column="7"
-                            VerticalAlignment="Bottom"
-                            Content="Класс ИП"
-                            FontFamily="Elektra Pro"
-                            FontSize="10"
-                            Foreground="White" />
+                            VerticalAlignment="Bottom">
+                            <TextBlock
+                                Width="100"
+                                FontFamily="Elektra Pro"
+                                FontSize="14"
+                                Foreground="White"
+                                Text="Класс ИП" />
+                        </Viewbox>
 
                         <ComboBox
                             Grid.Row="2"
                             Grid.Column="7"
                             FontFamily="Elektra Pro"
-                            FontSize="20"
-                            Style="{DynamicResource theComboBox}" />
+                            FontSize="14"
+                            Style="{DynamicResource SettingsComboBox}" />
 
                         <Button
                             Grid.Row="4"
@@ -131,8 +164,9 @@
                             MinHeight="20"
                             Background="#b1b1b1"
                             Content="Стереть"
+                            Cursor="Hand"
                             FontFamily="Elektra Pro"
-                            FontSize="20"
+                            FontSize="16"
                             Foreground="White">
                             <Button.Resources>
                                 <Style TargetType="Border">
@@ -147,12 +181,15 @@
                             Grid.ColumnSpan="3"
                             MinWidth="100"
                             MinHeight="20"
+                            BorderBrush="White"
+                            BorderThickness="1"
                             Content="Записать"
+                            FontSize="16"
                             Foreground="White"
                             Style="{DynamicResource WriteDownButtonStyle}">
                             <Button.Resources>
                                 <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="5" />
+                                    <Setter Property="CornerRadius" Value="10" />
                                 </Style>
                             </Button.Resources>
                         </Button>
@@ -165,7 +202,7 @@
                     Grid.Column="1"
                     Background="#3a3e46"
                     BorderBrush="White"
-                    FontSize="26"
+                    FontSize="16"
                     Foreground="White"
                     Header="Установка адресов БОС исп. А">
                     <Grid>
@@ -190,19 +227,21 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition />
                             <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition />
                             <ColumnDefinition Width="10" />
                         </Grid.ColumnDefinitions>
 
-                        <Label
-                            Grid.Row="1"
-                            Grid.Column="1"
-                            Content="Автоматическая регистрация БОС исп. А"
-                            FontFamily="Elektra Pro"
-                            FontSize="14"
-                            Foreground="White" />
+                        <Viewbox Grid.Row="1" Grid.Column="1">
+                            <TextBlock
+                                FontFamily="Elektra Pro"
+                                FontSize="14"
+                                Foreground="White"
+                                Text="Автоматическая регистрация БОС исп. А" />
+                        </Viewbox>
+
+
 
                         <Button
                             Grid.Row="3"
@@ -211,6 +250,7 @@
                             MinHeight="20"
                             Background="#b1b1b1"
                             Content="Стереть"
+                            Cursor="Hand"
                             FontFamily="Elektra Pro"
                             FontSize="20"
                             Foreground="White">
@@ -228,6 +268,7 @@
                             MinHeight="20"
                             Background="#b1b1b1"
                             Content="Записать"
+                            Cursor="Hand"
                             FontFamily="Elektra Pro"
                             FontSize="20"
                             Foreground="White">
@@ -290,6 +331,7 @@
                             MinHeight="20"
                             Background="#b1b1b1"
                             Content="Записать"
+                            Cursor="Hand"
                             FontFamily="Elektra Pro"
                             FontSize="20"
                             Foreground="White">
@@ -324,6 +366,7 @@
                                 MinHeight="20"
                                 Background="#b1b1b1"
                                 Content="Сохранить"
+                                Cursor="Hand"
                                 FontFamily="Elektra Pro"
                                 FontSize="20"
                                 Foreground="White">
@@ -340,6 +383,7 @@
                                 MinHeight="20"
                                 Background="#b1b1b1"
                                 Content="Прочитать"
+                                Cursor="Hand"
                                 FontFamily="Elektra Pro"
                                 FontSize="20"
                                 Foreground="White">
@@ -356,6 +400,7 @@
                                 MinHeight="20"
                                 Background="#b1b1b1"
                                 Content="Очистить"
+                                Cursor="Hand"
                                 FontFamily="Elektra Pro"
                                 FontSize="20"
                                 Foreground="White">
@@ -365,9 +410,7 @@
                                     </Style>
                                 </Button.Resources>
                             </Button>
-
                         </Grid>
-
                     </Grid>
                 </GroupBox>
 
@@ -376,7 +419,7 @@
                     Grid.Column="1"
                     Background="#3a3e46"
                     BorderBrush="White"
-                    FontSize="26"
+                    FontSize="16"
                     Foreground="White"
                     Header="Установка времени задержки пуска">
                     <Grid>
@@ -418,6 +461,7 @@
                             MinHeight="20"
                             Background="#b1b1b1"
                             Content="Записать"
+                            Cursor="Hand"
                             FontFamily="Elektra Pro"
                             FontSize="20"
                             Foreground="White">
