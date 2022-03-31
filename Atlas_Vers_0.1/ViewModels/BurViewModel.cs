@@ -1,5 +1,14 @@
-﻿namespace Atlas_Vers_0._1.ViewModels
+﻿using Atlas_Vers_0._1.View.Windows;
+using System;
+using System.Windows;
+using System.Windows.Input;
+
+namespace Atlas_Vers_0._1.ViewModels
 {
+    public class BurViewModel : ViewModel
+    {
+
+    }
     public class Unit
     {
         public int Id { get; set; }
@@ -32,12 +41,5 @@
         normal,
         low,
         isDead
-    }
-
-
-
-    public class BurViewModel : ViewModel
-    {
-
     }
 }

@@ -13,7 +13,7 @@ namespace Atlas_Vers_0._1
             InitializeComponent();
         }
 
-        private void Window_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDownMove(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();

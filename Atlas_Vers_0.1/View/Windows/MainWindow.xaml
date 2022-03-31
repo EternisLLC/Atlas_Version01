@@ -22,7 +22,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" MouseDown="Window_MouseDoubleClick">
+        <Grid Grid.Row="0" MouseDown="Window_MouseDownMove">
             <uc:TitleBar />
         </Grid>
 
@@ -30,6 +30,6 @@
             x:Name="GlobalFrame"
             Grid.Row="1"
             NavigationUIVisibility="Hidden"
-            Source="/View/Pages/BUR.xaml" />
+            Source="/View/Pages/BURlogin.xaml" />
     </Grid>
 </Window>

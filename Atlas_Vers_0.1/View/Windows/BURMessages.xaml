@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="Atlas_Vers_0._1.View.Windows.BURMessages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Atlas_Vers_0._1.View.Windows"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
+    Title="BURMessages"
+    Width="500"
+    Height="600"
+    MinWidth="500"
+    MinHeight="600"
+    AllowsTransparency="True"
+    DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
+    ResizeMode="CanResizeWithGrip"
+    WindowStartupLocation="Manual"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid Background="#2c2c2c">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+            <uc:TitleBarBURMessages />
+        </Grid>
+
+        <TextBlock
+            Grid.Row="1"
+            Margin="20"
+            Background="#3a3e46"
+            FontFamily="Elektra Pro"
+            FontSize="12"
+            Foreground="White"
+            Text="{Binding MessageResult, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Button
+            Grid.Row="2"
+            MinWidth="100"
+            MinHeight="20"
+            Margin="20"
+            Content="Сохранить"
+            Cursor="Hand"
+            FontFamily="Elektra Pro"
+            FontSize="30"
+            Foreground="White"
+            Style="{DynamicResource WriteDownButtonStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>

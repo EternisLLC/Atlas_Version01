@@ -11,9 +11,9 @@
         <!--#region Buttons-->
 
         <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Offset="0.2" Color="#EE352B" />
+            <GradientStop Offset="0.1" Color="#EE352B" />
             <GradientStop Offset="0.5" Color="#A71E22" />
-            <GradientStop Offset="0.8" Color="#EE352B" />
+            <GradientStop Offset="1.0" Color="#EE352B" />
         </LinearGradientBrush>
         <Style x:Key="WriteDownButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand" />
@@ -25,6 +25,8 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
                                 Background="{StaticResource ButtonBackground}"
+                                BorderBrush="#b1b1b1"
+                                BorderThickness="1"
                                 CornerRadius="3" />
                             <Border
                                 x:Name="BorderPressed"

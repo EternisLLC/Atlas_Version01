@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     Background="#2c2c2c"
+    DataContext="{Binding BurVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
     <Grid>
@@ -196,6 +197,42 @@
                                 FontFamily="Elektra Pro"
                                 FontSize="20"
                                 Foreground="#b1b1b1" />
+                        </Grid>
+
+                    </Button>
+                </Border>
+
+                <Border
+                    Grid.Row="5"
+                    VerticalAlignment="Bottom"
+                    Background="#3a3e46"
+                    BorderBrush="#2c2c2c"
+                    BorderThickness="0,2,0,1">
+                    <Button
+                        Background="#3A3E46"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        FontFamily="Elektra Pro"
+                        FontSize="20"
+                        Style="{DynamicResource BURmainBTN}" Click="Button_Click">
+
+                        <Grid Width="190">
+                            <Image
+                                Height="50"
+                                Margin="10"
+                                HorizontalAlignment="Left"
+                                Source="/Resourses/Pictures/Archive_Grey@4x.png" />
+
+                            <TextBlock
+                                Width="120"
+                                Margin="0,5,8,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="Elektra Pro"
+                                FontSize="20"
+                                Foreground="#b1b1b1"
+                                Text="Получить сообщение с БУР"
+                                TextWrapping="Wrap" />
                         </Grid>
 
                     </Button>

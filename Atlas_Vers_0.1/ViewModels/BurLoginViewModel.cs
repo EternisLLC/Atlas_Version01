@@ -42,11 +42,11 @@ namespace Atlas_Vers_0._1.ViewModels
             port.Open();
 
             //TODO: Если порт отключился во время подключения, обработать ошибки
-            string messageResult = SendMessage(port, "checkPass ", password) + "\r";
+            MessageResult = SendMessage(port, "checkPass ", password);
 
             Thread.Sleep(100);
 
-            if (messageResult.Contains("checkedPass true\r"))
+            if (MessageResult.Contains("checkedPass true\r"))
             {
                 Navigation.Navigation.GoTo(new BUR());
             }
@@ -96,7 +96,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Хранитель сообщений
 
-        private string _messageResult;
+        private static string _messageResult;
 
         public string MessageResult
         {

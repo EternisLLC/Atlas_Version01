@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
+using Atlas_Vers_0._1.Navigation;
+using Atlas_Vers_0._1.ViewModels;
+using Atlas_Vers_0._1.View.Windows;
 
 namespace Atlas_Vers_0._1
 {
@@ -13,5 +10,6 @@ namespace Atlas_Vers_0._1
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

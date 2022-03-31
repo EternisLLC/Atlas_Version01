@@ -13,8 +13,14 @@ namespace Atlas_Vers_0._1
             _canExecute = CanExecute;
         }
 
-        public override bool CanExecute(object parameter) => _canExecute?.Invoke(parameter) ?? true;
+        public override bool CanExecute(object parameter)
+        {
+            return _canExecute?.Invoke(parameter) ?? true;
+        }
 
-        public override void Execute(object parameter) => _execute(parameter);
+        public override void Execute(object parameter)
+        {
+            _execute.Invoke(parameter);
+        }
     }
 }
