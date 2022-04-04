@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
-    class BurMessagesVIewModel
+    public class BURMessagesViewModel : ViewModel
     {
     }
 }

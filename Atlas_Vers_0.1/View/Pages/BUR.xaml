@@ -20,13 +20,13 @@
             Name="ConditionFrame"
             Grid.Column="1"
             NavigationUIVisibility="Hidden"
-            Source="/Resourses/UserControls/ConditionFrame.xaml" />
+            Source="/Resourses/UserControls/Frames/ConditionFrame.xaml" />
 
         <Frame
             Name="SettingsFrame"
             Grid.Column="1"
             NavigationUIVisibility="Hidden"
-            Source="/Resourses/UserControls/SettingsFrame.xaml"
+            Source="/Resourses/UserControls/Frames/SettingsFrame.xaml"
             Visibility="Hidden" />
 
         <Border

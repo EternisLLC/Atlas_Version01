@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Atlas_Vers_0._1.Resourses.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для TitleBarBURMessages.xaml
+    /// Логика взаимодействия для ArchiveFrame.xaml
     /// </summary>
-    public partial class TitleBarBURMessages : UserControl
+    public partial class ArchiveFrame : UserControl
     {
-        public TitleBarBURMessages()
+        public ArchiveFrame()
         {
             InitializeComponent();
         }

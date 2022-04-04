@@ -5,10 +5,18 @@ using System.Windows.Input;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
-    public class BurViewModel : ViewModel
+    public class BURViewModel : ViewModel
     {
-
+        public void ShowWindow(object viewModel)
+        {
+            var win = new Window
+            {
+                Content = viewModel
+            };
+            win.Show();
+        }
     }
+
     public class Unit
     {
         public int Id { get; set; }

@@ -30,6 +30,6 @@
             x:Name="GlobalFrame"
             Grid.Row="1"
             NavigationUIVisibility="Hidden"
-            Source="/View/Pages/BURlogin.xaml" />
+            Source="/View/Pages/SystemChoice.xaml" />
     </Grid>
 </Window>

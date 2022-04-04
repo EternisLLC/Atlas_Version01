@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -57,6 +60,9 @@
     </ApplicationDefinition>
     <Compile Include="Model\RatioConverter.cs" />
     <Compile Include="Navigation\Navigation.cs" />
+    <Compile Include="Resourses\UserControls\Frames\ArchiveFrame.xaml.cs">
+      <DependentUpon>ArchiveFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resourses\UserControls\BackgroundLogo.xaml.cs">
       <DependentUpon>BackgroundLogo.xaml</DependentUpon>
     </Compile>
@@ -72,20 +78,17 @@
     <Compile Include="Resourses\UserControls\ButtonChooseInProgress.xaml.cs">
       <DependentUpon>ButtonChooseInProgress.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UserControls\ConditionFrame.xaml.cs">
+    <Compile Include="Resourses\UserControls\Frames\ConditionFrame.xaml.cs">
       <DependentUpon>ConditionFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UserControls\SettingsFrame.xaml.cs">
+    <Compile Include="Resourses\UserControls\Frames\SettingsFrame.xaml.cs">
       <DependentUpon>SettingsFrame.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resourses\UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UserControls\TitleBarBURMessages.xaml.cs">
-      <DependentUpon>TitleBarBURMessages.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\BurMessagesVIewModel.cs" />
-    <Compile Include="ViewModels\BurViewModel.cs" />
+    <Compile Include="ViewModels\BURMessagesViewModel.cs" />
+    <Compile Include="ViewModels\BURViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SystemChoiceViewModel.cs" />
@@ -118,6 +121,10 @@
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelLocator.cs" />
     <Compile Include="ViewModels\BurLoginViewModel.cs" />
+    <Page Include="Resourses\UserControls\Frames\ArchiveFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resourses\UserControls\BackgroundLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,19 +145,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\UserControls\ConditionFrame.xaml">
+    <Page Include="Resourses\UserControls\Frames\ConditionFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\UserControls\SettingsFrame.xaml">
+    <Page Include="Resourses\UserControls\Frames\SettingsFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resourses\UserControls\TitleBar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resourses\UserControls\TitleBarBURMessages.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,6 +219,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Resourses\PDF\InstructionForBur.pdf" />
     <Resource Include="Fonts\Elektra Light Pro.otf" />
     <None Include="Properties\Settings.settings">

@@ -9,12 +9,11 @@
     Title="BURMessages"
     Width="500"
     Height="600"
-    MinWidth="500"
-    MinHeight="600"
     AllowsTransparency="True"
     DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
-    ResizeMode="CanResizeWithGrip"
-    WindowStartupLocation="Manual"
+    Loaded="Window_Loaded"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
     <Grid Background="#2c2c2c">
@@ -25,23 +24,64 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
-            <uc:TitleBarBURMessages />
+            <Border
+                Height="50"
+                Background="#3a3e46"
+                BorderBrush="#3a3e46"
+                BorderThickness="0">
+
+                <Grid Height="50px" Margin="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="190" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Width="190"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Source="/Resourses/Pictures/TitleBar/Top_logo@4x.png"
+                        Stretch="Fill" />
+
+                    <Button
+                        Grid.Column="3"
+                        Width="50"
+                        HorizontalAlignment="Right"
+                        Background="#3a3e46"
+                        BorderThickness="0"
+                        Command="{Binding CloseCommand}">
+                        <StackPanel>
+                            <Image Width="30" Source="/Resourses/Pictures/TitleBar/Top_exit@4x.png" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
         </Grid>
 
-        <TextBlock
+        <TextBox
             Grid.Row="1"
-            Margin="20"
+            Margin="10"
+            Padding="3"
             Background="#3a3e46"
+            BorderBrush="White"
+            BorderThickness="1"
             FontFamily="Elektra Pro"
             FontSize="12"
             Foreground="White"
-            Text="{Binding MessageResult, UpdateSourceTrigger=PropertyChanged}" />
+            IsReadOnly="True"
+            Text="{Binding MessageResult, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Visible" />
 
         <Button
             Grid.Row="2"
             MinWidth="100"
             MinHeight="20"
             Margin="20"
+            Command="{Binding SaveMessagesToFile}"
             Content="Сохранить"
             Cursor="Hand"
             FontFamily="Elektra Pro"

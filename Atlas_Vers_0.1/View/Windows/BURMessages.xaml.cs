@@ -22,12 +22,24 @@ namespace Atlas_Vers_0._1.View.Windows
         public BURMessages()
         {
             InitializeComponent();
+            Loaded += Window_Loaded;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is ViewModel vm)
+            {
+                vm.Close += () =>
+                {
+                    this.Close();
+                };
+            }
         }
     }
 }

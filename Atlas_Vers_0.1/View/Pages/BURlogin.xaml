@@ -10,11 +10,6 @@
     DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
-    <!--<Page.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.New"
-                        Executed="{Binding ChangeFrameToBURCommand}" />
-    </Page.CommandBindings>-->
-
     <Grid Background="#2c2c2c">
 
         <Grid.ColumnDefinitions>

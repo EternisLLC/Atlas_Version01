@@ -14,7 +14,7 @@
 
             TitleBarVM = new TitleBarViewModel();
 
-            BurVM = new BurViewModel();
+            BurVM = new BURViewModel();
         }
 
         public ViewModel MainVM { get; set; }

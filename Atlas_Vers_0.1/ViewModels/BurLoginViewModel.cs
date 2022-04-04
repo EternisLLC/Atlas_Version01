@@ -1,10 +1,11 @@
 ﻿using Atlas_Vers_0._1.View.Pages;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -94,7 +95,7 @@ namespace Atlas_Vers_0._1.ViewModels
         }
         #endregion
 
-        #region Хранитель сообщений
+        #region Хранитель сообщений от БУР
 
         private static string _messageResult;
 
@@ -103,34 +104,41 @@ namespace Atlas_Vers_0._1.ViewModels
             get => _messageResult;
             set => Set(ref _messageResult, value);
         }
-
         #endregion
 
         #endregion
 
         #region Команды
-
-        //public ICommand JustGoNextPageCommand => new LambdaCommand((param) =>
-        //{
-        //    Navigation.Navigation.GoTo(new BUR());
-        //},  // кнопка может работать, если true
-        //    (param) => SelectedComPort != null && Password != "");
-
+        /// <summary>
+        /// Команда авторизации через COM-порт
+        /// </summary>
         public ICommand AuthorizationCommand => new LambdaCommand((param) =>
         {
             SerialPortConnection(SelectedComPort, Password);
         },  // кнопка может работать, если true
             (param) => SelectedComPort != null && Password != "");
-
-        public ICommand ReadAllCommand => new LambdaCommand((param) =>
+        /// <summary>
+        /// Сохранение сообщений с БУР в текстовый файл
+        /// </summary>
+        public ICommand SaveMessagesToFile => new LambdaCommand((param) =>
         {
-            StartAll(SelectedComPort, "Read_all");
-        },  // кнопка может работать, если true
-            (param) => param != null && param.ToString() != "" && Password != "");
+            SaveToFile(MessageResult);
+        });
 
         #endregion
 
         #region Методы
+        /// <summary>
+        /// Сохранение строки в файл
+        /// </summary>
+        /// <param name="message"></param>
+        public void SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
+            if (saveFileDialog.ShowDialog() == true)
+                File.WriteAllText(saveFileDialog.FileName, message);
+        }
 
         public void StartAll(SerialPort port, string command)
         {
