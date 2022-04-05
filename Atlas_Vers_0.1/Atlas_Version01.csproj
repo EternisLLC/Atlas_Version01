@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\RatioConverter.cs" />
     <Compile Include="Navigation\Navigation.cs" />
+    <Compile Include="Resourses\ObjectLogic\TextBoxBehavior.cs" />
     <Compile Include="Resourses\UserControls\Frames\ArchiveFrame.xaml.cs">
       <DependentUpon>ArchiveFrame.xaml</DependentUpon>
     </Compile>
@@ -220,7 +221,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Resourses\PDF\InstructionForBur.pdf" />
     <Resource Include="Fonts\Elektra Light Pro.otf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

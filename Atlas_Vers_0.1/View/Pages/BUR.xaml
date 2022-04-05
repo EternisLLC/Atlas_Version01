@@ -211,10 +211,11 @@
                     <Button
                         Background="#3A3E46"
                         BorderThickness="0"
+                        Click="Button_Click"
                         Cursor="Hand"
                         FontFamily="Elektra Pro"
                         FontSize="20"
-                        Style="{DynamicResource BURmainBTN}" Click="Button_Click">
+                        Style="{DynamicResource BURmainBTN}">
 
                         <Grid Width="190">
                             <Image

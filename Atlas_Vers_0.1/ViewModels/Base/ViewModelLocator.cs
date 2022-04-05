@@ -15,6 +15,8 @@
             TitleBarVM = new TitleBarViewModel();
 
             BurVM = new BURViewModel();
+
+            BURMesVM = new BURMessagesViewModel();
         }
 
         public ViewModel MainVM { get; set; }
@@ -28,5 +30,7 @@
         public ViewModel TitleBarVM { get; set; }
 
         public ViewModel BurVM { get; set; }
+
+        public ViewModel BURMesVM { get; set; }
     }
 }

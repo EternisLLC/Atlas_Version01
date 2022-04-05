@@ -3,9 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:Atlas_Vers_0._1.View.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:uc="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
+    xmlns:tb="clr-namespace:Atlas_Vers_0._1.Resourses.ObjectLogic"
     Title="BURMessages"
     Width="500"
     Height="600"
@@ -65,6 +64,7 @@
             Grid.Row="1"
             Margin="10"
             Padding="3"
+            tb:TextBoxBehaviour.ScrollOnTextChanged="True"
             Background="#3a3e46"
             BorderBrush="White"
             BorderThickness="1"
@@ -74,13 +74,13 @@
             IsReadOnly="True"
             Text="{Binding MessageResult, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Visible" />
+            VerticalScrollBarVisibility="Auto" />
 
         <Button
             Grid.Row="2"
             MinWidth="100"
             MinHeight="20"
-            Margin="20"
+            Margin="10"
             Command="{Binding SaveMessagesToFile}"
             Content="Сохранить"
             Cursor="Hand"

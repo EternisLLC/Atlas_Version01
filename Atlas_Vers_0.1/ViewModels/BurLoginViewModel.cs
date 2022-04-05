@@ -1,4 +1,5 @@
 ﻿using Atlas_Vers_0._1.View.Pages;
+using Atlas_Vers_0._1.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -24,7 +26,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// </summary>
         /// <param name="port">COM-Port</param>
         /// <param name="password">Пароль COM порта</param>
-        public void SerialPortConnection(SerialPort port, string password)
+        public async Task SerialPortConnection(SerialPort port, string password)
         {
             if (port.IsOpen)
             {
@@ -45,7 +47,7 @@ namespace Atlas_Vers_0._1.ViewModels
             //TODO: Если порт отключился во время подключения, обработать ошибки
             MessageResult = SendMessage(port, "checkPass ", password);
 
-            Thread.Sleep(100);
+            await Task.Delay(100);
 
             if (MessageResult.Contains("checkedPass true\r"))
             {
@@ -112,9 +114,9 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <summary>
         /// Команда авторизации через COM-порт
         /// </summary>
-        public ICommand AuthorizationCommand => new LambdaCommand((param) =>
+        public ICommand AuthorizationCommand => new LambdaCommand(async (param) =>
         {
-            SerialPortConnection(SelectedComPort, Password);
+            await SerialPortConnection(SelectedComPort, Password);
         },  // кнопка может работать, если true
             (param) => SelectedComPort != null && Password != "");
         /// <summary>
