@@ -50,7 +50,7 @@ namespace Atlas_Vers_0._1.ViewModels
             //TODO: Если порт отключился во время подключения, обработать ошибки
             MessageResult = SendMessage(port, "checkPass ", password);
 
-            await Task.Delay(10);
+            await Task.Delay(50);
 
             if (PasswordChecked)
             {
@@ -64,7 +64,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(10);
+            Thread.Sleep(100);
             MessageResult += GetMessage(sender);
         }
         #endregion
@@ -196,6 +196,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     PasswordChecked = true;
                     _buffer = _buffer.Replace("checkedPass true", "");
                     _buffer = _buffer.Trim();
+                    _buffer += "\r";
                 }
                 _str = _buffer.Remove(_buffer.IndexOf("\r"));
                 _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);

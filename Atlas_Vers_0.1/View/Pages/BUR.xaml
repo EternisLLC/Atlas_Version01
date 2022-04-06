@@ -29,6 +29,13 @@
             Source="/Resourses/UserControls/Frames/SettingsFrame.xaml"
             Visibility="Hidden" />
 
+        <Frame
+            Name="ArchiveFrame"
+            Grid.Column="1"
+            NavigationUIVisibility="Hidden"
+            Source="/Resourses/UserControls/Frames/ArchiveFrame.xaml"
+            Visibility="Hidden" />
+
         <Border
             Grid.Column="0"
             Width="190"

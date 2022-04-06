@@ -61,12 +61,14 @@ namespace Atlas_Vers_0._1.View.Pages
 
         private void btnArchive_GotFocus(object sender, RoutedEventArgs e)
         {
+            ArchiveFrame.Visibility = Visibility.Visible;
             Archive.Foreground = Brushes.White;
             ImageArchive.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Archive_White@4x.png", UriKind.Relative));
         }
 
         private void btnArchive_LostFocus(object sender, RoutedEventArgs e)
         {
+            ArchiveFrame.Visibility = Visibility.Hidden;
             Archive.Foreground = Brushes.LightGray;
             ImageArchive.Source = new BitmapImage(new Uri(@"\Resourses\Pictures\BUR\Archive_Grey@4x.png", UriKind.Relative));
         }
