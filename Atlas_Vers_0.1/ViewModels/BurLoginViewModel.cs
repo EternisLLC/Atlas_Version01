@@ -20,6 +20,8 @@ namespace Atlas_Vers_0._1.ViewModels
             UpdateComPorts();
         }
 
+        private bool PasswordChecked = false;
+
         #region Настройка подключение порта
         /// <summary>
         /// Настройка и подключение COM порта
@@ -31,8 +33,10 @@ namespace Atlas_Vers_0._1.ViewModels
             if (port.IsOpen)
             {
                 port.Close();
+                PasswordChecked = false; // Отброс пароля к дефолту
             }
 
+            // Настройка порта
             port.BaudRate = 115200;
             port.Parity = Parity.None;
             port.StopBits = StopBits.One;
@@ -41,15 +45,14 @@ namespace Atlas_Vers_0._1.ViewModels
             port.Encoding = Encoding.GetEncoding(1251);
             port.ReadBufferSize = 2000000;
             port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-
             port.Open();
 
             //TODO: Если порт отключился во время подключения, обработать ошибки
             MessageResult = SendMessage(port, "checkPass ", password);
 
-            await Task.Delay(100);
+            await Task.Delay(10);
 
-            if (MessageResult.Contains("checkedPass true\r"))
+            if (PasswordChecked)
             {
                 Navigation.Navigation.GoTo(new BUR());
             }
@@ -61,8 +64,8 @@ namespace Atlas_Vers_0._1.ViewModels
 
         public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            Thread.Sleep(100);
-            MessageResult += GetMessageForSerialPort(sender);
+            Thread.Sleep(10);
+            MessageResult += GetMessage(sender);
         }
         #endregion
 
@@ -139,13 +142,11 @@ namespace Atlas_Vers_0._1.ViewModels
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
             if (saveFileDialog.ShowDialog() == true)
+            {
                 File.WriteAllText(saveFileDialog.FileName, message);
+            }
         }
 
-        public void StartAll(SerialPort port, string command)
-        {
-            port.WriteLine(command + "\r\n");
-        }
         /// <summary>
         /// Отправка сообщения COM-порту и получение ответа
         /// </summary>
@@ -159,7 +160,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
             Thread.Sleep(100);
 
-            string messageResult = GetMessageForSerialPort(port);
+            string messageResult = GetMessage(port);
 
             return messageResult;
         }
@@ -171,12 +172,14 @@ namespace Atlas_Vers_0._1.ViewModels
         /// </summary>
         /// <param name="sender">COM-порт</param>
         /// <returns></returns>
-        private string GetMessageForSerialPort(object sender)
+        private string GetMessage(object sender)
         {
             string outdata = "";
-            SerialPort senderPort = (sender as SerialPort);
+            SerialPort senderPort = sender as SerialPort;
             if (senderPort == null)
+            {
                 return null;
+            }
 
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
@@ -188,6 +191,12 @@ namespace Atlas_Vers_0._1.ViewModels
             _buffer += indata;
             while (_buffer.Contains("\r"))
             {
+                if(_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
+                {
+                    PasswordChecked = true;
+                    _buffer = _buffer.Replace("checkedPass true", "");
+                    _buffer = _buffer.Trim();
+                }
                 _str = _buffer.Remove(_buffer.IndexOf("\r"));
                 _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
                 outdata += "[" + DateTime.Now.ToString() + "]: " + _str + "\r";
