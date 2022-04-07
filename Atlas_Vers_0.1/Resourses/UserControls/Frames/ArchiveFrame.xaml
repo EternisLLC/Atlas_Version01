@@ -28,6 +28,8 @@
                 <RowDefinition Height="5" />
                 <RowDefinition Height="10*" />
                 <RowDefinition Height="5" />
+                <RowDefinition Height="10*" />
+                <RowDefinition Height="5" />
             </Grid.RowDefinitions>
             <Border
                 Grid.Row="1"
@@ -71,17 +73,33 @@
                 </Grid>
             </Border>
 
-            <Button
-                Grid.Row="3"
-                Grid.Column="1"
-                MinWidth="100"
-                MinHeight="20"
-                Content="Сохранить архив"
-                Cursor="Hand"
-                FontFamily="Elektra Pro"
-                FontSize="25"
-                Foreground="White"
-                Style="{DynamicResource WriteDownButtonStyle}" />
+            <Grid Grid.Row="3" Grid.RowSpan="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Content="Получить архив"
+                    Cursor="Hand"
+                    FontFamily="Elektra Pro"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{DynamicResource GetArchiveButtonStyle}" />
+
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="2"
+                    Content="Сохранить архив"
+                    Cursor="Hand"
+                    FontFamily="Elektra Pro"
+                    FontSize="14"
+                    Foreground="White"
+                    Style="{DynamicResource ArchiveSaveButtonStyle}" />
+            </Grid>
+
+
 
         </Grid>
 

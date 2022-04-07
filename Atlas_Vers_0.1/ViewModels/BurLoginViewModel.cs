@@ -50,7 +50,7 @@ namespace Atlas_Vers_0._1.ViewModels
             //TODO: Если порт отключился во время подключения, обработать ошибки
             MessageResult = SendMessage(port, "checkPass ", password);
 
-            await Task.Delay(50);
+            await Task.Delay(100);
 
             if (PasswordChecked)
             {

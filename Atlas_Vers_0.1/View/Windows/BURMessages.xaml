@@ -66,8 +66,7 @@
             Padding="3"
             tb:TextBoxBehaviour.ScrollOnTextChanged="True"
             Background="#3a3e46"
-            BorderBrush="White"
-            BorderThickness="1"
+            BorderThickness="0"
             FontFamily="Elektra Pro"
             FontSize="12"
             Foreground="White"
@@ -87,7 +86,7 @@
             FontFamily="Elektra Pro"
             FontSize="30"
             Foreground="White"
-            Style="{DynamicResource WriteDownButtonStyle}">
+            Style="{DynamicResource BURMessagesButtonStyle}">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5" />

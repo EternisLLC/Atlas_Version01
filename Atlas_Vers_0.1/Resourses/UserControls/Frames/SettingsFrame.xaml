@@ -89,11 +89,19 @@
                             BorderThickness="1"
                             CornerRadius="3,3,3,3"
                             IsEnabled="True">
-                            <TextBlock
-                                Padding="3"
-                                FontFamily="Elektra Pro"
-                                FontSize="14"
-                                Text="testData" />
+                            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBox
+                                    MinWidth="100"
+                                    Padding="3"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="14"
+                                    Foreground="White"
+                                    Text="testData" />
+                            </Viewbox>
+
                         </Border>
 
                         <Viewbox
@@ -115,11 +123,19 @@
                             BorderBrush="White"
                             BorderThickness="1"
                             CornerRadius="3,3,3,3">
-                            <TextBlock
-                                Padding="3"
-                                FontFamily="Elektra Pro"
-                                FontSize="14"
-                                Text="testData" />
+                            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBox
+                                    MinWidth="100"
+                                    Padding="3"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontFamily="Elektra Pro"
+                                    FontSize="14"
+                                    Foreground="White"
+                                    Text="testData" />
+                            </Viewbox>
+
                         </Border>
 
                         <Viewbox
@@ -167,11 +183,15 @@
                             MinWidth="100"
                             MinHeight="20"
                             Background="#b1b1b1"
-                            Content="Стереть"
-                            Cursor="Hand"
-                            FontFamily="Elektra Pro"
-                            FontSize="16"
-                            Foreground="White">
+                            Cursor="Hand">
+                            <Viewbox>
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="16"
+                                    Foreground="White"
+                                    Text="Стереть" />
+                            </Viewbox>
+
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5" />
@@ -187,10 +207,14 @@
                             MinHeight="20"
                             BorderBrush="White"
                             BorderThickness="1"
-                            Content="Записать"
-                            FontSize="16"
-                            Foreground="White"
-                            Style="{DynamicResource WriteDownButtonStyle}">
+                            Style="{DynamicResource BURMessagesButtonStyle}">
+                            <Viewbox>
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="16"
+                                    Foreground="White"
+                                    Text="Записать" />
+                            </Viewbox>
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="10" />
@@ -212,21 +236,21 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="10" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="5" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="10" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -245,19 +269,20 @@
                                 Text="Автоматическая регистрация БОС исп. А" />
                         </Viewbox>
 
-
-
                         <Button
                             Grid.Row="3"
                             Grid.Column="1"
                             MinWidth="100"
                             MinHeight="20"
                             Background="#b1b1b1"
-                            Content="Стереть"
-                            Cursor="Hand"
-                            FontFamily="Elektra Pro"
-                            FontSize="20"
-                            Foreground="White">
+                            Cursor="Hand">
+                            <Viewbox>
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="16"
+                                    Foreground="White"
+                                    Text="Стереть" />
+                            </Viewbox>
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5" />
@@ -271,11 +296,14 @@
                             MinWidth="100"
                             MinHeight="20"
                             Background="#b1b1b1"
-                            Content="Записать"
-                            Cursor="Hand"
-                            FontFamily="Elektra Pro"
-                            FontSize="20"
-                            Foreground="White">
+                            Cursor="Hand">
+                            <Viewbox>
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="16"
+                                    Foreground="White"
+                                    Text="Записать" />
+                            </Viewbox>
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5" />
@@ -307,15 +335,23 @@
                                 Foreground="White" />
                         </Viewbox>
 
-
-
                         <Border
                             Grid.Row="7"
                             Grid.Column="3"
                             BorderBrush="White"
                             BorderThickness="1"
                             CornerRadius="3,3,3,3">
-                            <TextBlock FontFamily="Elektra Pro" />
+                            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBox
+                                    MinWidth="140"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    FontSize="14"
+                                    BorderThickness="0"
+                                    FontFamily="Elektra Pro"
+                                    Foreground="White" />
+                            </Viewbox>
+
                         </Border>
 
                         <Viewbox
@@ -338,7 +374,17 @@
                             BorderBrush="White"
                             BorderThickness="1"
                             CornerRadius="3,3,3,3">
-                            <TextBlock FontFamily="Elektra Pro" />
+                            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBox
+                                    MinWidth="140"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="14"
+                                    FontFamily="Elektra Pro"
+                                    Foreground="White" />
+                            </Viewbox>
+
                         </Border>
 
                         <Button
@@ -347,11 +393,14 @@
                             MinWidth="100"
                             MinHeight="20"
                             Background="#b1b1b1"
-                            Content="Записать"
-                            Cursor="Hand"
-                            FontFamily="Elektra Pro"
-                            FontSize="20"
-                            Foreground="White">
+                            Cursor="Hand">
+                            <Viewbox>
+                                <TextBlock
+                                    FontFamily="Elektra Pro"
+                                    FontSize="16"
+                                    Foreground="White"
+                                    Text="Записать" />
+                            </Viewbox>
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="5" />
@@ -387,11 +436,14 @@
                                 MinWidth="100"
                                 MinHeight="20"
                                 Background="#b1b1b1"
-                                Content="Сохранить"
-                                Cursor="Hand"
-                                FontFamily="Elektra Pro"
-                                FontSize="20"
-                                Foreground="White">
+                                Cursor="Hand">
+                                <Viewbox>
+                                    <TextBlock
+                                        FontFamily="Elektra Pro"
+                                        FontSize="16"
+                                        Foreground="White"
+                                        Text="Сохранить" />
+                                </Viewbox>
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="5" />
@@ -404,11 +456,14 @@
                                 MinWidth="100"
                                 MinHeight="20"
                                 Background="#b1b1b1"
-                                Content="Прочитать"
-                                Cursor="Hand"
-                                FontFamily="Elektra Pro"
-                                FontSize="20"
-                                Foreground="White">
+                                Cursor="Hand">
+                                <Viewbox>
+                                    <TextBlock
+                                        FontFamily="Elektra Pro"
+                                        FontSize="16"
+                                        Foreground="White"
+                                        Text="Прочитать" />
+                                </Viewbox>
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="5" />
@@ -421,11 +476,14 @@
                                 MinWidth="100"
                                 MinHeight="20"
                                 Background="#b1b1b1"
-                                Content="Очистить"
-                                Cursor="Hand"
-                                FontFamily="Elektra Pro"
-                                FontSize="20"
-                                Foreground="White">
+                                Cursor="Hand">
+                                <Viewbox>
+                                    <TextBlock
+                                        FontFamily="Elektra Pro"
+                                        FontSize="16"
+                                        Foreground="White"
+                                        Text="Очистить" />
+                                </Viewbox>
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="5" />

@@ -381,7 +381,7 @@
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Source="/Resourses/Pictures/BUR/Automat_ON_Dark@4x.png" />
+                                Source="/Resourses/Pictures/BUR/Automat_Unlocked_Dark@4x.png" />
 
                             <Viewbox
                                 Grid.Row="1"
