@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tb="clr-namespace:Atlas_Vers_0._1.Resourses.ObjectLogic"
+    DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
     <Grid MinWidth="810">
         <Grid.ColumnDefinitions>
@@ -267,6 +268,7 @@
                 </Grid.ColumnDefinitions>
                 <Button
                     Grid.Column="0"
+                    Command="{Binding GetArchiveCommand}"
                     Content="Получить архив"
                     Cursor="Hand"
                     FontFamily="Elektra Pro"
@@ -335,6 +337,7 @@
                     FontSize="12"
                     Foreground="White"
                     IsReadOnly="True"
+                    Text="{Binding ArchiveResult, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto" />
             </Grid>

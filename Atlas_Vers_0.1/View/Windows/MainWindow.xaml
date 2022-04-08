@@ -27,6 +27,6 @@
             x:Name="GlobalFrame"
             Grid.Row="1"
             NavigationUIVisibility="Hidden"
-            Source="/View/Pages/BUR.xaml" />
+            Source="/View/Pages/BURlogin.xaml" />
     </Grid>
 </Window>
