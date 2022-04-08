@@ -1,5 +1,4 @@
 ﻿using Atlas_Vers_0._1.View.Pages;
-using Atlas_Vers_0._1.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -130,9 +129,15 @@ namespace Atlas_Vers_0._1.ViewModels
             SaveToFile(MessageResult);
         });
 
+        public ICommand GetArchiveCommand => new LambdaCommand((param) =>
+        {
+            SendMessage(SelectedComPort, "Read_all", null);
+        });
+
         #endregion
 
         #region Методы
+
         /// <summary>
         /// Сохранение строки в файл
         /// </summary>
@@ -191,7 +196,7 @@ namespace Atlas_Vers_0._1.ViewModels
             _buffer += indata;
             while (_buffer.Contains("\r"))
             {
-                if(_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
+                if (_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
                 {
                     PasswordChecked = true;
                     _buffer = _buffer.Replace("checkedPass true", "");

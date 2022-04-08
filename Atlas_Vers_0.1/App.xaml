@@ -87,7 +87,8 @@
 
         <LinearGradientBrush x:Key="GetArchiveButtonBackground" StartPoint="0,0" EndPoint="1,0">
             <GradientStop Offset="0.1" Color="#8b00ff" />
-            <GradientStop Offset="0.5" Color="#0000ff" />
+            <GradientStop Offset="0.4" Color="#00008b" />
+            <GradientStop Offset="0.6" Color="#00008b" />
             <GradientStop Offset="1.0" Color="#8b00ff " />
         </LinearGradientBrush>
         <Style x:Key="GetArchiveButtonStyle" TargetType="{x:Type Button}">
@@ -106,7 +107,7 @@
                                 x:Name="BorderPressed"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                Background="#8b00ff"
+                                Background="#00008b"
                                 CornerRadius="10"
                                 Opacity="0" />
                             <ContentPresenter
@@ -151,7 +152,7 @@
 
         <LinearGradientBrush x:Key="ArchiveSaveButtonBackground" StartPoint="0,0" EndPoint="1,0">
             <GradientStop Offset="0.1" Color="#EE352B" />
-            <GradientStop Offset="0.5" Color="#A71E22" />
+            <GradientStop Offset="0.5" Color="#c41e3a" />
             <GradientStop Offset="1.0" Color="#EE352B" />
         </LinearGradientBrush>
         <Style x:Key="ArchiveSaveButtonStyle" TargetType="{x:Type Button}">
@@ -171,7 +172,7 @@
                                 x:Name="BorderPressed"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                Background="Red"
+                                Background="#c41e3a"
                                 CornerRadius="10"
                                 Opacity="0" />
                             <ContentPresenter
