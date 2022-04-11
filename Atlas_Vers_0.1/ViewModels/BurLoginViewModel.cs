@@ -154,7 +154,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             if (archiveReading)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(10000);
                 ArchiveResult += GetArchiveMessage(sender);
             }
             else
@@ -205,10 +205,12 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #endregion
 
+        #region Получение архива
+
         private string _archStr = "";
         private string _archBuffer = "";
         /// <summary>
-        /// Обработка сообщения с COM-порта
+        /// Обработка архива COM-порта
         /// </summary>
         /// <param name="sender">COM-порт</param>
         /// <returns></returns>
@@ -231,21 +233,30 @@ namespace Atlas_Vers_0._1.ViewModels
             _archBuffer += indata;
             if (_archBuffer.Contains("Ev"))
             {
-                _archBuffer = _archBuffer.Remove(0, 3);
-                _archStr = _archBuffer.Remove(_archBuffer.IndexOf("\r"));
-                _archBuffer = _archBuffer.Remove(0, _archBuffer.IndexOf("\r") + 1);
-                outdata += "[" + DateTime.Now.ToString() + "]: " + _archStr + "\r\n";
+                while(_archBuffer.Contains("Ev"))
+                {
+                    _archBuffer = _archBuffer.Remove(_archBuffer.IndexOf("Ev"), 2);
+                    _archBuffer = _archBuffer.Replace("\r ", "\r");
+                }
+                _archBuffer = _archBuffer.Trim();
+                _archBuffer = _archBuffer.Insert(0, "[" + DateTime.Now.ToString() + "]: ");
+                _archStr = _archBuffer.Replace("\r", "\r" + "[" + DateTime.Now.ToString() + "]: ");
+                outdata += _archStr + "\r\n";
             }
             else
             {
                 GetMessage(senderPort);
             }
-            if (_archBuffer.Contains("Конец передачи архива"))
+            if (outdata.Contains("Передача архива завершена"))
             {
-                archiveReading = true;
+                archiveReading = false;
             }
             return outdata;
         }
+
+        #endregion
+
+        #region Получение всех сообщений
 
         private string _str = "";
         private string _buffer = "";
@@ -291,6 +302,8 @@ namespace Atlas_Vers_0._1.ViewModels
             }
             return outdata;
         }
+
+        #endregion
 
         /// <summary>
         /// Необходимая инициализация для обновления списка портов.
