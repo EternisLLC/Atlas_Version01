@@ -278,6 +278,7 @@
 
                 <Button
                     Grid.Column="2"
+                    Command="{Binding SaveArchiveToFile}"
                     Content="Сохранить архив"
                     Cursor="Hand"
                     FontFamily="Elektra Pro"
@@ -308,7 +309,7 @@
                     <RowDefinition Height="10" />
                     <RowDefinition />
                     <RowDefinition Height="10" />
-                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20" />
                     <RowDefinition Height="10" />
                 </Grid.RowDefinitions>
 
@@ -344,7 +345,14 @@
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto" />
 
-                <ProgressBar Grid.Row="4" Grid.Column="1" Height="30"/>
+                <ProgressBar
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Height="30"
+                    Background="DarkGray"
+                    IsIndeterminate="True"
+                    Maximum="100"
+                    Minimum="0" />
             </Grid>
 
 

@@ -88,6 +88,14 @@ namespace Atlas_Vers_0._1.ViewModels
             SaveToFile(MessageResult);
         });
 
+        /// <summary>
+        /// Сохранение сообщений с БУР в текстовый файл
+        /// </summary>
+        public ICommand SaveArchiveToFile => new LambdaCommand((param) =>
+        {
+            SaveToFile(ArchiveResult);
+        });
+
         public ICommand GetArchiveCommand => new LambdaCommand(async (param) =>
         {
             await GetArchiveMessage(SelectedComPort, "Read_all");
