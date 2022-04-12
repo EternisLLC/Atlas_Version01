@@ -76,6 +76,7 @@
                         Grid.Column="1"
                         Background="#2c2c2c"
                         BorderThickness="0"
+                        Command="{Binding GetArchiveNextCommand}"
                         Cursor="Hand">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -122,6 +123,7 @@
                         Grid.Column="1"
                         Background="#2c2c2c"
                         BorderThickness="0"
+                        Command="{Binding GetArchivePreviusCommand}"
                         Cursor="Hand">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -168,6 +170,7 @@
                         Grid.Column="1"
                         Background="#2c2c2c"
                         BorderThickness="0"
+                        Command="{Binding GetArchiveLastCommand}"
                         Cursor="Hand">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -214,6 +217,7 @@
                         Grid.Column="1"
                         Background="#2c2c2c"
                         BorderThickness="0"
+                        Command="{Binding ArchiveClearCommand}"
                         Cursor="Hand">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -286,9 +290,6 @@
                     Foreground="White"
                     Style="{DynamicResource ArchiveSaveButtonStyle}" />
             </Grid>
-
-
-
         </Grid>
 
 

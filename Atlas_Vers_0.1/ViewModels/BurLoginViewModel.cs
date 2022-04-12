@@ -101,9 +101,37 @@ namespace Atlas_Vers_0._1.ViewModels
             await GetArchiveMessage(SelectedComPort, "Read_all");
         });
 
+        public ICommand GetArchiveNextCommand => new LambdaCommand(async (param) =>
+        {
+            await GetArchiveMessage(SelectedComPort, "Read_ev 2");
+        });
+
+        public ICommand GetArchivePreviusCommand => new LambdaCommand(async (param) =>
+        {
+            await GetArchiveMessage(SelectedComPort, "Read_ev 1");
+        });
+
+        public ICommand GetArchiveLastCommand => new LambdaCommand(async (param) =>
+        {
+            await GetArchiveMessage(SelectedComPort, "Read_ev 0");
+        });
+
+        public ICommand ArchiveClearCommand => new LambdaCommand(async (param) =>
+        {
+            await ClearString(ArchiveResult);
+        });
+
+
+
         #endregion
 
         #region Методы
+
+        public async Task<string> ClearString(string str)
+        {
+            await Task.Delay(0);
+            return string.Empty;
+        }
 
         public async Task GetArchiveMessage(SerialPort port, string password)
         {

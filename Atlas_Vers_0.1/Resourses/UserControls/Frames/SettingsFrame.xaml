@@ -41,6 +41,8 @@
                     <ColumnDefinition Width="5" />
                 </Grid.ColumnDefinitions>
 
+                <!--#region Установка сетевых параметров БУР исп. А-->
+
                 <GroupBox
                     Grid.Row="1"
                     Grid.Column="1"
@@ -225,6 +227,10 @@
                     </Grid>
                 </GroupBox>
 
+                <!--#endregion-->
+
+                <!--#region Установка адресов БУС исп. А-->
+
                 <GroupBox
                     Grid.Row="3"
                     Grid.Column="1"
@@ -346,9 +352,9 @@
                                     MinWidth="140"
                                     VerticalContentAlignment="Center"
                                     Background="Transparent"
-                                    FontSize="14"
                                     BorderThickness="0"
                                     FontFamily="Elektra Pro"
+                                    FontSize="14"
                                     Foreground="White" />
                             </Viewbox>
 
@@ -380,8 +386,8 @@
                                     VerticalContentAlignment="Center"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    FontSize="14"
                                     FontFamily="Elektra Pro"
+                                    FontSize="14"
                                     Foreground="White" />
                             </Viewbox>
 
@@ -494,6 +500,10 @@
                     </Grid>
                 </GroupBox>
 
+                <!--#endregion-->
+
+                <!--#region Установка времени задержки пуска-->
+
                 <GroupBox
                     Grid.Row="5"
                     Grid.Column="1"
@@ -561,6 +571,8 @@
 
                     </Grid>
                 </GroupBox>
+
+                <!--#endregion-->
             </Grid>
         </Border>
     </Grid>
