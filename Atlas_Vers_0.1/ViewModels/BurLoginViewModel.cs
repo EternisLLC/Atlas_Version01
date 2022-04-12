@@ -21,6 +21,8 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Свойства
 
+        public static bool archiveReading = false;
+
         #region COM-Port
 
         private readonly string[] _comNames = SerialPort.GetPortNames();
@@ -118,7 +120,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         public ICommand ArchiveClearCommand => new LambdaCommand(async (param) =>
         {
-            await ClearString(ArchiveResult);
+            ArchiveResult = await ClearString();
         });
 
 
@@ -127,18 +129,26 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Методы
 
-        public async Task<string> ClearString(string str)
+        #region Возвращение пустой строки
+
+        public async ValueTask<string> ClearString()
         {
             await Task.Delay(0);
             return string.Empty;
         }
 
+        #endregion
+
+        #region Получение сообщений с архива
+
         public async Task GetArchiveMessage(SerialPort port, string password)
         {
-            ArchiveResult = SendMessage(port, "Read_all", null);
+            ArchiveResult = await SendMessage(port, "Read_all", null);
 
             await Task.Delay(100);
         }
+
+        #endregion
 
         #region Настройка подключение порта
 
@@ -168,7 +178,7 @@ namespace Atlas_Vers_0._1.ViewModels
             port.Open();
 
             //TODO: Если порт отключился во время подключения, обработать ошибки
-            MessageResult = SendMessage(port, "checkPass ", password);
+            MessageResult = await SendMessage(port, "checkPass ", password);
 
             await Task.Delay(100);
 
@@ -184,22 +194,23 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #endregion
 
-        public static bool archiveReading = false;
+        #region Обработчик события получения сообщения
 
-        public void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        public async void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             if (archiveReading)
             {
                 Thread.Sleep(10000);
-                ArchiveResult += GetArchiveMessage(sender);
+                ArchiveResult += await GetArchiveMessage(sender);
             }
             else
             {
                 Thread.Sleep(100);
-                MessageResult += GetMessage(sender);
+                MessageResult += await GetMessage(sender);
             }
         }
-        
+
+        #endregion
 
         #region Сохранение строки в файл
 
@@ -228,13 +239,13 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <param name="command"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        private string SendMessage(SerialPort port, string command, object value)
+        private async ValueTask<string> SendMessage(SerialPort port, string command, object value)
         {
             port.WriteLine(command + value + "\r\n");
 
-            Thread.Sleep(100);
+            await Task.Delay(100);
 
-            string messageResult = GetMessage(port);
+            string messageResult = await GetMessage(port);
 
             return messageResult;
         }
@@ -250,7 +261,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// </summary>
         /// <param name="sender">COM-порт</param>
         /// <returns></returns>
-        private string GetArchiveMessage(object sender)
+        private async ValueTask<string> GetArchiveMessage(object sender)
         {
             string outdata = "";
             SerialPort senderPort = sender as SerialPort;
@@ -281,7 +292,7 @@ namespace Atlas_Vers_0._1.ViewModels
             }
             else
             {
-                GetMessage(senderPort);
+                await GetMessage(sender);
             }
             if (outdata.Contains("Передача архива завершена"))
             {
@@ -301,8 +312,9 @@ namespace Atlas_Vers_0._1.ViewModels
         /// </summary>
         /// <param name="sender">COM-порт</param>
         /// <returns></returns>
-        private string GetMessage(object sender)
+        private async ValueTask<string> GetMessage(object sender)
         {
+            await Task.Delay(0);
             string outdata = "";
             SerialPort senderPort = sender as SerialPort;
             if (senderPort == null)
@@ -341,6 +353,8 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #endregion
 
+        #region Обновление доступных портов
+
         /// <summary>
         /// Необходимая инициализация для обновления списка портов.
         /// Возможно использование перед важной логикой для предотвращения неверного использования программы.
@@ -354,6 +368,8 @@ namespace Atlas_Vers_0._1.ViewModels
                 _serialPorts.Add(port);
             }
         }
+
+        #endregion
         #endregion
     }
 }
