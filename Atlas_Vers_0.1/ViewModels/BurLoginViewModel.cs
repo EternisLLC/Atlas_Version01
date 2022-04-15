@@ -118,12 +118,15 @@ namespace Atlas_Vers_0._1.ViewModels
             await GetArchiveMessage(SelectedComPort, "Read_ev 0");
         });
 
+        public ICommand TestCommandForLockDors => new LambdaCommand(async (param) =>
+        {
+            await SendMessage(SelectedComPort, "Sound", null) ;
+        });
+
         public ICommand ArchiveClearCommand => new LambdaCommand(async (param) =>
         {
             ArchiveResult = await ClearString();
         });
-
-
 
         #endregion
 
@@ -254,8 +257,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Получение архива
 
-        private string _archStr = "";
-        private string _archBuffer = "";
+        
         /// <summary>
         /// Обработка архива COM-порта
         /// </summary>
@@ -263,6 +265,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <returns></returns>
         private async ValueTask<string> GetArchiveMessage(object sender)
         {
+            string _archBuffer = "";
             string outdata = "";
             SerialPort senderPort = sender as SerialPort;
             if (senderPort == null)
@@ -280,14 +283,18 @@ namespace Atlas_Vers_0._1.ViewModels
             _archBuffer += indata;
             if (_archBuffer.Contains("Ev"))
             {
-                while(_archBuffer.Contains("Ev"))
+                while (_archBuffer.Contains("Ev"))
                 {
-                    _archBuffer = _archBuffer.Remove(_archBuffer.IndexOf("Ev"), 2);
+                    _archBuffer = _archBuffer.Remove(_archBuffer.IndexOf("Ev"), 3);
                     _archBuffer = _archBuffer.Replace("\r ", "\r");
                 }
+                while (_archBuffer.Contains(";"))
+                {
+                    _archBuffer = _archBuffer.Replace(";", " ");
+                }
                 _archBuffer = _archBuffer.Trim();
-                _archBuffer = _archBuffer.Insert(0, "[" + DateTime.Now.ToString() + "]: ");
-                _archStr = _archBuffer.Replace("\r", "\r" + "[" + DateTime.Now.ToString() + "]: ");
+                _archBuffer = _archBuffer.Insert(0, DateTime.Now.ToString() + " ");
+                string _archStr = _archBuffer;
                 outdata += _archStr + "\r\n";
             }
             else
@@ -334,20 +341,43 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 archiveReading = true;
             }
+            if (_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
+            {
+                PasswordChecked = true;
+                _buffer = _buffer.Replace("checkedPass true", "");
+                _buffer = _buffer.Trim();
+                _buffer += "\r";
+            }
             while (_buffer.Contains("\r"))
             {
-                if (_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
+                switch (_buffer)
                 {
-                    PasswordChecked = true;
-                    _buffer = _buffer.Replace("checkedPass true", "");
-                    _buffer = _buffer.Trim();
-                    _buffer += "\r";
+                    case var _ when _buffer.Contains("Текущее состояние направления"):
+                        _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
+                        _buffer = _buffer.Trim();
+                        _buffer += "\r";
+                        break;
+                    case var _ when _buffer.Contains("sound"):
+                        _buffer = _buffer.Remove(_buffer.IndexOf("sound"));
+                        _buffer = _buffer.Trim();
+                        _buffer += "\r";
+                        break;
+                    case var _ when _buffer.Contains("Ошибка записи ключа"):
+                        _buffer = _buffer.Remove(_buffer.IndexOf("Ошибка записи ключа"));
+                        _buffer = _buffer.Trim();
+                        _buffer += "\r";
+                        break;
+                    default:
+                        break;
                 }
-
-                _str = _buffer.Remove(_buffer.IndexOf("\r"));
-                _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
-                outdata += "[" + DateTime.Now.ToString() + "]: " + _str + "\r";
+                if (_buffer != "\r")
+                {
+                    _str = _buffer.Remove(_buffer.IndexOf("\r"));
+                    _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
+                    outdata += "[" + DateTime.Now.ToString() + "]: " + _str + "\r";
+                }
             }
+            _buffer = "";
             return outdata;
         }
 

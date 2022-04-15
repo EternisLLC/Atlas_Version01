@@ -6,8 +6,8 @@ namespace Atlas_Vers_0._1
     {
         private RadioChannelDevice[] RadioChannelsDevices { get; set; }
         private MainDevice MainChannels { get; set; }
-        
-        public SystemGarantR(RadioChannelDevice[] radioChannelDevices, MainDevice mainDevices, DateTime systemTime) 
+
+        public SystemGarantR(RadioChannelDevice[] radioChannelDevices, MainDevice mainDevices, DateTime systemTime)
             : base (systemTime)
         {
             RadioChannelsDevices = radioChannelDevices;

@@ -20,6 +20,7 @@
             <RowDefinition Height="50" />
             <RowDefinition />
             <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
@@ -82,6 +83,25 @@
             Margin="10"
             Command="{Binding SaveMessagesToFile}"
             Content="Сохранить"
+            Cursor="Hand"
+            FontFamily="Elektra Pro"
+            FontSize="30"
+            Foreground="White"
+            Style="{DynamicResource BURMessagesButtonStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button
+            Grid.Row="3"
+            MinWidth="100"
+            MinHeight="20"
+            Margin="10"
+            Command="{Binding TestCommandForLockDors}"
+            Content="Отправить"
             Cursor="Hand"
             FontFamily="Elektra Pro"
             FontSize="30"
