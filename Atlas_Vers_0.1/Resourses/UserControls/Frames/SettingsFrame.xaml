@@ -209,7 +209,7 @@
                             MinHeight="20"
                             BorderBrush="White"
                             BorderThickness="1"
-                            Style="{DynamicResource BURMessagesButtonStyle}">
+                            Style="{DynamicResource BURSettingsButtonStyle}">
                             <Viewbox>
                                 <TextBlock
                                     FontFamily="Elektra Pro"

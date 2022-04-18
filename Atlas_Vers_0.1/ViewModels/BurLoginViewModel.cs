@@ -354,30 +354,20 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
                         _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
-                        _buffer = _buffer.Trim();
-                        _buffer += "\r";
-                        break;
+                        continue;
                     case var _ when _buffer.Contains("sound"):
                         _buffer = _buffer.Remove(_buffer.IndexOf("sound"));
-                        _buffer = _buffer.Trim();
-                        _buffer += "\r";
-                        break;
+                        continue;
                     case var _ when _buffer.Contains("Ошибка записи ключа"):
                         _buffer = _buffer.Remove(_buffer.IndexOf("Ошибка записи ключа"));
-                        _buffer = _buffer.Trim();
-                        _buffer += "\r";
                         break;
                     default:
                         break;
                 }
-                if (_buffer != "\r")
-                {
-                    _str = _buffer.Remove(_buffer.IndexOf("\r"));
-                    _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
-                    outdata += "[" + DateTime.Now.ToString() + "]: " + _str + "\r";
-                }
+                _str = _buffer.Remove(_buffer.IndexOf("\r"));
+                _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
+                outdata += "[" + DateTime.Now.ToString() + "]: " + _str + "\r";
             }
-            _buffer = "";
             return outdata;
         }
 

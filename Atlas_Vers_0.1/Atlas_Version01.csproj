@@ -106,9 +106,6 @@
     <Compile Include="View\Pages\BURlogin.xaml.cs">
       <DependentUpon>BURlogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Pages\Condition.xaml.cs">
-      <DependentUpon>Condition.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Pages\InProgress.xaml.cs">
       <DependentUpon>InProgress.xaml</DependentUpon>
     </Compile>
@@ -169,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\BURlogin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Pages\Condition.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
