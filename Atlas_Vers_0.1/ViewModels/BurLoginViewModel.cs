@@ -21,7 +21,14 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Свойства
 
-        public static bool archiveReading = false;
+        private static bool archiveReading = false;
+
+        private static bool soundOff = false;
+        private static bool doorOpen = false;
+        private static bool LoopIPR = false;
+        private static bool noteAuto = false;
+        private static bool noteAlarm = false;
+        private static bool autoLock = false;
 
         #region COM-Port
 
@@ -50,7 +57,21 @@ namespace Atlas_Vers_0._1.ViewModels
             get => _password;
             set => Set(ref _password, value);
         }
+
         #endregion
+
+        #region Состояние БУР
+
+        private string _condition = "";
+
+        public string Condition
+        {
+            get => _condition;
+            set => Set(ref _condition, value);
+        }
+        #endregion
+
+        
 
         #region Хранитель сообщений от БУР
 
@@ -267,8 +288,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             string _archBuffer = "";
             string outdata = "";
-            SerialPort senderPort = sender as SerialPort;
-            if (senderPort == null)
+            if (!(sender is SerialPort senderPort))
             {
                 return null;
             }
@@ -276,7 +296,7 @@ namespace Atlas_Vers_0._1.ViewModels
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
 
-            senderPort.BaseStream.Read(buffer, 0, bytesToRead);
+            _ = senderPort.BaseStream.Read(buffer, 0, bytesToRead);
 
             string indata = Encoding.Default.GetString(buffer);
 
@@ -293,13 +313,12 @@ namespace Atlas_Vers_0._1.ViewModels
                     _archBuffer = _archBuffer.Replace(";", " ");
                 }
                 _archBuffer = _archBuffer.Trim();
-                _archBuffer = _archBuffer.Insert(0, DateTime.Now.ToString() + " ");
                 string _archStr = _archBuffer;
                 outdata += _archStr + "\r\n";
             }
             else
             {
-                await GetMessage(sender);
+                _ = await GetMessage(sender);
             }
             if (outdata.Contains("Передача архива завершена"))
             {
@@ -323,8 +342,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             await Task.Delay(0);
             string outdata = "";
-            SerialPort senderPort = sender as SerialPort;
-            if (senderPort == null)
+            if (!(sender is SerialPort senderPort))
             {
                 return null;
             }
@@ -332,9 +350,9 @@ namespace Atlas_Vers_0._1.ViewModels
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
 
-            senderPort.BaseStream.Read(buffer, 0, bytesToRead);
+            _ = senderPort.BaseStream.Read(buffer, 0, bytesToRead);
 
-            string indata = System.Text.Encoding.Default.GetString(buffer);
+            string indata = Encoding.Default.GetString(buffer);
 
             _buffer += indata;
             if (_buffer.Contains("Начало передачи архива"))
@@ -353,6 +371,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 switch (_buffer)
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
+
                         _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
                         continue;
                     case var _ when _buffer.Contains("sound"):
@@ -360,7 +379,7 @@ namespace Atlas_Vers_0._1.ViewModels
                         continue;
                     case var _ when _buffer.Contains("Ошибка записи ключа"):
                         _buffer = _buffer.Remove(_buffer.IndexOf("Ошибка записи ключа"));
-                        break;
+                        continue;
                     default:
                         break;
                 }

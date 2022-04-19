@@ -15,6 +15,75 @@ namespace Atlas_Vers_0._1.ViewModels
             };
             win.Show();
         }
+
+        #region Свойства
+
+        #region Основные
+
+        #region Состояние автоматики
+
+        private bool _automaticCondition = false;
+
+        public bool AutomaticCondition
+        {
+            get => _automaticCondition;
+            set => Set(ref _automaticCondition, value);
+        }
+        #endregion
+
+        #region Блокировка автоматики
+
+        private bool _blockAutomaticCondition = false;
+
+        public bool BlockAutomaticCondition
+        {
+            get => _blockAutomaticCondition;
+            set => Set(ref _blockAutomaticCondition, value);
+        }
+        #endregion
+
+        #region Состояние дверей
+
+        private bool _doorCondition = false;
+
+        public bool DoorCondition
+        {
+            get => _doorCondition;
+            set => Set(ref _doorCondition, value);
+        }
+        #endregion
+
+        #endregion
+
+        #region Состояние БУР
+
+        private BattaryStatus _supply1 = BattaryStatus.normal;
+
+        public BattaryStatus Supply1
+        {
+            get => _supply1;
+            set => Set(ref _supply1, value);
+        }
+
+        private BattaryStatus _supply2 = BattaryStatus.normal;
+
+        public BattaryStatus Supply2
+        {
+            get => _supply2;
+            set => Set(ref _supply2, value);
+        }
+
+        private BattaryStatus _transceiver = BattaryStatus.normal;
+
+        public BattaryStatus Transceiver
+        {
+            get => _transceiver;
+            set => Set(ref _transceiver, value);
+        }
+
+        #endregion
+
+        #endregion
     }
 
     public class Unit
