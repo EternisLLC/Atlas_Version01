@@ -91,6 +91,9 @@
     <Compile Include="Resourses\UserControls\Frames\SettingsFrame.xaml.cs">
       <DependentUpon>SettingsFrame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resourses\UserControls\MyProgress.xaml.cs">
+      <DependentUpon>MyProgress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resourses\UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resourses\UserControls\Frames\SettingsFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resourses\UserControls\MyProgress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     DataContext="{Binding BurVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
     <Grid MinWidth="810">
@@ -488,7 +489,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Hidden">
+            Visibility="Visible">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -640,10 +641,7 @@
                         <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
 
-                    <Image
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        Source="/Resourses/Pictures/Indicators/Grey_000.png" />
+                    <uc:MyProgress Value="0" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="0"/>
 
                     <Label
                         Grid.RowSpan="3"
@@ -812,7 +810,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Visible">
+            Visibility="Hidden">
 
             <Grid>
                 <Grid.RowDefinitions>
