@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\RatioConverter.cs" />
+    <Compile Include="Model\Singleton.cs" />
     <Compile Include="Navigation\Navigation.cs" />
     <Compile Include="Resourses\ObjectLogic\TextBoxBehavior.cs" />
     <Compile Include="Resourses\UserControls\Frames\ArchiveFrame.xaml.cs">
@@ -101,6 +102,7 @@
     <Compile Include="ViewModels\BURViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SystemChoiceViewModel.cs" />
     <Compile Include="ViewModels\TitleBarViewModel.cs" />
     <Compile Include="View\Pages\BUR.xaml.cs">

@@ -61,6 +61,7 @@
                         Name="btnCondition"
                         Background="#3A3E46"
                         BorderThickness="0"
+                        Command="{Binding zxcqwe}"
                         Cursor="Hand"
                         FontFamily="Elektra Pro"
                         FontSize="20"
@@ -216,11 +217,11 @@
                     BorderBrush="#2c2c2c"
                     BorderThickness="0,2,0,1">
                     <Button
-                        Focusable="False"
                         Background="#3A3E46"
                         BorderThickness="0"
                         Click="Button_Click"
                         Cursor="Hand"
+                        Focusable="False"
                         FontFamily="Elektra Pro"
                         FontSize="20"
                         Style="{DynamicResource BURmainBTN}">

@@ -71,16 +71,14 @@ namespace Atlas_Vers_0._1.ViewModels
         }
         #endregion
 
-        
-
         #region Хранитель сообщений от БУР
 
-        private static string _messageResult;
+        public static string messageResult = "";
 
         public string MessageResult
         {
-            get => _messageResult;
-            set => Set(ref _messageResult, value);
+            get => messageResult;
+            set => Set(ref messageResult, value);
         }
 
         private static string _archiveResult;
@@ -371,7 +369,6 @@ namespace Atlas_Vers_0._1.ViewModels
                 switch (_buffer)
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
-
                         _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
                         continue;
                     case var _ when _buffer.Contains("sound"):

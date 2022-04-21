@@ -1,6 +1,6 @@
 ﻿namespace Atlas_Vers_0._1.ViewModels.Base
 {
-    public  class ViewModelLocator
+    public class ViewModelLocator
     {
         public ViewModelLocator()
         {
