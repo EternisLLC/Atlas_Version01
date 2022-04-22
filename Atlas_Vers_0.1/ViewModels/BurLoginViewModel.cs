@@ -285,7 +285,7 @@ namespace Atlas_Vers_0._1.ViewModels
         private async ValueTask<string> GetArchiveMessage(object sender)
         {
             string _archBuffer = "";
-            string outdata = "";
+            StringBuilder outdata = new StringBuilder();
             if (!(sender is SerialPort senderPort))
             {
                 return null;
@@ -312,17 +312,17 @@ namespace Atlas_Vers_0._1.ViewModels
                 }
                 _archBuffer = _archBuffer.Trim();
                 string _archStr = _archBuffer;
-                outdata += _archStr + "\r\n";
+                outdata.Append(_archStr + "\r\n");
             }
             else
             {
                 _ = await GetMessage(sender);
             }
-            if (outdata.Contains("Передача архива завершена"))
+            if (outdata.ToString().Contains("Передача архива завершена"))
             {
                 archiveReading = false;
             }
-            return outdata;
+            return outdata.ToString();
         }
 
         #endregion
@@ -339,7 +339,7 @@ namespace Atlas_Vers_0._1.ViewModels
         private async ValueTask<string> GetMessage(object sender)
         {
             await Task.Delay(0);
-            string outdata = "";
+            var outdata = new StringBuilder("");
             if (!(sender is SerialPort senderPort))
             {
                 return null;
@@ -368,9 +368,9 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 switch (_buffer)
                 {
-                    case var _ when _buffer.Contains("Текущее состояние направления"):
-                        _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
-                        continue;
+                    //case var _ when _buffer.Contains("Текущее состояние направления"):
+                    //    _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
+                    //    continue;
                     case var _ when _buffer.Contains("sound"):
                         _buffer = _buffer.Remove(_buffer.IndexOf("sound"));
                         continue;
@@ -382,9 +382,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 }
                 _str = _buffer.Remove(_buffer.IndexOf("\r"));
                 _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
-                outdata += "[" + DateTime.Now.ToString() + "]: " + _str + "\r";
+                outdata.Append("[" + DateTime.Now.ToString() + "]: " + _str + "\r");
             }
-            return outdata;
+            return outdata.ToString();
         }
 
         #endregion
