@@ -9,7 +9,7 @@
     Width="500"
     Height="600"
     AllowsTransparency="True"
-    DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
+    DataContext="{Binding BURMesVM, Source={StaticResource Locator}}"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
@@ -72,11 +72,11 @@
             FontSize="12"
             Foreground="White"
             IsReadOnly="True"
-            Text="{Binding MessageResult, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding Messages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto" />
 
-        <Button
+        <!--<Button
             Grid.Row="2"
             MinWidth="100"
             MinHeight="20"
@@ -112,7 +112,7 @@
                     <Setter Property="CornerRadius" Value="5" />
                 </Style>
             </Button.Resources>
-        </Button>
+        </Button>-->
 
     </Grid>
 </Window>

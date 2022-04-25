@@ -17,18 +17,20 @@ namespace Atlas_Vers_0._1.ViewModels
         public BurLoginViewModel()
         {
             UpdateComPorts();
+            BURMessagesViewModel bur = new BURMessagesViewModel();
+            MessageHandler += bur.UpdateMessages;
         }
 
         #region Свойства
 
         private static bool archiveReading = false;
 
-        private static bool soundOff = false;
-        private static bool doorOpen = false;
-        private static bool LoopIPR = false;
-        private static bool noteAuto = false;
-        private static bool noteAlarm = false;
-        private static bool autoLock = false;
+        //private static bool soundOff = false;
+        //private static bool doorOpen = false;
+        //private static bool LoopIPR = false;
+        //private static bool noteAuto = false;
+        //private static bool noteAlarm = false;
+        //private static bool autoLock = false;
 
         #region COM-Port
 
@@ -78,8 +80,20 @@ namespace Atlas_Vers_0._1.ViewModels
         public string MessageResult
         {
             get => messageResult;
-            set => Set(ref messageResult, value);
+            set
+            {
+                Set(ref messageResult, value);
+                MessageHandler(MessageResult);
+            }
         }
+
+        public delegate void MethodContainer(string message);
+
+        public event MethodContainer MessageHandler;
+
+        #endregion
+
+        #region Сообщения Архив
 
         private static string _archiveResult;
 
@@ -88,7 +102,9 @@ namespace Atlas_Vers_0._1.ViewModels
             get => _archiveResult;
             set => Set(ref _archiveResult, value);
         }
+
         #endregion
+        
 
         #endregion
 
