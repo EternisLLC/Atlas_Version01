@@ -44,6 +44,10 @@ namespace Atlas_Vers_0._1
             return true;
         }
 
+        private string messages;
+
+        public virtual string Messages { get; set; }
+
         #endregion
     }
 

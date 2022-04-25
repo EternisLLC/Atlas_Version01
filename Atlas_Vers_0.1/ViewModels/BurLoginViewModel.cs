@@ -75,7 +75,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Хранитель сообщений от БУР
 
-        public static string messageResult = "";
+        public string messageResult = "";
 
         public string MessageResult
         {
@@ -83,7 +83,7 @@ namespace Atlas_Vers_0._1.ViewModels
             set
             {
                 Set(ref messageResult, value);
-                MessageHandler(MessageResult);
+                MessageHandler?.Invoke(MessageResult);
             }
         }
 
@@ -281,7 +281,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             port.WriteLine(command + value + "\r\n");
 
-            await Task.Delay(100);
+            await Task.Delay(10000);
 
             string messageResult = await GetMessage(port);
 
