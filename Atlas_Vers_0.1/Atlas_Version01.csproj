@@ -98,6 +98,8 @@
     <Compile Include="Resourses\UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Base\IObservable.cs" />
+    <Compile Include="ViewModels\Base\IObserver.cs" />
     <Compile Include="ViewModels\BURMessagesViewModel.cs" />
     <Compile Include="ViewModels\BURViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />

@@ -17,6 +17,9 @@
             BurVM = new BURViewModel();
 
             BURMesVM = new BURMessagesViewModel();
+
+            BURMessagesViewModel vm = BURMesVM; //as BURMessagesViewModel;
+            vm.ConcreteObservable = BurLoginVM as BurLoginViewModel;
         }
 
         public ViewModel MainVM { get; set; }
@@ -31,6 +34,8 @@
 
         public ViewModel BurVM { get; set; }
 
-        public ViewModel BURMesVM { get; set; }
+        //если все будет работать, то стоит изменить
+        //BURMessagesViewModel -> ViewModel
+        public BURMessagesViewModel BURMesVM { get; set; }
     }
 }

@@ -72,7 +72,7 @@
             FontSize="12"
             Foreground="White"
             IsReadOnly="True"
-            Text="{Binding Messages, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Text="{Binding AllMessages, UpdateSourceTrigger=PropertyChanged}"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto" />
 

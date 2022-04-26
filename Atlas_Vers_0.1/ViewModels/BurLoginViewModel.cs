@@ -1,4 +1,5 @@
 ﻿using Atlas_Vers_0._1.View.Pages;
+using Atlas_Vers_0._1.ViewModels.Base;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -12,18 +13,17 @@ using System.Windows.Input;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
-    public class BurLoginViewModel : ViewModel
+    public class BurLoginViewModel : ViewModel, IObservable
     {
         public BurLoginViewModel()
         {
             UpdateComPorts();
-            BURMessagesViewModel bur = new BURMessagesViewModel();
-            MessageHandler += bur.UpdateMessages;
         }
 
         #region Свойства
 
         private static bool archiveReading = false;
+        private List<IObserver> _observers = new List<IObserver>();
 
         //private static bool soundOff = false;
         //private static bool doorOpen = false;
@@ -36,6 +36,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private readonly string[] _comNames = SerialPort.GetPortNames();
         private List<SerialPort> _serialPorts;
+
         public List<SerialPort> SerialPorts
         {
             get => _serialPorts;
@@ -49,9 +50,11 @@ namespace Atlas_Vers_0._1.ViewModels
             get => _SelectedComPort;
             set => Set(ref _SelectedComPort, value);
         }
+
         #endregion
 
         #region Пароль
+
         private string _password = "";
 
         public string Password
@@ -71,11 +74,12 @@ namespace Atlas_Vers_0._1.ViewModels
             get => _condition;
             set => Set(ref _condition, value);
         }
+
         #endregion
 
         #region Хранитель сообщений от БУР
 
-        public string messageResult = "";
+        public static string messageResult = "";
 
         public string MessageResult
         {
@@ -83,13 +87,9 @@ namespace Atlas_Vers_0._1.ViewModels
             set
             {
                 Set(ref messageResult, value);
-                MessageHandler?.Invoke(MessageResult);
+                NotifyObservers();
             }
         }
-
-        public delegate void MethodContainer(string message);
-
-        public event MethodContainer MessageHandler;
 
         #endregion
 
@@ -104,64 +104,74 @@ namespace Atlas_Vers_0._1.ViewModels
         }
 
         #endregion
-        
 
         #endregion
 
         #region Команды
+
         /// <summary>
         /// Команда авторизации через COM-порт
         /// </summary>
-        public ICommand AuthorizationCommand => new LambdaCommand(async (param) =>
-        {
-            await SerialPortConnection(SelectedComPort, Password);
-        },  // кнопка может работать, если true
-            (param) => SelectedComPort != null && Password != "");
-        /// <summary>
-        /// Сохранение сообщений с БУР в текстовый файл
-        /// </summary>
-        public ICommand SaveMessagesToFile => new LambdaCommand((param) =>
-        {
-            SaveToFile(MessageResult);
-        });
+        public ICommand AuthorizationCommand =>
+            new LambdaCommand(async (param) =>
+            {
+                await SerialPortConnection(SelectedComPort, Password);
+            }, // кнопка может работать, если true
+                              (param) => SelectedComPort != null && Password != "");
 
         /// <summary>
         /// Сохранение сообщений с БУР в текстовый файл
         /// </summary>
-        public ICommand SaveArchiveToFile => new LambdaCommand((param) =>
-        {
-            SaveToFile(ArchiveResult);
-        });
+        public ICommand SaveMessagesToFile =>
+            new LambdaCommand((param) =>
+            {
+                SaveToFile(MessageResult);
+            });
 
-        public ICommand GetArchiveCommand => new LambdaCommand(async (param) =>
-        {
-            await GetArchiveMessage(SelectedComPort, "Read_all");
-        });
+        /// <summary>
+        /// Сохранение сообщений с БУР в текстовый файл
+        /// </summary>
+        public ICommand SaveArchiveToFile =>
+            new LambdaCommand((param) =>
+            {
+                SaveToFile(ArchiveResult);
+            });
 
-        public ICommand GetArchiveNextCommand => new LambdaCommand(async (param) =>
-        {
-            await GetArchiveMessage(SelectedComPort, "Read_ev 2");
-        });
+        public ICommand GetArchiveCommand =>
+            new LambdaCommand(async (param) =>
+            {
+                await GetArchiveMessage(SelectedComPort, "Read_all");
+            });
 
-        public ICommand GetArchivePreviusCommand => new LambdaCommand(async (param) =>
-        {
-            await GetArchiveMessage(SelectedComPort, "Read_ev 1");
-        });
+        public ICommand GetArchiveNextCommand =>
+            new LambdaCommand(async (param) =>
+            {
+                await GetArchiveMessage(SelectedComPort, "Read_ev 2");
+            });
 
-        public ICommand GetArchiveLastCommand => new LambdaCommand(async (param) =>
-        {
-            await GetArchiveMessage(SelectedComPort, "Read_ev 0");
-        });
+        public ICommand GetArchivePreviusCommand =>
+            new LambdaCommand(async (param) =>
+            {
+                await GetArchiveMessage(SelectedComPort, "Read_ev 1");
+            });
 
-        public ICommand TestCommandForLockDors => new LambdaCommand(async (param) =>
-        {
-            await SendMessage(SelectedComPort, "Sound", null) ;
-        });
+        public ICommand GetArchiveLastCommand =>
+            new LambdaCommand(async (param) =>
+            {
+                await GetArchiveMessage(SelectedComPort, "Read_ev 0");
+            });
 
-        public ICommand ArchiveClearCommand => new LambdaCommand(async (param) =>
-        {
-            ArchiveResult = await ClearString();
-        });
+        public ICommand TestCommandForLockDors =>
+            new LambdaCommand(async (param) =>
+            {
+                await SendMessage(SelectedComPort, "Sound", null);
+            });
+
+        public ICommand ArchiveClearCommand =>
+            new LambdaCommand(async (param) =>
+            {
+                ArchiveResult = await ClearString();
+            });
 
         #endregion
 
@@ -191,6 +201,7 @@ namespace Atlas_Vers_0._1.ViewModels
         #region Настройка подключение порта
 
         private bool PasswordChecked = false;
+
         /// <summary>
         /// Настройка и подключение COM порта
         /// </summary>
@@ -256,7 +267,8 @@ namespace Atlas_Vers_0._1.ViewModels
         /// Сохранение строки в файл
         /// </summary>
         /// <param name="message"></param>
-        public void SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
+        public void
+            SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
@@ -281,7 +293,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             port.WriteLine(command + value + "\r\n");
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
 
             string messageResult = await GetMessage(port);
 
@@ -292,7 +304,6 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Получение архива
 
-        
         /// <summary>
         /// Обработка архива COM-порта
         /// </summary>
@@ -322,10 +333,12 @@ namespace Atlas_Vers_0._1.ViewModels
                     _archBuffer = _archBuffer.Remove(_archBuffer.IndexOf("Ev"), 3);
                     _archBuffer = _archBuffer.Replace("\r ", "\r");
                 }
+
                 while (_archBuffer.Contains(";"))
                 {
                     _archBuffer = _archBuffer.Replace(";", " ");
                 }
+
                 _archBuffer = _archBuffer.Trim();
                 string _archStr = _archBuffer;
                 outdata.Append(_archStr + "\r\n");
@@ -334,10 +347,12 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 _ = await GetMessage(sender);
             }
+
             if (outdata.ToString().Contains("Передача архива завершена"))
             {
                 archiveReading = false;
             }
+
             return outdata.ToString();
         }
 
@@ -347,6 +362,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private string _str = "";
         private string _buffer = "";
+
         /// <summary>
         /// Обработка сообщения с COM-порта
         /// </summary>
@@ -373,13 +389,16 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 archiveReading = true;
             }
-            if (_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
+
+            if (
+                _buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
             {
                 PasswordChecked = true;
                 _buffer = _buffer.Replace("checkedPass true", "");
                 _buffer = _buffer.Trim();
                 _buffer += "\r";
             }
+
             while (_buffer.Contains("\r"))
             {
                 switch (_buffer)
@@ -396,10 +415,12 @@ namespace Atlas_Vers_0._1.ViewModels
                     default:
                         break;
                 }
+
                 _str = _buffer.Remove(_buffer.IndexOf("\r"));
                 _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
                 outdata.Append("[" + DateTime.Now.ToString() + "]: " + _str + "\r");
             }
+
             return outdata.ToString();
         }
 
@@ -422,6 +443,24 @@ namespace Atlas_Vers_0._1.ViewModels
         }
 
         #endregion
+
         #endregion
+
+        #region Observable func
+
+        public void AddObserver(IObserver observer) => _observers.Add(observer);
+
+        public void RemoveObserver(IObserver observer) => _observers.Remove(observer);
+
+        public void NotifyObservers()
+        {
+            foreach (IObserver observer in _observers)
+            {
+                observer.Update(MessageResult);
+            }
+        }
+
+        #endregion
+
     }
 }

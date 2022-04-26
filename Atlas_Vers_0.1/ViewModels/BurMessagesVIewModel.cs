@@ -1,18 +1,48 @@
-﻿namespace Atlas_Vers_0._1.ViewModels
+﻿using Atlas_Vers_0._1.ViewModels.Base;
+using System;
+
+namespace Atlas_Vers_0._1.ViewModels
 {
-    public class BURMessagesViewModel : ViewModel
+    public class BURMessagesViewModel : ViewModel, IObserver, IDisposable
     {
-        private static string _message = "";
-        public override string Messages
+        public BURMessagesViewModel()
         {
-            get => _message;
-            set => Set(ref _message, value);
         }
 
-        public void UpdateMessages(string message)
+        ~BURMessagesViewModel()
         {
-            Messages = message;
-            OnPropertyChanged(nameof(Messages));
+            if (ConcreteObservable == null)
+            {
+                return;
+            }
+
+            ConcreteObservable.RemoveObserver(this);
+        }
+
+        public void Dispose() => ConcreteObservable.RemoveObserver(this);
+
+        private static string _allMessages = "";
+        private IObservable _concreteObservable;
+
+        public IObservable ConcreteObservable
+        {
+            get => _concreteObservable;
+            set
+            {
+                _concreteObservable = value;
+                _concreteObservable.AddObserver(this);
+            }
+        }
+
+        public string AllMessages
+        {
+            get => _allMessages;
+            set => Set(ref _allMessages, value);
+        }
+
+        public void Update(string message)
+        {
+            AllMessages = message;
         }
     }
 }
