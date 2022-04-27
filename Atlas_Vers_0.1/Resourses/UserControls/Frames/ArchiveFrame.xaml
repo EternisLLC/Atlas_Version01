@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tb="clr-namespace:Atlas_Vers_0._1.Resourses.ObjectLogic"
-    DataContext="{Binding BURMesVM, Source={StaticResource Locator}}"
+    DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
     <Grid MinWidth="810">
         <Grid.ColumnDefinitions>
@@ -340,7 +340,7 @@
                     FontSize="12"
                     Foreground="White"
                     IsReadOnly="True"
-                    Text="{Binding Messages, UpdateSourceTrigger=PropertyChanged}"
+                    Text="{Binding ArchiveResult, UpdateSourceTrigger=PropertyChanged}"
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto" />
             </Grid>

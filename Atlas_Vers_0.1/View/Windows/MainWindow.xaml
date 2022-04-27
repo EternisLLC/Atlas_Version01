@@ -10,7 +10,6 @@
     AllowsTransparency="True"
     DataContext="{Binding MainVM, Source={StaticResource Locator}}"
     ResizeMode="CanResizeWithGrip"
-    ShowInTaskbar="True"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None">
     <Grid Background="#3a3e46">

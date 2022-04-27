@@ -244,12 +244,16 @@ namespace Atlas_Vers_0._1.ViewModels
         #endregion
 
         #region Обработчик события получения сообщения
-
+        /// <summary>
+        /// Обработчик события получения сообщения с COM-порта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             if (archiveReading)
             {
-                Thread.Sleep(10000);
+                Thread.Sleep(1000);
                 ArchiveResult += await GetArchiveMessage(sender);
             }
             else
@@ -266,9 +270,8 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <summary>
         /// Сохранение строки в файл
         /// </summary>
-        /// <param name="message"></param>
-        public void
-            SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
+        /// <param name="message">Строку которую нужно сохранить</param>
+        public void SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
@@ -285,15 +288,15 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <summary>
         /// Отправка сообщения COM-порту и получение ответа
         /// </summary>
-        /// <param name="port"></param>
-        /// <param name="command"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="port">Порт, в который отправляется сообщение</param>
+        /// <param name="command">Сообщение</param>
+        /// <param name="value">Значение (как дополнительная)</param>
+        /// <returns>Ответ COM-порта в виде строки</returns>
         private async ValueTask<string> SendMessage(SerialPort port, string command, object value)
         {
             port.WriteLine(command + value + "\r\n");
 
-            await Task.Delay(5000);
+            await Task.Delay(100);
 
             string messageResult = await GetMessage(port);
 
@@ -311,6 +314,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <returns></returns>
         private async ValueTask<string> GetArchiveMessage(object sender)
         {
+            await Task.Delay(0);
             string _archBuffer = "";
             StringBuilder outdata = new StringBuilder();
             if (!(sender is SerialPort senderPort))
@@ -321,40 +325,51 @@ namespace Atlas_Vers_0._1.ViewModels
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
 
-            _ = senderPort.BaseStream.Read(buffer, 0, bytesToRead);
+            senderPort.BaseStream.Read(buffer, 0, bytesToRead);
 
             string indata = Encoding.Default.GetString(buffer);
 
             _archBuffer += indata;
-            if (_archBuffer.Contains("Ev"))
+
+            return ArchiveParce(_archBuffer).ToString();
+        }
+
+        #region Парсер архива
+        /// <summary>
+        /// Обработка полученного архива с COM-порта
+        /// </summary>
+        /// <param name="archBuffer">Сообщение с архивом</param>
+        /// <returns>Обработанный архив в виде строки</returns>
+        private async ValueTask<string> ArchiveParce(string archBuffer)
+        {
+            await Task.Delay(0);
+            StringBuilder outData = new StringBuilder();
+            if (archBuffer.Contains("Ev"))
             {
-                while (_archBuffer.Contains("Ev"))
+                while (archBuffer.Contains("Ev"))
                 {
-                    _archBuffer = _archBuffer.Remove(_archBuffer.IndexOf("Ev"), 3);
-                    _archBuffer = _archBuffer.Replace("\r ", "\r");
+                    archBuffer = archBuffer.Remove(archBuffer.IndexOf("Ev"), 3);
+                    archBuffer = archBuffer.Replace("\r ", "\r");
                 }
 
-                while (_archBuffer.Contains(";"))
+                while (archBuffer.Contains(";"))
                 {
-                    _archBuffer = _archBuffer.Replace(";", " ");
+                    archBuffer = archBuffer.Replace(";", " ");
                 }
 
-                _archBuffer = _archBuffer.Trim();
-                string _archStr = _archBuffer;
-                outdata.Append(_archStr + "\r\n");
-            }
-            else
-            {
-                _ = await GetMessage(sender);
+                archBuffer = archBuffer.Trim();
+                outData.Append(archBuffer + "\r\n");
             }
 
-            if (outdata.ToString().Contains("Передача архива завершена"))
+            if (outData.ToString().Contains("Передача архива завершена"))
             {
                 archiveReading = false;
             }
 
-            return outdata.ToString();
+            return outData.ToString();
         }
+
+        #endregion
 
         #endregion
 
@@ -367,34 +382,36 @@ namespace Atlas_Vers_0._1.ViewModels
         /// Обработка сообщения с COM-порта
         /// </summary>
         /// <param name="sender">COM-порт</param>
-        /// <returns></returns>
+        /// <returns>Обработаное сообщение в виде строки</returns>
         private async ValueTask<string> GetMessage(object sender)
         {
             await Task.Delay(0);
-            var outdata = new StringBuilder("");
-            if (!(sender is SerialPort senderPort))
+            StringBuilder outdata = new StringBuilder("");
+            if (!(sender is SerialPort senderPort)) // Проверка на является ли sender портом
             {
-                return null;
+                return null; // Остановка функции
             }
 
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
 
-            _ = senderPort.BaseStream.Read(buffer, 0, bytesToRead);
+            senderPort.BaseStream.Read(buffer, 0, bytesToRead);
 
             string indata = Encoding.Default.GetString(buffer);
 
             _buffer += indata;
-            if (_buffer.Contains("Начало передачи архива"))
+            if (_buffer.Contains("Начало передачи архива")) // Проверка на получение архива
             {
                 archiveReading = true;
+                ArchiveResult += ArchiveParce(_buffer).ToString();
+                _buffer = "";
+                return null; // Остановка функции
             }
 
-            if (
-                _buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля, а после его удаление из свойства
+            if (_buffer.Contains("checkedPass true")) // Проверка на правильность введенного пароля
             {
                 PasswordChecked = true;
-                _buffer = _buffer.Replace("checkedPass true", "");
+                _buffer = _buffer.Replace("checkedPass true", ""); // Удаление его из свойства
                 _buffer = _buffer.Trim();
                 _buffer += "\r";
             }
@@ -403,9 +420,10 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 switch (_buffer)
                 {
-                    //case var _ when _buffer.Contains("Текущее состояние направления"):
-                    //    _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
-                    //    continue;
+                    case var _ when _buffer.Contains("Текущее состояние направления"):
+
+                        _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
+                        continue;
                     case var _ when _buffer.Contains("sound"):
                         _buffer = _buffer.Remove(_buffer.IndexOf("sound"));
                         continue;
@@ -425,6 +443,12 @@ namespace Atlas_Vers_0._1.ViewModels
         }
 
         #endregion
+
+        // TODO Метод, который обрабатывает Текущее состояние направления
+        private async Task CheckCurrentSituation()
+        {
+
+        }
 
         #region Обновление доступных портов
 

@@ -1,5 +1,6 @@
 ﻿using Atlas_Vers_0._1.ViewModels.Base;
 using System;
+using System.Windows.Input;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
@@ -19,7 +20,10 @@ namespace Atlas_Vers_0._1.ViewModels
             ConcreteObservable.RemoveObserver(this);
         }
 
-        public void Dispose() => ConcreteObservable.RemoveObserver(this);
+        public void Dispose()
+        {
+            ConcreteObservable.RemoveObserver(this);
+        }
 
         private static string _allMessages = "";
         private IObservable _concreteObservable;
