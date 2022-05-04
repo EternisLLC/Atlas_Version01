@@ -15,7 +15,7 @@
                             <PathFigure StartPoint="100,100">
                                 <LineSegment Point="0,100" />
                                 <ArcSegment
-                                    Point="170.71,29.29"
+                                    Point="{Binding AuxiliaryPoint}"
                                     Size="100,100"
                                     SweepDirection="Clockwise" />
                                 <LineSegment Point="100,100" />
@@ -39,7 +39,7 @@
                             <PathFigure StartPoint="100,100">
                                 <LineSegment Point="200,100" />
                                 <ArcSegment
-                                    Point="170.71,29.29"
+                                    Point="{Binding AuxiliaryPoint}"
                                     Size="100,100"
                                     SweepDirection="Counterclockwise" />
                                 <LineSegment Point="100,100" />

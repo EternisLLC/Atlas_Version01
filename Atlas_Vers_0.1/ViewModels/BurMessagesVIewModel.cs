@@ -6,10 +6,6 @@ namespace Atlas_Vers_0._1.ViewModels
 {
     public class BURMessagesViewModel : ViewModel, IObserver, IDisposable
     {
-        public BURMessagesViewModel()
-        {
-        }
-
         ~BURMessagesViewModel()
         {
             if (ConcreteObservable == null)

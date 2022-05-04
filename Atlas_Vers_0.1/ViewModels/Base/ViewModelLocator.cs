@@ -20,6 +20,7 @@
 
             BURMessagesViewModel _mesVM = BURMesVM as BURMessagesViewModel;
             _mesVM.ConcreteObservable = BurLoginVM as BurLoginViewModel;
+
         }
 
         public ViewModel MainVM { get; set; }

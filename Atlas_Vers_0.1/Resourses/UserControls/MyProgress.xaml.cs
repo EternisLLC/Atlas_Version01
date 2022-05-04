@@ -26,9 +26,9 @@ namespace Atlas_Vers_0._1.Resourses.UserControls
             set => SetValue(ValueProperty, value);
         }
 
-        protected Point AuxiliaryPoint
+        public Point AuxiliaryPoint
         {
-            get => (Point)GetValue(AuxiliaryPointProperty);
+            get => new Point(170.71, 29.29);
             set => SetValue(AuxiliaryPointProperty, value);
         }
 

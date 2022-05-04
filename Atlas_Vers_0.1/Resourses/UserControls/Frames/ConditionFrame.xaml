@@ -641,7 +641,7 @@
                         <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
 
-                    <uc:MyProgress Value="100" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <uc:MyProgress Value="50" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="0"/>
 
                     <Label
                         Grid.RowSpan="3"

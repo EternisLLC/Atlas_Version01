@@ -23,7 +23,7 @@ namespace Atlas_Vers_0._1.ViewModels
         #region Свойства
 
         private static bool archiveReading = false;
-        private List<IObserver> _observers = new List<IObserver>();
+        private readonly List<IObserver> _observers = new List<IObserver>();
 
         //private static bool soundOff = false;
         //private static bool doorOpen = false;
@@ -116,8 +116,7 @@ namespace Atlas_Vers_0._1.ViewModels
             new LambdaCommand(async (param) =>
             {
                 await SerialPortConnection(SelectedComPort, Password);
-            }, // кнопка может работать, если true
-                              (param) => SelectedComPort != null && Password != "");
+            }, (param) => SelectedComPort != null && Password != "");
 
         /// <summary>
         /// Сохранение сообщений с БУР в текстовый файл
@@ -346,6 +345,14 @@ namespace Atlas_Vers_0._1.ViewModels
             StringBuilder outData = new StringBuilder();
             if (archBuffer.Contains("Ev"))
             {
+                switch (archBuffer)
+                {
+                    case var _ when archBuffer.Contains("Текущее состояние направления"):
+                        archBuffer = archBuffer.Remove(archBuffer.IndexOf("Текущее состояние направления"));
+                        break;
+                    default:
+                        break;
+                }
                 while (archBuffer.Contains("Ev"))
                 {
                     archBuffer = archBuffer.Remove(archBuffer.IndexOf("Ev"), 3);
@@ -418,7 +425,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
             while (_buffer.Contains("\r"))
             {
-                switch (_buffer)
+                switch (_buffer) // Проверка на сообщения
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
 
@@ -442,13 +449,12 @@ namespace Atlas_Vers_0._1.ViewModels
             return outdata.ToString();
         }
 
-        #endregion
-
-        // TODO Метод, который обрабатывает Текущее состояние направления
-        private async Task CheckCurrentSituation()
+        private async Task DirectionConditionParcer()
         {
 
         }
+
+        #endregion
 
         #region Обновление доступных портов
 
@@ -482,9 +488,8 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 observer.Update(MessageResult);
             }
+
         }
-
         #endregion
-
     }
 }
