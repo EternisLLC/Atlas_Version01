@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -447,9 +448,9 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             await Task.Delay(0);
             StringBuilder outdata = new StringBuilder("");
-            if (!(sender is SerialPort senderPort)) // Проверка на является ли sender портом
+            if (!(sender is SerialPort senderPort))
             {
-                return null; // Остановка функции
+                return null;
             }
 
             int bytesToRead = senderPort.BytesToRead;
@@ -478,7 +479,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
             while (_buffer.Contains("\r"))
             {
-                switch (_buffer) // Проверка на сообщения
+                switch (_buffer)
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
                         await DirectionConditionParcer(_buffer);
@@ -511,10 +512,31 @@ namespace Atlas_Vers_0._1.ViewModels
 
             string[] subs = condition.Split(' ');
 
-            foreach (var ch in subs)
+            int orderNum = 0;
+
+            while (orderNum < 3)
             {
-                //Convert.ToString(ch, 2);
+                switch (orderNum)
+                {
+                    case 0:
+                        orderNum++;
+                        break;
+                    case 1:
+                        orderNum++;
+                        break;
+                    case 2:
+                        orderNum++;
+                        break;
+                    default:
+                        break;
+                }
+                foreach (var ch in subs)
+                {
+                    string BinaryCode = Convert.ToString(Convert.ToInt32(ch), 2);
+                }
             }
+
+            
         }
 
         #endregion
