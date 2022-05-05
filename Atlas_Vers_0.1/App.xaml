@@ -4,18 +4,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ViewModelsLocation="clr-namespace:Atlas_Vers_0._1.ViewModels.Base"
     xmlns:local="clr-namespace:Atlas_Vers_0._1"
+    xmlns:vm="clr-namespace:Atlas_Vers_0._1.ViewModels"
+    xmlns:vw="clr-namespace:Atlas_Vers_0._1.View.Windows"
     StartupUri="/View/Windows/MainWindow.xaml">
     <Application.Resources>
         <ViewModelsLocation:ViewModelLocator x:Key="Locator" />
 
+        <DataTemplate DataType="{x:Type vm:BURViewModel}">
+            <vw:BURMessages />
+        </DataTemplate>
+
         <!--#region Buttons-->
 
-        <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Offset="0.2" Color="#EE352B" />
+        <!--#region Анимированные кнопки-->
+
+        <!--#region Кнопка сохранения сообщений с БУР-->
+
+        <LinearGradientBrush x:Key="BURMessagesButtonBackground" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Offset="0.1" Color="#EE352B" />
             <GradientStop Offset="0.5" Color="#A71E22" />
-            <GradientStop Offset="0.8" Color="#EE352B" />
+            <GradientStop Offset="1.0" Color="#EE352B" />
         </LinearGradientBrush>
-        <Style x:Key="WriteDownButtonStyle" TargetType="{x:Type Button}">
+        <Style x:Key="BURMessagesButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
                 <Setter.Value>
@@ -24,7 +34,9 @@
                             <Border
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Stretch"
-                                Background="{StaticResource ButtonBackground}"
+                                Background="{StaticResource BURMessagesButtonBackground}"
+                                BorderBrush="#b1b1b1"
+                                BorderThickness="1"
                                 CornerRadius="3" />
                             <Border
                                 x:Name="BorderPressed"
@@ -68,6 +80,195 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="BURSettingsButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{StaticResource BURMessagesButtonBackground}"
+                                BorderBrush="#b1b1b1"
+                                BorderThickness="1"
+                                CornerRadius="5" />
+                            <Border
+                                x:Name="BorderPressed"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="Red"
+                                CornerRadius="5"
+                                Opacity="0" />
+                            <ContentPresenter
+                                x:Name="MainContent"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="BorderPressed"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="1"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="BorderPressed"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--#endregion-->
+
+        <!--#region Кнопка получения архива-->
+
+        <LinearGradientBrush x:Key="GetArchiveButtonBackground" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Offset="0.1" Color="#8b00ff" />
+            <GradientStop Offset="0.4" Color="#00008b" />
+            <GradientStop Offset="0.6" Color="#00008b" />
+            <GradientStop Offset="1.0" Color="#8b00ff " />
+        </LinearGradientBrush>
+        <Style x:Key="GetArchiveButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{StaticResource GetArchiveButtonBackground}"
+                                BorderThickness="0"
+                                CornerRadius="10" />
+                            <Border
+                                x:Name="BorderPressed"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="#00008b"
+                                CornerRadius="10"
+                                Opacity="0" />
+                            <ContentPresenter
+                                x:Name="MainContent"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="BorderPressed"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="1"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="BorderPressed"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--#endregion-->
+
+        <!--#region Кнопка сохранения архива-->
+
+        <LinearGradientBrush x:Key="ArchiveSaveButtonBackground" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Offset="0.1" Color="#EE352B" />
+            <GradientStop Offset="0.5" Color="#c41e3a" />
+            <GradientStop Offset="1.0" Color="#EE352B" />
+        </LinearGradientBrush>
+        <Style x:Key="ArchiveSaveButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="{StaticResource ArchiveSaveButtonBackground}"
+                                BorderBrush="#b1b1b1"
+                                BorderThickness="1"
+                                CornerRadius="10" />
+                            <Border
+                                x:Name="BorderPressed"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Background="#c41e3a"
+                                CornerRadius="10"
+                                Opacity="0" />
+                            <ContentPresenter
+                                x:Name="MainContent"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="BorderPressed"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="1"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="BorderPressed"
+                                                Storyboard.TargetProperty="Opacity"
+                                                To="0"
+                                                Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!--#endregion-->
 
         <Style x:Key="BURmainBTN" TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />

@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,7 +65,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\RatioConverter.cs" />
+    <Compile Include="Model\Singleton.cs" />
     <Compile Include="Navigation\Navigation.cs" />
+    <Compile Include="Resourses\ObjectLogic\TextBoxBehavior.cs" />
+    <Compile Include="Resourses\UserControls\Frames\ArchiveFrame.xaml.cs">
+      <DependentUpon>ArchiveFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resourses\UserControls\BackgroundLogo.xaml.cs">
       <DependentUpon>BackgroundLogo.xaml</DependentUpon>
     </Compile>
@@ -72,18 +86,25 @@
     <Compile Include="Resourses\UserControls\ButtonChooseInProgress.xaml.cs">
       <DependentUpon>ButtonChooseInProgress.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UserControls\ConditionFrame.xaml.cs">
+    <Compile Include="Resourses\UserControls\Frames\ConditionFrame.xaml.cs">
       <DependentUpon>ConditionFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UserControls\SettingsFrame.xaml.cs">
+    <Compile Include="Resourses\UserControls\Frames\SettingsFrame.xaml.cs">
       <DependentUpon>SettingsFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resourses\UserControls\MyProgress.xaml.cs">
+      <DependentUpon>MyProgress.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resourses\UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\BurViewModel.cs" />
+    <Compile Include="ViewModels\Base\IObservable.cs" />
+    <Compile Include="ViewModels\Base\IObserver.cs" />
+    <Compile Include="ViewModels\BURMessagesViewModel.cs" />
+    <Compile Include="ViewModels\BURViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SystemChoiceViewModel.cs" />
     <Compile Include="ViewModels\TitleBarViewModel.cs" />
     <Compile Include="View\Pages\BUR.xaml.cs">
@@ -91,9 +112,6 @@
     </Compile>
     <Compile Include="View\Pages\BURlogin.xaml.cs">
       <DependentUpon>BURlogin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Pages\Condition.xaml.cs">
-      <DependentUpon>Condition.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\InProgress.xaml.cs">
       <DependentUpon>InProgress.xaml</DependentUpon>
@@ -114,6 +132,10 @@
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelLocator.cs" />
     <Compile Include="ViewModels\BurLoginViewModel.cs" />
+    <Page Include="Resourses\UserControls\Frames\ArchiveFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resourses\UserControls\BackgroundLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,11 +156,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\UserControls\ConditionFrame.xaml">
+    <Page Include="Resourses\UserControls\Frames\ConditionFrame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resourses\UserControls\SettingsFrame.xaml">
+    <Page Include="Resourses\UserControls\Frames\SettingsFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resourses\UserControls\MyProgress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -154,10 +180,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Pages\Condition.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Pages\InProgress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\BURMessages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,6 +203,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Windows\BURMessages.xaml.cs">
+      <DependentUpon>BURMessages.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -201,7 +230,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Resourses\PDF\InstructionForBur.pdf" />
+    <None Include="packages.config" />
     <Resource Include="Fonts\Elektra Light Pro.otf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -561,6 +590,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Pictures\TitleBar\Top_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\Pictures\BUR\Automat_Locked_Dark%404x.png" />
+    <Resource Include="Resourses\Pictures\BUR\Automat_Unlocked_Dark%404x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

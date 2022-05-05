@@ -1,0 +1,118 @@
+﻿<Window
+    x:Class="Atlas_Vers_0._1.View.Windows.BURMessages"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tb="clr-namespace:Atlas_Vers_0._1.Resourses.ObjectLogic"
+    Title="BURMessages"
+    Width="500"
+    Height="600"
+    AllowsTransparency="True"
+    DataContext="{Binding BURMesVM, Source={StaticResource Locator}}"
+    Loaded="Window_Loaded"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid Background="#2c2c2c">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+            <Border
+                Height="50"
+                Background="#3a3e46"
+                BorderBrush="#3a3e46"
+                BorderThickness="0">
+
+                <Grid Height="50px" Margin="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="190" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Width="190"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Source="/Resourses/Pictures/TitleBar/Top_logo@4x.png"
+                        Stretch="Fill" />
+
+                    <Button
+                        Grid.Column="3"
+                        Width="50"
+                        HorizontalAlignment="Right"
+                        Background="#3a3e46"
+                        BorderThickness="0"
+                        Command="{Binding CloseCommand}">
+                        <StackPanel>
+                            <Image Width="30" Source="/Resourses/Pictures/TitleBar/Top_exit@4x.png" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <TextBox
+            Grid.Row="1"
+            Margin="10"
+            Padding="3"
+            tb:TextBoxBehaviour.ScrollOnTextChanged="True"
+            Background="#3a3e46"
+            BorderThickness="0"
+            FontFamily="Elektra Pro"
+            FontSize="12"
+            Foreground="White"
+            IsReadOnly="True"
+            Text="{Binding AllMessages, UpdateSourceTrigger=PropertyChanged}"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Auto" />
+
+        <!--<Button
+            Grid.Row="2"
+            MinWidth="100"
+            MinHeight="20"
+            Margin="10"
+            Command="{Binding SaveMessagesToFile}"
+            Content="Сохранить"
+            Cursor="Hand"
+            FontFamily="Elektra Pro"
+            FontSize="30"
+            Foreground="White"
+            Style="{DynamicResource BURMessagesButtonStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button
+            Grid.Row="3"
+            MinWidth="100"
+            MinHeight="20"
+            Margin="10"
+            Command="{Binding TestCommandForLockDors}"
+            Content="Отправить"
+            Cursor="Hand"
+            FontFamily="Elektra Pro"
+            FontSize="30"
+            Foreground="White"
+            Style="{DynamicResource BURMessagesButtonStyle}">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5" />
+                </Style>
+            </Button.Resources>
+        </Button>-->
+
+    </Grid>
+</Window>
