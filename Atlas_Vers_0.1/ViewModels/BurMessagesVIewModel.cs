@@ -21,7 +21,7 @@ namespace Atlas_Vers_0._1.ViewModels
             ConcreteObservable.RemoveObserver(this);
         }
 
-        private static string _allMessages = "";
+        private string _allMessages = "";
         private IObservable _concreteObservable;
 
         public IObservable ConcreteObservable

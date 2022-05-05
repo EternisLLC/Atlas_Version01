@@ -79,7 +79,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Хранитель сообщений от БУР
 
-        public static string messageResult = "";
+        public string messageResult = "";
 
         public string MessageResult
         {
@@ -95,7 +95,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Сообщения Архив
 
-        private static string _archiveResult;
+        private string _archiveResult;
 
         public string ArchiveResult
         {
@@ -115,7 +115,14 @@ namespace Atlas_Vers_0._1.ViewModels
         public ICommand AuthorizationCommand =>
             new LambdaCommand(async (param) =>
             {
-                await SerialPortConnection(SelectedComPort, Password);
+                try
+                {
+                    await SerialPortConnection(SelectedComPort, Password);
+                }
+                catch
+                {
+                    MessageBox.Show("Нет возможности подключиться к COM-port, попробуйте ещё раз.", "Ошибка", MessageBoxButton.OK);
+                }
             }, (param) => SelectedComPort != null && Password != "");
 
         /// <summary>
@@ -124,7 +131,14 @@ namespace Atlas_Vers_0._1.ViewModels
         public ICommand SaveMessagesToFile =>
             new LambdaCommand((param) =>
             {
-                SaveToFile(MessageResult);
+                try
+                {
+                    SaveToFile(MessageResult);
+                }
+                catch
+                {
+                    MessageBox.Show("Нет возможности сохранить сообщения с БУР, попробуйте ещё раз.", "Ошибка", MessageBoxButton.OK);
+                }
             });
 
         /// <summary>
@@ -133,31 +147,70 @@ namespace Atlas_Vers_0._1.ViewModels
         public ICommand SaveArchiveToFile =>
             new LambdaCommand((param) =>
             {
-                SaveToFile(ArchiveResult);
+                try
+                {
+                    SaveToFile(ArchiveResult);
+                }
+                catch
+                {
+                    MessageBox.Show("Нет возможности сохранить архив с БУР, попробуйте ещё раз.", "Ошибка", MessageBoxButton.OK);
+                }
             });
 
         public ICommand GetArchiveCommand =>
             new LambdaCommand(async (param) =>
             {
-                await GetArchiveMessage(SelectedComPort, "Read_all");
+                try
+                {
+                    await GetArchiveMessage(SelectedComPort, "Read_all");
+                }
+                catch
+                {
+                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
+                    Navigation.Navigation.GoBack();
+                }
             });
 
         public ICommand GetArchiveNextCommand =>
             new LambdaCommand(async (param) =>
             {
-                await GetArchiveMessage(SelectedComPort, "Read_ev 2");
+                try
+                {
+                    await GetArchiveMessage(SelectedComPort, "Read_ev 2");
+                }
+                catch
+                {
+                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
+                    Navigation.Navigation.GoBack();
+                }
             });
 
         public ICommand GetArchivePreviusCommand =>
             new LambdaCommand(async (param) =>
             {
-                await GetArchiveMessage(SelectedComPort, "Read_ev 1");
+                try
+                {
+                    await GetArchiveMessage(SelectedComPort, "Read_ev 1");
+                }
+                catch
+                {
+                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
+                    Navigation.Navigation.GoBack();
+                }
             });
 
         public ICommand GetArchiveLastCommand =>
             new LambdaCommand(async (param) =>
             {
-                await GetArchiveMessage(SelectedComPort, "Read_ev 0");
+                try
+                {
+                    await GetArchiveMessage(SelectedComPort, "Read_ev 0");
+                }
+                catch
+                { 
+                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
+                    Navigation.Navigation.GoBack();
+                }
             });
 
         public ICommand TestCommandForLockDors =>
@@ -428,7 +481,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 switch (_buffer) // Проверка на сообщения
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
-
+                        await DirectionConditionParcer(_buffer);
                         _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
                         continue;
                     case var _ when _buffer.Contains("sound"):
@@ -449,9 +502,19 @@ namespace Atlas_Vers_0._1.ViewModels
             return outdata.ToString();
         }
 
-        private async Task DirectionConditionParcer()
+        private async Task DirectionConditionParcer(string condition)
         {
+            await Task.Delay(0);
 
+            condition = condition.Replace("Текущее состояние направления ", "");
+            condition = condition.Trim();
+
+            string[] subs = condition.Split(' ');
+
+            foreach (var ch in subs)
+            {
+                //Convert.ToString(ch, 2);
+            }
         }
 
         #endregion
