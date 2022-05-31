@@ -120,9 +120,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     await SerialPortConnection(SelectedComPort, Password);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Нет возможности подключиться к COM-port, попробуйте ещё раз.", "Ошибка", MessageBoxButton.OK);
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }, (param) => SelectedComPort != null && Password != "");
 
@@ -136,9 +136,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     SaveToFile(MessageResult);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Нет возможности сохранить сообщения с БУР, попробуйте ещё раз.", "Ошибка", MessageBoxButton.OK);
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -152,9 +152,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     SaveToFile(ArchiveResult);
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Нет возможности сохранить архив с БУР, попробуйте ещё раз.", "Ошибка", MessageBoxButton.OK);
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -165,10 +165,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     await GetArchiveMessage(SelectedComPort, "Read_all");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
-                    Navigation.Navigation.GoBack();
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -179,10 +178,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     await GetArchiveMessage(SelectedComPort, "Read_ev 2");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
-                    Navigation.Navigation.GoBack();
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -193,10 +191,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     await GetArchiveMessage(SelectedComPort, "Read_ev 1");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
-                    Navigation.Navigation.GoBack();
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -207,10 +204,9 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     await GetArchiveMessage(SelectedComPort, "Read_ev 0");
                 }
-                catch
-                { 
-                    MessageBox.Show("COM-port отключен, попробуйте подключить его повторно.", "Ошибка", MessageBoxButton.OK);
-                    Navigation.Navigation.GoBack();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
 
@@ -232,7 +228,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Возвращение пустой строки
 
-        public async ValueTask<string> ClearString()
+        private async ValueTask<string> ClearString()
         {
             await Task.Delay(0);
             return string.Empty;
@@ -242,7 +238,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Получение сообщений с архива
 
-        public async Task GetArchiveMessage(SerialPort port, string password)
+        private async Task GetArchiveMessage(SerialPort port, string password)
         {
             ArchiveResult = await SendMessage(port, "Read_all", null);
 
@@ -302,7 +298,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public async void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
+        private async void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             if (archiveReading)
             {
@@ -511,32 +507,49 @@ namespace Atlas_Vers_0._1.ViewModels
             condition = condition.Trim();
 
             string[] subs = condition.Split(' ');
+            List<string> nums = new List<string>();
 
-            int orderNum = 0;
-
-            while (orderNum < 3)
+            foreach (string ch in subs)
             {
-                switch (orderNum)
+                string BinaryCode = Convert.ToString(Convert.ToInt32(ch), 2);
+                nums.Add(BinaryCode);
+            }
+
+            await DoChanges(nums);
+        }
+
+        private async Task DoChanges(List<string> nums)
+        {
+            await Task.Delay(0);
+            for (int num = nums.Count; num > 0; num--)
+            {
+                switch (Convert.ToString(num))
                 {
-                    case 0:
-                        orderNum++;
+                    case "3":
+                        string thirdDigit = nums[2];
+                        for (int i = thirdDigit.Length; i > 0; i--)
+                        {
+
+                        }
                         break;
-                    case 1:
-                        orderNum++;
+                    case "2":
+                        string secondDigit = nums[1];
+                        for (int i = secondDigit.Length; i > 0; i--)
+                        {
+
+                        }
                         break;
-                    case 2:
-                        orderNum++;
+                    case "1":
+                        string firstDigit = nums[0];
+                        for (int i = firstDigit.Length; i > 0; i--)
+                        {
+
+                        }
                         break;
                     default:
                         break;
                 }
-                foreach (var ch in subs)
-                {
-                    string BinaryCode = Convert.ToString(Convert.ToInt32(ch), 2);
-                }
             }
-
-            
         }
 
         #endregion

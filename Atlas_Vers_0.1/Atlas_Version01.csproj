@@ -65,7 +65,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\RatioConverter.cs" />
-    <Compile Include="Model\Singleton.cs" />
     <Compile Include="Navigation\Navigation.cs" />
     <Compile Include="Resourses\ObjectLogic\TextBoxBehavior.cs" />
     <Compile Include="Resourses\UserControls\Frames\ArchiveFrame.xaml.cs">
