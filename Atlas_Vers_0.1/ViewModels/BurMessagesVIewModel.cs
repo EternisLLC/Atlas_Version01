@@ -21,7 +21,6 @@ namespace Atlas_Vers_0._1.ViewModels
             ConcreteObservable.RemoveObserver(this);
         }
 
-        private string _allMessages = "";
         private IObservable _concreteObservable;
 
         public IObservable ConcreteObservable
@@ -33,6 +32,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 _concreteObservable.AddObserver(this);
             }
         }
+        private string _allMessages = "";
 
         public string AllMessages
         {

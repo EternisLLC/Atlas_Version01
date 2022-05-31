@@ -56,7 +56,7 @@
 
                     <Border
                         Width="700"
-                        Height="40"
+                        Height="45"
                         VerticalAlignment="Top"
                         Background="#3a3e46"
                         BorderBrush="#2c2c2c"

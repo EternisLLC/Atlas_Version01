@@ -545,8 +545,7 @@
                             OpacityMask="{x:Null}">
                             <ScrollViewer
                                 x:Name="PART_ContentHost"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                Template="{DynamicResource ScrollViewerControlTemplate1}" />
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="false">
