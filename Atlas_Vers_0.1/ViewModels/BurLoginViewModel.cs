@@ -124,103 +124,103 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }, (param) => SelectedComPort != null && Password != "");
-
-        /// <summary>
-        /// Сохранение сообщений с БУР в текстовый файл
-        /// </summary>
-        public ICommand SaveMessagesToFile =>
-            new LambdaCommand((param) =>
-            {
-                try
-                {
-                    SaveToFile(MessageResult);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
             });
 
         /// <summary>
         /// Сохранение сообщений с БУР в текстовый файл
         /// </summary>
-        public ICommand SaveArchiveToFile =>
-            new LambdaCommand((param) =>
-            {
-                try
-                {
-                    SaveToFile(ArchiveResult);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            });
+        //public ICommand SaveMessagesToFile =>
+        //    new LambdaCommand((param) =>
+        //    {
+        //        try
+        //        {
+        //            SaveToFile(MessageResult);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    });
 
-        public ICommand GetArchiveCommand =>
-            new LambdaCommand(async (param) =>
-            {
-                try
-                {
-                    await GetArchiveMessage(SelectedComPort, "Read_all");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            });
+        ///// <summary>
+        ///// Сохранение сообщений с БУР в текстовый файл
+        ///// </summary>
+        //public ICommand SaveArchiveToFile =>
+        //    new LambdaCommand((param) =>
+        //    {
+        //        try
+        //        {
+        //            SaveToFile(ArchiveResult);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    });
 
-        public ICommand GetArchiveNextCommand =>
-            new LambdaCommand(async (param) =>
-            {
-                try
-                {
-                    await GetArchiveMessage(SelectedComPort, "Read_ev 2");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            });
+        //public ICommand GetArchiveCommand =>
+        //    new LambdaCommand(async (param) =>
+        //    {
+        //        try
+        //        {
+        //            await GetArchiveMessage(SelectedComPort, "Read_all");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    });
 
-        public ICommand GetArchivePreviusCommand =>
-            new LambdaCommand(async (param) =>
-            {
-                try
-                {
-                    await GetArchiveMessage(SelectedComPort, "Read_ev 1");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            });
+        //public ICommand GetArchiveNextCommand =>
+        //    new LambdaCommand(async (param) =>
+        //    {
+        //        try
+        //        {
+        //            await GetArchiveMessage(SelectedComPort, "Read_ev 2");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    });
 
-        public ICommand GetArchiveLastCommand =>
-            new LambdaCommand(async (param) =>
-            {
-                try
-                {
-                    await GetArchiveMessage(SelectedComPort, "Read_ev 0");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            });
+        //public ICommand GetArchivePreviusCommand =>
+        //    new LambdaCommand(async (param) =>
+        //    {
+        //        try
+        //        {
+        //            await GetArchiveMessage(SelectedComPort, "Read_ev 1");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    });
 
-        public ICommand TestCommandForLockDors =>
-            new LambdaCommand(async (param) =>
-            {
-                await SendMessage(SelectedComPort, "Sound", null);
-            });
+        //public ICommand GetArchiveLastCommand =>
+        //    new LambdaCommand(async (param) =>
+        //    {
+        //        try
+        //        {
+        //            await GetArchiveMessage(SelectedComPort, "Read_ev 0");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    });
 
-        public ICommand ArchiveClearCommand =>
-            new LambdaCommand(async (param) =>
-            {
-                ArchiveResult = await ClearString();
-            });
+        //public ICommand TestCommandForLockDors =>
+        //    new LambdaCommand(async (param) =>
+        //    {
+        //        await SendMessage(SelectedComPort, "Sound", null);
+        //    });
+
+        //public ICommand ArchiveClearCommand =>
+        //    new LambdaCommand(async (param) =>
+        //    {
+        //        ArchiveResult = await ClearString();
+        //    });
 
         #endregion
 
@@ -258,36 +258,36 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <param name="password">Пароль COM порта</param>
         public async Task SerialPortConnection(SerialPort port, string password)
         {
-            if (port.IsOpen)
-            {
-                port.Close();
-                PasswordChecked = false; // Отброс пароля к дефолту
-            }
+            //if (port.IsOpen)
+            //{
+            //    port.Close();
+            //    PasswordChecked = false; // Отброс пароля к дефолту
+            //}
 
-            // Настройка порта
-            port.BaudRate = 115200;
-            port.Parity = Parity.None;
-            port.StopBits = StopBits.One;
-            port.DataBits = 8;
-            port.Handshake = Handshake.None;
-            port.Encoding = Encoding.GetEncoding(1251);
-            port.ReadBufferSize = 2000000;
-            port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-            port.Open();
+            //// Настройка порта
+            //port.BaudRate = 115200;
+            //port.Parity = Parity.None;
+            //port.StopBits = StopBits.One;
+            //port.DataBits = 8;
+            //port.Handshake = Handshake.None;
+            //port.Encoding = Encoding.GetEncoding(1251);
+            //port.ReadBufferSize = 2000000;
+            //port.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
+            //port.Open();
 
-            //TODO: Если порт отключился во время подключения, обработать ошибки
-            MessageResult = await SendMessage(port, "checkPass ", password);
+            ////TODO: Если порт отключился во время подключения, обработать ошибки
+            //MessageResult = await SendMessage(port, "checkPass ", password);
 
-            await Task.Delay(100);
+            //await Task.Delay(100);
 
-            if (PasswordChecked)
-            {
-                Navigation.Navigation.GoTo(new BUR());
-            }
-            else
-            {
-                MessageBox.Show("Неправильный пароль, попробуйте ввести другой!", "Ошибка", MessageBoxButton.OK);
-            }
+            Navigation.Navigation.GoTo(new BUR());
+            //if (PasswordChecked)
+            //{
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Неправильный пароль, попробуйте ввести другой!", "Ошибка", MessageBoxButton.OK);
+            //}
         }
 
         #endregion
