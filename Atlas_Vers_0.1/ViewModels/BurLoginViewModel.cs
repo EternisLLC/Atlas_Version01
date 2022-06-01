@@ -26,13 +26,6 @@ namespace Atlas_Vers_0._1.ViewModels
         private static bool archiveReading = false;
         private readonly List<IObserver> _observers = new List<IObserver>();
 
-        //private static bool soundOff = false;
-        //private static bool doorOpen = false;
-        //private static bool LoopIPR = false;
-        //private static bool noteAuto = false;
-        //private static bool noteAlarm = false;
-        //private static bool autoLock = false;
-
         #region COM-Port
 
         private readonly string[] _comNames = SerialPort.GetPortNames();
@@ -302,7 +295,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             if (archiveReading)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 ArchiveResult += await GetArchiveMessage(sender);
             }
             else
@@ -415,7 +408,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 }
 
                 archBuffer = archBuffer.Trim();
-                outData.Append(archBuffer + "\r\n");
+                outData.Append(archBuffer + "\r");
             }
 
             if (outData.ToString().Contains("Передача архива завершена"))
@@ -501,8 +494,6 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private async Task DirectionConditionParcer(string condition)
         {
-            await Task.Delay(0);
-
             condition = condition.Replace("Текущее состояние направления ", "");
             condition = condition.Trim();
 
@@ -520,36 +511,60 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private async Task DoChanges(List<string> nums)
         {
-            await Task.Delay(0);
-            for (int num = nums.Count; num > 0; num--)
+            await Task.Run(async () =>
             {
-                switch (Convert.ToString(num))
+                for (int num = nums.Count; num > 0; num--)
                 {
-                    case "3":
-                        string thirdDigit = nums[2];
-                        for (int i = thirdDigit.Length; i > 0; i--)
-                        {
-
-                        }
-                        break;
-                    case "2":
-                        string secondDigit = nums[1];
-                        for (int i = secondDigit.Length; i > 0; i--)
-                        {
-
-                        }
-                        break;
-                    case "1":
-                        string firstDigit = nums[0];
-                        for (int i = firstDigit.Length; i > 0; i--)
-                        {
-
-                        }
-                        break;
-                    default:
-                        break;
+                    switch (Convert.ToString(num))
+                    {
+                        case "3":
+                            await ParceThirdNum(nums[2]);
+                            break;
+                        case "2":
+                            await ParceSecondNum(nums[1]);
+                            break;
+                        case "1":
+                            await ParceFirstNum(nums[0]);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
+
+            });
+        }
+
+        private async Task ParceThirdNum(string thirdDigit)
+        {
+            await Task.Run(() =>
+            {
+                for (int i = thirdDigit.Length; i > 0; i--)
+                {
+
+                }
+            });
+        }
+
+        private async Task ParceSecondNum(string secondDigit)
+        {
+            await Task.Run(() =>
+            {
+                for (int i = secondDigit.Length; i > 0; i--)
+                {
+
+                }
+            });
+        }
+
+        private async Task ParceFirstNum(string firstDigit)
+        {
+            await Task.Run(() =>
+            {
+                for (int i = firstDigit.Length; i > 0; i--)
+                {
+
+                }
+            });
         }
 
         #endregion
