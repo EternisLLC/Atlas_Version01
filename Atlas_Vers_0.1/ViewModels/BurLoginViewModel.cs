@@ -530,7 +530,6 @@ namespace Atlas_Vers_0._1.ViewModels
                             break;
                     }
                 }
-
             });
         }
 
@@ -538,7 +537,45 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             await Task.Run(() =>
             {
-                for (int i = thirdDigit.Length; i > 0; i--)
+                int currentNum = Convert.ToInt32(thirdDigit);
+
+                if ((currentNum & 1) > 0)
+                {
+                    //BOS :1
+                }
+                else if ((currentNum & 2) > 0)
+                {
+                    //ConnectBos :1
+                }
+                else if ((currentNum & 4) > 0)
+                {
+
+                }
+                else if ((currentNum & 8) > 0)
+                {
+
+                }
+                else if ((currentNum & 16) > 0)
+                {
+
+                }
+                else if ((currentNum & 32) > 0)
+                {
+
+                }
+                else if ((currentNum & 64) > 0)
+                {
+
+                }
+                else if ((currentNum & 128) > 0)
+                {
+
+                }
+                else if ((currentNum & 256) > 0)
+                {
+
+                }
+                else if ((currentNum & 512) > 0)
                 {
 
                 }
@@ -549,7 +586,37 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             await Task.Run(() =>
             {
-                for (int i = secondDigit.Length; i > 0; i--)
+                int currentNum = Convert.ToInt32(secondDigit);
+
+                if ((currentNum & 1) > 0)
+                {
+                    //SoundOff
+                }
+                else if ((currentNum & 2) > 0)
+                {
+                    //StatusDoor
+                }
+                else if ((currentNum & 4) > 0)
+                {
+
+                }
+                else if ((currentNum & 8) > 0)
+                {
+
+                }
+                else if ((currentNum & 16) > 0)
+                {
+
+                }
+                else if ((currentNum & 32) > 0)
+                {
+
+                }
+                else if ((currentNum & 64) > 0)
+                {
+
+                }
+                else if ((currentNum & 128) > 0)
                 {
 
                 }
