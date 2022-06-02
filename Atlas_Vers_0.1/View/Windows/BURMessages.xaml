@@ -5,13 +5,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:tb="clr-namespace:Atlas_Vers_0._1.Resourses.ObjectLogic"
+    xmlns:uc="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     Title="BURMessages"
     Width="500"
     Height="600"
+    MinWidth="500"
+    MinHeight="600"
     AllowsTransparency="True"
     DataContext="{Binding BURMesVM, Source={StaticResource Locator}}"
     Loaded="Window_Loaded"
-    ResizeMode="NoResize"
+    ResizeMode="CanResizeWithGrip"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -23,60 +26,28 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
-            <Border
-                Height="50"
-                Background="#3a3e46"
-                BorderBrush="#3a3e46"
-                BorderThickness="0">
-
-                <Grid Height="50px" Margin="0">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="190" />
-                        <ColumnDefinition Width="50" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="150" />
-                    </Grid.ColumnDefinitions>
-
-                    <Image
-                        Width="190"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Source="/Resourses/Pictures/TitleBar/Top_logo@4x.png"
-                        Stretch="Fill" />
-
-                    <Button
-                        Grid.Column="3"
-                        Width="50"
-                        HorizontalAlignment="Right"
-                        Background="#3a3e46"
-                        BorderThickness="0"
-                        Command="{Binding CloseCommand}">
-                        <StackPanel>
-                            <Image Width="30" Source="/Resourses/Pictures/TitleBar/Top_exit@4x.png" />
-                        </StackPanel>
-                    </Button>
-                </Grid>
-            </Border>
+        <Grid Grid.Row="0" MouseDown="Window_MouseDownMove">
+            <uc:TitleBar />
         </Grid>
 
-        <TextBox
+        <Border
             Grid.Row="1"
-            Margin="10"
-            Padding="3"
-            tb:TextBoxBehaviour.ScrollOnTextChanged="True"
             Background="#3a3e46"
-            BorderThickness="0"
-            FontFamily="Elektra Pro"
-            FontSize="12"
-            Foreground="White"
-            IsReadOnly="True"
-            Text="{Binding AllMessages, UpdateSourceTrigger=PropertyChanged}"
-            TextWrapping="Wrap"
-            VerticalScrollBarVisibility="Auto" />
+            BorderThickness="0">
+            <TextBox
+                tb:TextBoxBehaviour.ScrollOnTextChanged="True"
+                Background="Transparent"
+                BorderThickness="0"
+                FontFamily="Elektra Pro"
+                FontSize="12"
+                Foreground="White"
+                IsReadOnly="True"
+                Text="{Binding AllMessages, UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto" />
+        </Border>
 
-        <!--<Button
+        <Button
             Grid.Row="2"
             MinWidth="100"
             MinHeight="20"
@@ -112,7 +83,7 @@
                     <Setter Property="CornerRadius" Value="5" />
                 </Style>
             </Button.Resources>
-        </Button>-->
+        </Button>
 
     </Grid>
 </Window>

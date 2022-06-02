@@ -23,8 +23,10 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Свойства
 
+        MainDevice mainDevice = new MainDevice(false, false, false, false, false, false, false, false);
         private static bool archiveReading = false;
         private readonly List<IObserver> _observers = new List<IObserver>();
+
 
         #region COM-Port
 
@@ -539,43 +541,92 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 int currentNum = Convert.ToInt32(thirdDigit);
 
-                if ((currentNum & 1) > 0)
+                if ((currentNum & 1) > 0) // BOS
                 {
-                    //BOS :1
+                    
                 }
-                else if ((currentNum & 2) > 0)
-                {
-                    //ConnectBos :1
-                }
-                else if ((currentNum & 4) > 0)
+                else
                 {
 
                 }
-                else if ((currentNum & 8) > 0)
+
+                if ((currentNum & 2) > 0) // ConnectBos
+                {
+                    
+                }
+                else
                 {
 
                 }
-                else if ((currentNum & 16) > 0)
+
+                if ((currentNum & 4) > 0) // SMK
                 {
 
                 }
-                else if ((currentNum & 32) > 0)
+                else
                 {
 
                 }
-                else if ((currentNum & 64) > 0)
+
+                if ((currentNum & 8) > 0) // IPR
                 {
 
                 }
-                else if ((currentNum & 128) > 0)
+                else
                 {
 
                 }
-                else if ((currentNum & 256) > 0)
+
+                if ((currentNum & 16) > 0) // noteAUTO
                 {
 
                 }
-                else if ((currentNum & 512) > 0)
+                else
+                {
+
+                }
+
+                if ((currentNum & 32) > 0) // NoteALARM
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if ((currentNum & 64) > 0) // Pwr1
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if ((currentNum & 128) > 0) // Pwr2
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if ((currentNum & 256) > 0) // UDP
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if ((currentNum & 512) > 0) // UVOA
+                {
+
+                }
+                else
                 {
 
                 }
@@ -588,35 +639,74 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 int currentNum = Convert.ToInt32(secondDigit);
 
-                if ((currentNum & 1) > 0)
+                if ((currentNum & 1) > 0) // SoundOff
                 {
-                    //SoundOff
+                    mainDevice.SoundOff = true;
                 }
-                else if ((currentNum & 2) > 0)
+                else
                 {
-                    //StatusDoor
+                    mainDevice.SoundOff = false;
                 }
-                else if ((currentNum & 4) > 0)
+
+                if ((currentNum & 2) > 0) // StatusDoor
+                {
+                    mainDevice.StatusDoor = true;
+                }
+                else
+                {
+                    mainDevice.StatusDoor = false;
+                }
+
+                if ((currentNum & 4) > 0) // LoopIPR
+                {
+                    mainDevice.LoopIPR = true;
+                }
+                else
+                {
+                    mainDevice.LoopIPR = false;
+                }
+
+                if ((currentNum & 8) > 0) // nOteAUTO
+                {
+                    mainDevice.NoteAUTO = true;
+                }
+                else
+                {
+                    mainDevice.NoteAUTO = false;
+                }
+
+                if ((currentNum & 16) > 0) // nOteALARM
+                {
+                    mainDevice.NoteALARM = true;
+                }
+                else
+                {
+                    mainDevice.NoteALARM = false;
+                }
+
+                if ((currentNum & 32) > 0) // AutoLock
+                {
+                    mainDevice.AutoLock = true;
+                }
+                else
+                {
+                    mainDevice.AutoLock = false;
+                }
+
+                if ((currentNum & 64) > 0) // LoopUDP
+                {
+                    mainDevice.LoopUDP = true;
+                }
+                else
+                {
+                    mainDevice.LoopUDP = false;
+                }
+
+                if ((currentNum & 128) > 0) // LoopUVOA
                 {
 
                 }
-                else if ((currentNum & 8) > 0)
-                {
-
-                }
-                else if ((currentNum & 16) > 0)
-                {
-
-                }
-                else if ((currentNum & 32) > 0)
-                {
-
-                }
-                else if ((currentNum & 64) > 0)
-                {
-
-                }
-                else if ((currentNum & 128) > 0)
+                else
                 {
 
                 }
