@@ -23,7 +23,10 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Свойства
 
-        MainDevice mainDevice = new MainDevice(false, false, false, false, false, false, false, false);
+        private static List<RadioChannelDevice> errorRadioChannelDevices = new List<RadioChannelDevice>();
+        private MainDevice mainDevice = new MainDevice(soundOff:false, statusDoor:false, loopIPR:false, noteAUTO:false, noteALARM:false, 
+                                                autoLock:false, loopUDP:false, loopUVOA:false, radioChannelDevice:errorRadioChannelDevices);
+
         private static bool archiveReading = false;
         private readonly List<IObserver> _observers = new List<IObserver>();
 
@@ -639,7 +642,7 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 int currentNum = Convert.ToInt32(secondDigit);
 
-                if ((currentNum & 1) > 0) // SoundOff
+                if ((currentNum & 1) > 0)
                 {
                     mainDevice.SoundOff = true;
                 }
@@ -648,7 +651,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.SoundOff = false;
                 }
 
-                if ((currentNum & 2) > 0) // StatusDoor
+                if ((currentNum & 2) > 0)
                 {
                     mainDevice.StatusDoor = true;
                 }
@@ -657,7 +660,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.StatusDoor = false;
                 }
 
-                if ((currentNum & 4) > 0) // LoopIPR
+                if ((currentNum & 4) > 0)
                 {
                     mainDevice.LoopIPR = true;
                 }
@@ -666,7 +669,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.LoopIPR = false;
                 }
 
-                if ((currentNum & 8) > 0) // nOteAUTO
+                if ((currentNum & 8) > 0)
                 {
                     mainDevice.NoteAUTO = true;
                 }
@@ -675,7 +678,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.NoteAUTO = false;
                 }
 
-                if ((currentNum & 16) > 0) // nOteALARM
+                if ((currentNum & 16) > 0)
                 {
                     mainDevice.NoteALARM = true;
                 }
@@ -684,7 +687,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.NoteALARM = false;
                 }
 
-                if ((currentNum & 32) > 0) // AutoLock
+                if ((currentNum & 32) > 0)
                 {
                     mainDevice.AutoLock = true;
                 }
@@ -693,7 +696,7 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.AutoLock = false;
                 }
 
-                if ((currentNum & 64) > 0) // LoopUDP
+                if ((currentNum & 64) > 0)
                 {
                     mainDevice.LoopUDP = true;
                 }
@@ -702,13 +705,13 @@ namespace Atlas_Vers_0._1.ViewModels
                     mainDevice.LoopUDP = false;
                 }
 
-                if ((currentNum & 128) > 0) // LoopUVOA
+                if ((currentNum & 128) > 0)
                 {
-
+                    mainDevice.LoopUVOA = true;
                 }
                 else
                 {
-
+                    mainDevice.LoopUVOA = false;
                 }
             });
         }
