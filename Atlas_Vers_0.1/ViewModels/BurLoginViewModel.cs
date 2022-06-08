@@ -24,12 +24,13 @@ namespace Atlas_Vers_0._1.ViewModels
         #region Свойства
 
         private static List<RadioChannelDevice> errorRadioChannelDevices = new List<RadioChannelDevice>();
-        private MainDevice mainDevice = new MainDevice(soundOff:false, statusDoor:false, loopIPR:false, noteAUTO:false, noteALARM:false, 
-                                                autoLock:false, loopUDP:false, loopUVOA:false, radioChannelDevice:errorRadioChannelDevices);
+        private MainDevice mainDevice = new MainDevice(soundOff: false, statusDoor: false, loopIPR: false, noteAUTO: false, noteALARM: false,
+                                                        autoLock: false, loopUDP: false, loopUVOA: false, radioChannelDevice: errorRadioChannelDevices, bos: false,
+                                                            connectBos: false, smk: false, ipr: false, noteAuto: false, noteAlarm: false, pwr1: false, pwr2: false, udp: false, 
+                                                                uvoa: false, situation: FireSituatioMainDevice.normal, extSitation: FireSituatioMainDevice.normal);
 
         private static bool archiveReading = false;
         private readonly List<IObserver> _observers = new List<IObserver>();
-
 
         #region COM-Port
 
@@ -103,7 +104,6 @@ namespace Atlas_Vers_0._1.ViewModels
         }
 
         #endregion
-
         #endregion
 
         #region Команды
@@ -544,94 +544,94 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 int currentNum = Convert.ToInt32(thirdDigit);
 
-                if ((currentNum & 1) > 0) // BOS
+                if ((currentNum & 1) > 0)
                 {
-                    
+                    mainDevice.BOS = true;   
                 }
                 else
                 {
-
+                    mainDevice.BOS = false;
                 }
 
-                if ((currentNum & 2) > 0) // ConnectBos
+                if ((currentNum & 2) > 0)
                 {
-                    
-                }
-                else
-                {
-
-                }
-
-                if ((currentNum & 4) > 0) // SMK
-                {
-
+                    mainDevice.ConnectBos = true;
                 }
                 else
                 {
-
+                    mainDevice.ConnectBos = false;
                 }
 
-                if ((currentNum & 8) > 0) // IPR
+                if ((currentNum & 4) > 0)
                 {
-
+                    SMK = true;
                 }
                 else
                 {
+                    SMK = false;
+                }
 
+                if ((currentNum & 8) > 0)
+                {
+                    IPR = true;
+                }
+                else
+                {
+                    IPR = false;
                 }
 
                 if ((currentNum & 16) > 0) // noteAUTO
                 {
-
+                    NoteAUTO = true;
                 }
                 else
                 {
-
+                    NoteAUTO = false;
                 }
 
                 if ((currentNum & 32) > 0) // NoteALARM
                 {
-
+                    NoteAlarm = true;
                 }
                 else
                 {
-
+                    NoteAlarm = false;
                 }
 
-                if ((currentNum & 64) > 0) // Pwr1
-                {
-
-                }
-                else
-                {
-
-                }
+                //if ((currentNum & 64) > 0) // Pwr1
+                //{
+                //    Pwr1 = true;
+                //}
+                //else
+                //{
+                //    Pwr1 = false;
+                //}
 
                 if ((currentNum & 128) > 0) // Pwr2
                 {
-
+                    Pwr2 = true;
                 }
                 else
                 {
-
+                    Pwr2 = false;
                 }
 
                 if ((currentNum & 256) > 0) // UDP
                 {
-
+                    UDP = true;
                 }
                 else
                 {
-
+                    UDP = false;
                 }
 
                 if ((currentNum & 512) > 0) // UVOA
                 {
-
+                    UVOA = true;
                 }
                 else
                 {
-
+                    UVOA = false;
                 }
             });
         }
@@ -720,10 +720,7 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             await Task.Run(() =>
             {
-                for (int i = firstDigit.Length; i > 0; i--)
-                {
-
-                }
+                
             });
         }
 

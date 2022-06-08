@@ -543,9 +543,7 @@
                             BorderThickness="2"
                             CornerRadius="15"
                             OpacityMask="{x:Null}">
-                            <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="false">

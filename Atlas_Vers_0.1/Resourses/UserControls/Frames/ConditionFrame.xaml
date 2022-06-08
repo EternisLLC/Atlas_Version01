@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uc="clr-namespace:Atlas_Vers_0._1.Resourses.UserControls"
-    DataContext="{Binding BurVM, Source={StaticResource Locator}}"
+    DataContext="{Binding BurLoginVM, Source={StaticResource Locator}}"
     mc:Ignorable="d">
     <Grid MinWidth="810">
 
@@ -489,7 +489,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Visible">
+            Visibility="Hidden">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -641,7 +641,11 @@
                         <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
 
-                    <uc:MyProgress Value="50" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <uc:MyProgress
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalAlignment="Center"
+                        Value="50" />
 
                     <Label
                         Grid.RowSpan="3"
@@ -810,7 +814,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Hidden">
+            Visibility="Visible">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -871,15 +875,15 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding Pwr1, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding Pwr1, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -919,11 +923,11 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding Pwr2, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding Pwr2, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -963,10 +967,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1007,10 +1011,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1051,10 +1055,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1095,10 +1099,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1139,10 +1143,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1155,7 +1159,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
                                 <TextBlock
-                                    Width="60"
+                                    Width="80"
                                     FontFamily="Elektra Pro"
                                     FontSize="8"
                                     Foreground="#b1b1b1"
@@ -1183,10 +1187,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1227,10 +1231,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1270,10 +1274,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1312,10 +1316,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1356,10 +1360,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1401,10 +1405,10 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
+                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
                                                 <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -1445,11 +1449,11 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding UDP, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding UDP, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -1489,11 +1493,11 @@
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding UVOA, UpdateSourceTrigger=PropertyChanged}" Value="False">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                                             </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
+                                            <DataTrigger Binding="{Binding UVOA, UpdateSourceTrigger=PropertyChanged}" Value="True">
+                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
