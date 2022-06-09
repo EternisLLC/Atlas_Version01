@@ -77,7 +77,8 @@
                         Background="#2c2c2c"
                         BorderThickness="0"
                         Command="{Binding GetArchiveNextCommand}"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Style="{DynamicResource ArchiveSaveButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
@@ -95,7 +96,6 @@
                             <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Margin="10"
                                 VerticalAlignment="Center">
                                 <TextBlock
                                     Width="200"
@@ -105,11 +105,6 @@
                                     Text="Следующие событие"
                                     TextWrapping="Wrap" />
                             </Viewbox>
-
-                            <Image
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Source="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                         </Grid>
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -124,7 +119,8 @@
                         Background="#2c2c2c"
                         BorderThickness="0"
                         Command="{Binding GetArchivePreviusCommand}"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Style="{DynamicResource ArchiveSaveButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
@@ -142,7 +138,6 @@
                             <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Margin="10"
                                 VerticalAlignment="Center">
                                 <TextBlock
                                     Width="200"
@@ -152,11 +147,6 @@
                                     Text="Предыдущее событие"
                                     TextWrapping="Wrap" />
                             </Viewbox>
-
-                            <Image
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Source="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                         </Grid>
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -171,7 +161,8 @@
                         Background="#2c2c2c"
                         BorderThickness="0"
                         Command="{Binding GetArchiveLastCommand}"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Style="{DynamicResource ArchiveSaveButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
@@ -189,7 +180,6 @@
                             <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Margin="10"
                                 VerticalAlignment="Center">
                                 <TextBlock
                                     Width="200"
@@ -199,11 +189,6 @@
                                     Text="Последнее событие"
                                     TextWrapping="Wrap" />
                             </Viewbox>
-
-                            <Image
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Source="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                         </Grid>
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -218,7 +203,8 @@
                         Background="#2c2c2c"
                         BorderThickness="0"
                         Command="{Binding ArchiveClearCommand}"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        Style="{DynamicResource ArchiveSaveButtonStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3" />
@@ -236,7 +222,6 @@
                             <Viewbox
                                 Grid.RowSpan="4"
                                 Grid.Column="3"
-                                Margin="10"
                                 VerticalAlignment="Center">
                                 <TextBlock
                                     Width="200"
@@ -246,11 +231,6 @@
                                     Text="Очистить"
                                     TextWrapping="Wrap" />
                             </Viewbox>
-
-                            <Image
-                                Grid.Row="1"
-                                Grid.Column="1"
-                                Source="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
                         </Grid>
                         <Button.Resources>
                             <Style TargetType="Border">
@@ -344,10 +324,6 @@
                     TextWrapping="Wrap"
                     VerticalScrollBarVisibility="Auto" />
             </Grid>
-
-
-
         </Border>
-
     </Grid>
 </UserControl>

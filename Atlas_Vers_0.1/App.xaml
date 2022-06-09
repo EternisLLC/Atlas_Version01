@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:Atlas_Vers_0._1"
     xmlns:vm="clr-namespace:Atlas_Vers_0._1.ViewModels"
     xmlns:vw="clr-namespace:Atlas_Vers_0._1.View.Windows"
+    ShutdownMode="OnExplicitShutdown"
     StartupUri="/View/Windows/MainWindow.xaml">
     <Application.Resources>
         <ViewModelsLocation:ViewModelLocator x:Key="Locator" />

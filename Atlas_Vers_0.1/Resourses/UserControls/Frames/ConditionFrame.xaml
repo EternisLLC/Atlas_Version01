@@ -389,20 +389,10 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Grid.Column="1">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding AutomaticCondition}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Automat_Locked_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding AutomaticCondition}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Automat_Unlocked_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Source="{Binding AutoLock, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="1"
@@ -443,20 +433,10 @@
                                 <RowDefinition Height="3" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Grid.Column="1">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Source="{Binding StatusDoor, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="1"
@@ -641,12 +621,6 @@
                         <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
 
-                    <uc:MyProgress
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        HorizontalAlignment="Center"
-                        Value="50" />
-
                     <Label
                         Grid.RowSpan="3"
                         Grid.Column="0"
@@ -657,11 +631,6 @@
                         FontSize="30"
                         Foreground="White" />
 
-                    <Image
-                        Grid.Row="1"
-                        Grid.Column="2"
-                        Source="/Resourses/Pictures/Indicators/Grey_000.png" />
-
                     <Label
                         Grid.RowSpan="3"
                         Grid.Column="2"
@@ -671,11 +640,6 @@
                         FontFamily="Elektra Pro"
                         FontSize="30"
                         Foreground="White" />
-
-                    <Image
-                        Grid.Row="1"
-                        Grid.Column="4"
-                        Source="/Resourses/Pictures/Indicators/Red_000.png" />
 
                     <Label
                         Grid.RowSpan="3"
@@ -875,20 +839,7 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Pwr1, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Pwr1, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding Pwr1, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -919,20 +870,7 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Pwr2, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Pwr2, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding Pwr2, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -963,20 +901,7 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Short_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding Pwr2, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -1007,7 +932,7 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1051,7 +976,7 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1095,7 +1020,7 @@
                                 <RowDefinition Height="23" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1139,7 +1064,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1183,7 +1108,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1227,7 +1152,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1270,20 +1195,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding NoteAUTO, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -1312,20 +1224,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding NoteALARM, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -1356,20 +1255,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Open_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding DoorCondition, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/Door_Close_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding SMK, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -1401,7 +1287,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
+                            <Image Grid.Row="1">
                                 <Image.Style>
                                     <Style TargetType="{x:Type Image}">
                                         <Style.Triggers>
@@ -1445,20 +1331,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding UDP, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding UDP, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding UDP, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"
@@ -1489,20 +1362,7 @@
                                 <RowDefinition Height="25" />
                             </Grid.RowDefinitions>
 
-                            <Image Grid.Row="1" Source="/Resourses/Pictures/BUR\BUR_Norm_Dark@4x.png">
-                                <Image.Style>
-                                    <Style TargetType="{x:Type Image}">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding UVOA, UpdateSourceTrigger=PropertyChanged}" Value="False">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding UVOA, UpdateSourceTrigger=PropertyChanged}" Value="True">
-                                                <Setter Property="Source" Value="/Resourses/Pictures/BUR/BUR_Short_Dark@4x.png" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Image.Style>
-                            </Image>
+                            <Image Grid.Row="1" Source="{Binding UVOA, UpdateSourceTrigger=PropertyChanged}" />
 
                             <Viewbox
                                 Grid.Row="2"

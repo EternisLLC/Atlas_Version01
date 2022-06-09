@@ -14,6 +14,9 @@ using System.Windows.Input;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
+    /// <summary>
+    /// Основной класс ViewModel, где обрабатываются сообщения с COM-port'а, проверяется пароль
+    /// </summary>
     public class BurLoginViewModel : ViewModel, IObservable
     {
         public BurLoginViewModel()
@@ -31,6 +34,136 @@ namespace Atlas_Vers_0._1.ViewModels
 
         private static bool archiveReading = false;
         private readonly List<IObserver> _observers = new List<IObserver>();
+
+        #region Свойства MainDevice, которые связаны с элементами интерфейса
+
+        private string _soundOff = "";
+        public string SoundOff
+        {
+            get => _soundOff;
+            set => Set(ref _soundOff, value);
+        }
+
+        private string _statusDoor = "";
+        public string StatusDoor
+        {
+            get => _statusDoor;
+            set => Set(ref _statusDoor, value);
+        }
+
+        private string _loopIPR = "";
+        public string LoopIPR
+        {
+            get => _loopIPR;
+            set => Set(ref _loopIPR, value);
+        }
+
+        private string _noteAUTO = "";
+        public string NoteAUTO
+        {
+            get => _noteAUTO;
+            set => Set(ref _noteAUTO, value);
+        }
+
+        private string _noteAlARM = "";
+        public string NoteALARM
+        {
+            get => _noteAlARM;
+            set => Set(ref _noteAlARM, value);
+        }
+
+        private string _autoLock = "";
+        public string AutoLock
+        {
+            get => _autoLock;
+            set => Set(ref _autoLock, value);
+        }
+
+        private string _loopUDP = "";
+        public string LoopUDP
+        {
+            get => _loopUDP;
+            set => Set(ref _loopUDP, value);
+        }
+
+        private string _loopUVOA = "";
+        public string LoopUVOA
+        {
+            get => _loopUVOA;
+            set => Set(ref _loopUVOA, value);
+        }
+
+        private string _bos = "";
+        public string BOS
+        {
+            get => _bos;
+            set => Set(ref _bos, value);
+        }
+
+        private string _connectBos = "";
+        public string ConnectBos
+        {
+            get => _connectBos;
+            set => Set(ref _connectBos, value);
+        }
+
+        private string _smk = "";
+        public string SMK
+        {
+            get => _smk;
+            set => Set(ref _smk, value);
+        }
+
+        private string _ipr = "";
+        public string IPR
+        {
+            get => _ipr;
+            set => Set(ref _ipr, value);
+        }
+
+        private string _noteAuto = "";
+        public string NoteAuto
+        {
+            get => _noteAuto;
+            set => Set(ref _noteAuto, value);
+        }
+
+        private string _noteAlarm = "";
+        public string NoteAlarm
+        {
+            get => _noteAlarm;
+            set => Set(ref _noteAlarm, value);
+        }
+
+        private string _pwr1 = "";
+        public string Pwr1
+        {
+            get => _pwr1;
+            set => Set(ref _pwr1, value);
+        }
+
+        private string _pwr2 = "";
+        public string Pwr2
+        {
+            get => _pwr2;
+            set => Set(ref _pwr2, value);
+        }
+
+        private string _udp = "";
+        public string UDP
+        {
+            get => _udp;
+            set => Set(ref _udp, value);
+        }
+
+        private string _uvoa = "";
+        public string UVOA
+        {
+            get => _uvoa;
+            set => Set(ref _uvoa, value);
+        }
+
+        #endregion
 
         #region COM-Port
 
@@ -447,6 +580,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 return null;
             }
 
+            // Парсинг сообщения с COM-port'а
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
 
@@ -546,92 +680,112 @@ namespace Atlas_Vers_0._1.ViewModels
 
                 if ((currentNum & 1) > 0)
                 {
-                    mainDevice.BOS = true;   
+                    mainDevice.BOS = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.BOS = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 2) > 0)
                 {
                     mainDevice.ConnectBos = true;
+                    ConnectBos = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.ConnectBos = false;
+                    ConnectBos = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 4) > 0)
                 {
-                    SMK = true;
+                    mainDevice.SMK = true;
+                    SMK = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    SMK = false;
+                    mainDevice.SMK = false;
+                    SMK = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 8) > 0)
                 {
-                    IPR = true;
+                    mainDevice.IPR = true;
+                    IPR = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    IPR = false;
+                    mainDevice.IPR = false;
+                    IPR = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 16) > 0) // noteAUTO
                 {
-                    NoteAUTO = true;
+                    mainDevice.NoteAUTO = true;
+                    NoteAUTO = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    NoteAUTO = false;
+                    mainDevice.NoteAUTO = false;
+                    NoteAUTO = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 32) > 0) // NoteALARM
                 {
-                    NoteAlarm = true;
+                    mainDevice.NoteALARM = true;
+                    NoteAlarm = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    NoteAlarm = false;
+                    mainDevice.NoteAlarm = false;
+                    NoteAlarm = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
-                //if ((currentNum & 64) > 0) // Pwr1
-                //{
-                //    Pwr1 = true;
-                //}
-                //else
-                //{
-                //    Pwr1 = false;
-                //}
+                if ((currentNum & 64) > 0) // Pwr1
+                {
+                    mainDevice.Pwr1 = true;
+                    Pwr1 = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.Pwr1 = false;
+                    Pwr1 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
 
                 if ((currentNum & 128) > 0) // Pwr2
                 {
-                    Pwr2 = true;
+                    mainDevice.Pwr2 = true;
+                    Pwr2 = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    Pwr2 = false;
+                    mainDevice.Pwr2 = false;
+                    Pwr2 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 256) > 0) // UDP
                 {
-                    UDP = true;
+                    mainDevice.UDP = true;
+                    UDP = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    UDP = false;
+                    mainDevice.UDP = false;
+                    UDP = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 512) > 0) // UVOA
                 {
-                    UVOA = true;
+                    mainDevice.UVOA = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
-                    UVOA = false;
+                    mainDevice.UVOA = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
             });
         }
@@ -645,73 +799,89 @@ namespace Atlas_Vers_0._1.ViewModels
                 if ((currentNum & 1) > 0)
                 {
                     mainDevice.SoundOff = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.SoundOff = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 2) > 0)
                 {
                     mainDevice.StatusDoor = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.StatusDoor = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 4) > 0)
                 {
                     mainDevice.LoopIPR = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.LoopIPR = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 8) > 0)
                 {
                     mainDevice.NoteAUTO = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.NoteAUTO = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 16) > 0)
                 {
                     mainDevice.NoteALARM = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.NoteALARM = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 32) > 0)
                 {
                     mainDevice.AutoLock = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.AutoLock = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 64) > 0)
                 {
                     mainDevice.LoopUDP = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.LoopUDP = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
 
                 if ((currentNum & 128) > 0)
                 {
                     mainDevice.LoopUVOA = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
                 }
                 else
                 {
                     mainDevice.LoopUVOA = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
                 }
             });
         }

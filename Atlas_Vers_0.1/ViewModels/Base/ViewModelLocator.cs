@@ -4,8 +4,6 @@
     {
         public ViewModelLocator()
         {
-            MainVM = new MainViewModel();
-
             BurLoginVM = new BurLoginViewModel();
 
             SystemChoiceVM = new SystemChoiceViewModel();
