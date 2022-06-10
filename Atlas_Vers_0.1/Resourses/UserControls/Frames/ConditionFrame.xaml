@@ -179,7 +179,7 @@
                             <Image
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Source="/Resourses/Pictures/BUR/FS_Fire_Dark@4x.png" />
+                                Source="{Binding Situation, UpdateSourceTrigger=PropertyChanged}" />
 
                         </Grid>
                         <Button.Resources>
@@ -283,7 +283,7 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Source="/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png" />
+                                Source="{Binding ExtSituation, UpdateSourceTrigger=PropertyChanged}" />
                         </Grid>
 
                         <Button.Resources>
@@ -469,7 +469,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Hidden">
+            Visibility="Visible">
 
             <Grid>
                 <Grid.RowDefinitions>
@@ -778,7 +778,7 @@
             Grid.Column="3"
             Background="#3a3e46"
             CornerRadius="10,10,10,10"
-            Visibility="Visible">
+            Visibility="Hidden">
 
             <Grid>
                 <Grid.RowDefinitions>

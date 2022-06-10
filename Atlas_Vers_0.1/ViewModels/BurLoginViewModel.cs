@@ -29,134 +29,150 @@ namespace Atlas_Vers_0._1.ViewModels
         private static List<RadioChannelDevice> errorRadioChannelDevices = new List<RadioChannelDevice>();
         private MainDevice mainDevice = new MainDevice(soundOff: false, statusDoor: false, loopIPR: false, noteAUTO: false, noteALARM: false,
                                                         autoLock: false, loopUDP: false, loopUVOA: false, radioChannelDevice: errorRadioChannelDevices, bos: false,
-                                                            connectBos: false, smk: false, ipr: false, noteAuto: false, noteAlarm: false, pwr1: false, pwr2: false, udp: false, 
-                                                                uvoa: false, situation: FireSituatioMainDevice.normal, extSitation: FireSituatioMainDevice.normal);
+                                                            connectBos: false, smk: false, ipr: false, noteAuto: false, noteAlarm: false, pwr1: false, pwr2: false, udp: false,
+                                                                uvoa: false, situation: FireSituationMainDevice.normal, extSitation: FireSituationMainDevice.normal, handStartAll: false, startLoc: false);
 
         private static bool archiveReading = false;
         private readonly List<IObserver> _observers = new List<IObserver>();
 
         #region Свойства MainDevice, которые связаны с элементами интерфейса
 
-        private string _soundOff = "";
+        private string _situation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+
+        public string Situation
+        {
+            get => _situation;
+            set => Set(ref _situation, value);
+        }
+
+        private string _extSituation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+
+        public string ExtSituation
+        {
+            get => _extSituation;
+            set => Set(ref _extSituation, value);
+        }
+
+        private string _soundOff = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string SoundOff
         {
             get => _soundOff;
             set => Set(ref _soundOff, value);
         }
 
-        private string _statusDoor = "";
+        private string _statusDoor = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string StatusDoor
         {
             get => _statusDoor;
             set => Set(ref _statusDoor, value);
         }
 
-        private string _loopIPR = "";
+        private string _loopIPR = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string LoopIPR
         {
             get => _loopIPR;
             set => Set(ref _loopIPR, value);
         }
 
-        private string _noteAUTO = "";
+        private string _noteAUTO = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string NoteAUTO
         {
             get => _noteAUTO;
             set => Set(ref _noteAUTO, value);
         }
 
-        private string _noteAlARM = "";
+        private string _noteAlARM = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string NoteALARM
         {
             get => _noteAlARM;
             set => Set(ref _noteAlARM, value);
         }
 
-        private string _autoLock = "";
+        private string _autoLock = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string AutoLock
         {
             get => _autoLock;
             set => Set(ref _autoLock, value);
         }
 
-        private string _loopUDP = "";
+        private string _loopUDP = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string LoopUDP
         {
             get => _loopUDP;
             set => Set(ref _loopUDP, value);
         }
 
-        private string _loopUVOA = "";
+        private string _loopUVOA = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string LoopUVOA
         {
             get => _loopUVOA;
             set => Set(ref _loopUVOA, value);
         }
 
-        private string _bos = "";
+        private string _bos = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string BOS
         {
             get => _bos;
             set => Set(ref _bos, value);
         }
 
-        private string _connectBos = "";
+        private string _connectBos = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string ConnectBos
         {
             get => _connectBos;
             set => Set(ref _connectBos, value);
         }
 
-        private string _smk = "";
+        private string _smk = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string SMK
         {
             get => _smk;
             set => Set(ref _smk, value);
         }
 
-        private string _ipr = "";
+        private string _ipr = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string IPR
         {
             get => _ipr;
             set => Set(ref _ipr, value);
         }
 
-        private string _noteAuto = "";
+        private string _noteAuto = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string NoteAuto
         {
             get => _noteAuto;
             set => Set(ref _noteAuto, value);
         }
 
-        private string _noteAlarm = "";
+        private string _noteAlarm = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string NoteAlarm
         {
             get => _noteAlarm;
             set => Set(ref _noteAlarm, value);
         }
 
-        private string _pwr1 = "";
+        private string _pwr1 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string Pwr1
         {
             get => _pwr1;
             set => Set(ref _pwr1, value);
         }
 
-        private string _pwr2 = "";
+        private string _pwr2 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string Pwr2
         {
             get => _pwr2;
             set => Set(ref _pwr2, value);
         }
 
-        private string _udp = "";
+        private string _udp = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string UDP
         {
             get => _udp;
             set => Set(ref _udp, value);
         }
 
-        private string _uvoa = "";
+        private string _uvoa = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
         public string UVOA
         {
             get => _uvoa;
@@ -890,7 +906,74 @@ namespace Atlas_Vers_0._1.ViewModels
         {
             await Task.Run(() =>
             {
-                
+                int currentNum = Convert.ToInt32(firstDigit);
+
+                if ((currentNum & 3) == 0)
+                {
+                    mainDevice.Situation = FireSituationMainDevice.normal;
+                    Situation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+                else if ((currentNum & 3) == 1)
+                {
+                    mainDevice.Situation = FireSituationMainDevice.attention;
+                    Situation = @"/Resourses/Pictures/BUR/FS_Attention_Dark@4x.png";
+                }
+                else if ((currentNum & 3) == 2)
+                {
+                    mainDevice.Situation = FireSituationMainDevice.fire;
+                    Situation = @"/Resourses/Pictures/BUR/FS_Fire_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.Situation = FireSituationMainDevice.normal;
+                    Situation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 12) == 0)
+                {
+                    mainDevice.ExtSitation = FireSituationMainDevice.normal;
+                    ExtSituation = @"/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png";
+                }
+                else if ((currentNum & 12) == 4)
+                {
+                    mainDevice.ExtSitation = FireSituationMainDevice.attention;
+                    ExtSituation = @"/Resourses/Pictures/BUR/Wireless_Fail_Dark@4x.png";
+                }
+                else if ((currentNum & 12) == 8)
+                {
+                    mainDevice.ExtSitation = FireSituationMainDevice.fire;
+                    ExtSituation = @"/Resourses/Pictures/BUR/FS_Fire_Dark@4x.png";
+                }
+                else if ((currentNum & 12) == 12)
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if ((currentNum & 16) > 1)
+                {
+                    mainDevice.HandStartAll = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.HandStartAll = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+
+                if ((currentNum & 32) > 1)
+                {
+                    mainDevice.StartLoc = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.StartLoc = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
             });
         }
 

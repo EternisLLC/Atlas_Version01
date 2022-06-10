@@ -22,13 +22,16 @@ namespace Atlas_Vers_0._1
         public bool Pwr2 { get; set; }
         public bool UDP { get; set; }
         public bool UVOA { get; set; }
-        public FireSituatioMainDevice Situation { get; set; }
-        public FireSituatioMainDevice ExtSitation { get; set; }
+
+        public bool HandStartAll { get; set; }
+        public bool StartLoc { get; set; }
+        public FireSituationMainDevice Situation { get; set; }
+        public FireSituationMainDevice ExtSitation { get; set; }
         public List<RadioChannelDevice> RadioChannelDevice { get; set; }
 
         public MainDevice(bool soundOff, bool statusDoor, bool loopIPR, bool noteAUTO, bool noteALARM, 
                             bool autoLock, bool loopUDP, bool loopUVOA, List<RadioChannelDevice> radioChannelDevice, bool bos, bool connectBos,
-                                bool smk, bool ipr, bool noteAuto, bool noteAlarm, bool pwr1, bool pwr2, bool udp, bool uvoa, FireSituatioMainDevice situation, FireSituatioMainDevice extSitation)
+                                bool smk, bool ipr, bool noteAuto, bool noteAlarm, bool pwr1, bool pwr2, bool udp, bool uvoa, FireSituationMainDevice situation, FireSituationMainDevice extSitation, bool handStartAll, bool startLoc)
         {
             SoundOff = soundOff;
             StatusDoor = statusDoor;
@@ -51,9 +54,11 @@ namespace Atlas_Vers_0._1
             UVOA = uvoa;
             Situation = situation;
             ExtSitation = extSitation;
+            HandStartAll = handStartAll;
+            StartLoc = startLoc;
         }
     }
-    public enum FireSituatioMainDevice
+    public enum FireSituationMainDevice
     {
         normal,
         attention,
