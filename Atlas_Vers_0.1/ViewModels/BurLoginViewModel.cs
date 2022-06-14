@@ -26,14 +26,14 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Свойства
 
-        private static List<RadioChannelDevice> errorRadioChannelDevices = new List<RadioChannelDevice>();
+        private static List<RadioChannelDevice> errorRadioChannelDevices = new List<RadioChannelDevice>(); // Список БОСов, у которых возникла проблема
         private MainDevice mainDevice = new MainDevice(soundOff: false, statusDoor: false, loopIPR: false, noteAUTO: false, noteALARM: false,
                                                         autoLock: false, loopUDP: false, loopUVOA: false, radioChannelDevice: errorRadioChannelDevices, bos: false,
                                                             connectBos: false, smk: false, ipr: false, noteAuto: false, noteAlarm: false, pwr1: false, pwr2: false, udp: false,
                                                                 uvoa: false, situation: FireSituationMainDevice.normal, extSitation: FireSituationMainDevice.normal, handStartAll: false, startLoc: false);
 
-        private static bool archiveReading = false;
-        private readonly List<IObserver> _observers = new List<IObserver>();
+        private static bool archiveReading = false; // Флажок для чтения архива, если он true, то все сообщения идут в ArchiveResult, если false, то в MessageResult
+        private readonly List<IObserver> _observers = new List<IObserver>(); // Создание экземпляра списка наблюдателей
 
         #region Свойства MainDevice, которые связаны с элементами интерфейса
 
@@ -261,6 +261,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// Команда авторизации через COM-порт
         /// </summary>
         public ICommand AuthorizationCommand =>
+            // Выполняется асинхронно, с проверкой
             new LambdaCommand(async (param) =>
             {
                 try
@@ -271,10 +272,10 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }, (param) => SelectedComPort != null && Password != "");
+            }, (param) => SelectedComPort != null && Password != ""); // Пока свойства выполняют заданные условия, то команда активна, иначе она неактивна
 
         /// <summary>
-        /// Сохранение сообщений с БУР в текстовый файл
+        /// Команда сохранение сообщений с БУР в текстовый файл
         /// </summary>
         public ICommand SaveMessagesToFile =>
             new LambdaCommand((param) =>
@@ -290,7 +291,7 @@ namespace Atlas_Vers_0._1.ViewModels
             });
 
         /// <summary>
-        /// Сохранение сообщений с БУР в текстовый файл
+        /// Команда сохранение ахива в текстовый файл
         /// </summary>
         public ICommand SaveArchiveToFile =>
             new LambdaCommand((param) =>
@@ -304,7 +305,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команда получения архива
+        /// </summary>
         public ICommand GetArchiveCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -317,7 +320,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команда получения следующего сообщения из архива
+        /// </summary>
         public ICommand GetArchiveNextCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -330,7 +335,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команда получения предыдущего сообщения с архива
+        /// </summary>
         public ICommand GetArchivePreviusCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -343,7 +350,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команада получения последнего сообщения с архива
+        /// </summary>
         public ICommand GetArchiveLastCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -356,13 +365,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
-        public ICommand TestCommandForLockDors =>
-            new LambdaCommand(async (param) =>
-            {
-                await SendMessage(SelectedComPort, "Sound", null);
-            });
-
+        /// <summary>
+        /// Команда очистки архива от всех присланных сообщений
+        /// </summary>
         public ICommand ArchiveClearCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -383,7 +388,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #endregion
 
-        #region Получение сообщений с архива
+        #region Получение всего архива
 
         private async Task GetArchiveMessage(SerialPort port, string password)
         {
@@ -396,7 +401,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Настройка подключение порта
 
-        private bool PasswordChecked = false;
+        private bool PasswordChecked = false; // Флажок для пароля, если он true, то успешная авторизация, если false, то не успешная
 
         /// <summary>
         /// Настройка и подключение COM порта
@@ -405,7 +410,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <param name="password">Пароль COM порта</param>
         public async Task SerialPortConnection(SerialPort port, string password)
         {
-            if (port.IsOpen)
+            if (port.IsOpen) // Начальная проверка, если порт открыт
             {
                 port.Close();
                 PasswordChecked = false; // Отброс пароля к дефолту
@@ -423,7 +428,7 @@ namespace Atlas_Vers_0._1.ViewModels
             port.Open();
 
             //TODO: Если порт отключился во время подключения, обработать ошибки
-            MessageResult = await SendMessage(port, "checkPass ", password);
+            MessageResult = await SendMessage(port, "checkPass ", password); // Отправка запроса на проверку пароля в COM-port
 
             await Task.Delay(100);
 
@@ -447,7 +452,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <param name="e"></param>
         private async void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            if (archiveReading)
+            if (archiveReading) // Если мы получили сообщения "Начало передачи архива", то этот флажок становится true, дальше все сообщения идут в ArchiveResult
             {
                 Thread.Sleep(500);
                 ArchiveResult += await GetArchiveMessage(sender);
@@ -467,7 +472,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// Сохранение строки в файл
         /// </summary>
         /// <param name="message">Строку которую нужно сохранить</param>
-        public void SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
+        public void SaveToFile(string message)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
@@ -539,10 +544,10 @@ namespace Atlas_Vers_0._1.ViewModels
         private async ValueTask<string> ArchiveParce(string archBuffer)
         {
             await Task.Delay(0);
-            StringBuilder outData = new StringBuilder();
+            StringBuilder outData = new StringBuilder(); // В этой перменной будут хранится обработнные сообщения Архива
             if (archBuffer.Contains("Ev"))
             {
-                switch (archBuffer)
+                switch (archBuffer) // Проверка определенных сообщений
                 {
                     case var _ when archBuffer.Contains("Текущее состояние направления"):
                         archBuffer = archBuffer.Remove(archBuffer.IndexOf("Текущее состояние направления"));
@@ -550,13 +555,13 @@ namespace Atlas_Vers_0._1.ViewModels
                     default:
                         break;
                 }
-                while (archBuffer.Contains("Ev"))
+                while (archBuffer.Contains("Ev")) // Очистка от Ev
                 {
                     archBuffer = archBuffer.Remove(archBuffer.IndexOf("Ev"), 3);
                     archBuffer = archBuffer.Replace("\r ", "\r");
                 }
 
-                while (archBuffer.Contains(";"))
+                while (archBuffer.Contains(";")) // Очистка от ";"
                 {
                     archBuffer = archBuffer.Replace(";", " ");
                 }
@@ -623,10 +628,10 @@ namespace Atlas_Vers_0._1.ViewModels
 
             while (_buffer.Contains("\r"))
             {
-                switch (_buffer)
+                switch (_buffer) // Проверка на определенные сообщения
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
-                        await DirectionConditionParcer(_buffer);
+                        await DirectionConditionParcer(_buffer); // Парсинг текущего состояния направления
                         _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
                         continue;
                     case var _ when _buffer.Contains("sound"):
@@ -639,16 +644,18 @@ namespace Atlas_Vers_0._1.ViewModels
                         break;
                 }
 
-                _str = _buffer.Remove(_buffer.IndexOf("\r"));
-                _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
+                _str = _buffer.Remove(_buffer.IndexOf("\r")); // Добавление сообщения в строку хранения сообщений
+                _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1); // Очистка буфера
                 outdata.Append("[" + DateTime.Now.ToString() + "]: " + _str + "\r");
             }
 
             return outdata.ToString();
         }
 
+        #region Обработка сообщения "Текущее состояние направления"
         private async Task DirectionConditionParcer(string condition)
         {
+            // Разделение цифр из текущего состояния направления
             condition = condition.Replace("Текущее состояние направления ", "");
             condition = condition.Trim();
 
@@ -661,7 +668,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 nums.Add(BinaryCode);
             }
 
-            await DoChanges(nums);
+            await DoChanges(nums); // Передача запаршенных чисел в метод обработки чисел
         }
 
         private async Task DoChanges(List<string> nums)
@@ -670,7 +677,7 @@ namespace Atlas_Vers_0._1.ViewModels
             {
                 for (int num = nums.Count; num > 0; num--)
                 {
-                    switch (Convert.ToString(num))
+                    switch (Convert.ToString(num)) // Обработка каждого числа, от последнего до первого
                     {
                         case "3":
                             await ParceThirdNum(nums[2]);
@@ -688,6 +695,7 @@ namespace Atlas_Vers_0._1.ViewModels
             });
         }
 
+        #region Парсинг чисел из текущего состояния направления
         private async Task ParceThirdNum(string thirdDigit)
         {
             await Task.Run(() =>
@@ -977,6 +985,9 @@ namespace Atlas_Vers_0._1.ViewModels
             });
         }
 
+        #endregion
+
+        #endregion
         #endregion
 
         #region Обновление доступных портов

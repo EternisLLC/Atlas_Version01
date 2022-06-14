@@ -10,6 +10,7 @@
     StartupUri="/View/Windows/MainWindow.xaml">
     <Application.Resources>
         <ViewModelsLocation:ViewModelLocator x:Key="Locator" />
+        <!--  Локатор для привязки по имени  -->
 
         <DataTemplate DataType="{x:Type vm:BURViewModel}">
             <vw:BURMessages />

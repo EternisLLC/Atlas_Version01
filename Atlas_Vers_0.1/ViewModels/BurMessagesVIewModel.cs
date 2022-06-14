@@ -15,7 +15,9 @@ namespace Atlas_Vers_0._1.ViewModels
 
             ConcreteObservable.RemoveObserver(this);
         }
-
+        /// <summary>
+        /// Удаление наблюдателя
+        /// </summary>
         public void Dispose()
         {
             ConcreteObservable.RemoveObserver(this);
