@@ -36,13 +36,13 @@ namespace Atlas_Vers_0._1.ViewModels
         }
         private string _allMessages = "";
 
-        public string AllMessages
+        public string AllMessages // Свойство, которое хранит в себе сообщения с БУРа
         {
             get => _allMessages;
             set => Set(ref _allMessages, value);
         }
 
-        public void Update(string message)
+        public void Update(string message) // Обновляет свойства
         {
             AllMessages = message;
         }

@@ -11,8 +11,8 @@ namespace Atlas_Vers_0._1
             remove => CommandManager.RequerySuggested -= value;
         }
 
-        public abstract bool CanExecute(object parameter);
+        public abstract bool CanExecute(object parameter); // Может ли быть выполнена команда
 
-        public abstract void Execute(object parameter);
+        public abstract void Execute(object parameter); // Выполнение команды
     }
 }
