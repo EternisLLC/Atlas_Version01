@@ -11,7 +11,9 @@ namespace Atlas_Vers_0._1.ViewModels
         public ICommand ChangeFrameToBURloginCommand => new LambdaCommand((param) => Navigation.Navigation.GoTo(new BURlogin()));
 
         public ICommand OpenPDFCommand => new LambdaCommand((param) => OpenPDF());
-
+        /// <summary>
+        /// Открытие интрукции в формате .pdf
+        /// </summary>
         public void OpenPDF()
         {
             string fileName = "InstructionForBur.pdf";

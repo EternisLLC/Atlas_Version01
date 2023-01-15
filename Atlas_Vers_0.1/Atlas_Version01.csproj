@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>Atlas_Vers_0._1</RootNamespace>
     <AssemblyName>Atlas_Vers_0.1</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,18 +35,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>new-logo-eternis4.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -91,9 +100,6 @@
     <Compile Include="Resourses\UserControls\Frames\SettingsFrame.xaml.cs">
       <DependentUpon>SettingsFrame.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resourses\UserControls\MyProgress.xaml.cs">
-      <DependentUpon>MyProgress.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Resourses\UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
@@ -102,7 +108,6 @@
     <Compile Include="ViewModels\BURMessagesViewModel.cs" />
     <Compile Include="ViewModels\BURViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\SystemChoiceViewModel.cs" />
     <Compile Include="ViewModels\TitleBarViewModel.cs" />
@@ -160,10 +165,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resourses\UserControls\Frames\SettingsFrame.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resourses\UserControls\MyProgress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -384,215 +385,14 @@
     <Resource Include="Resourses\Pictures\BUR\Wireless_Norm_Transparent%404x.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\Pictures\Indicators\Grey_000.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_001.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_002.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_003.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_004.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_005.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_006.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_007.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_008.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_009.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_010.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_011.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_012.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_013.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_014.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_015.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_016.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_017.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_018.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_019.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_020.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_021.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_022.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_023.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_024.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_025.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_026.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_027.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_028.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_029.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_030.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_031.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_032.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_033.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_034.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_035.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_036.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_037.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_038.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_039.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_040.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_041.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_042.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_043.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_044.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_045.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_046.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_047.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_048.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_049.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_050.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_051.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_052.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_053.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_054.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_055.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_056.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_057.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_058.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_059.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_060.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_061.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_062.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_063.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_064.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_065.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_066.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_067.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_068.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_069.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_070.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_071.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_072.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_073.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_074.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_075.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_076.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_077.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_078.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_079.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_080.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_081.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_082.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_083.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_084.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_085.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_086.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_087.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_088.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_089.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_090.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_091.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_092.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_093.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_094.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_095.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_096.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_097.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_098.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_099.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Grey_100.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_000.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_001.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_002.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_003.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_004.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_005.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_006.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_007.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_008.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_009.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_010.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_011.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_012.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_013.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_014.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_015.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_016.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_017.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_018.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_019.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_020.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_021.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_022.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_023.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_024.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_025.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_026.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_027.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_028.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_029.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_030.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_031.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_032.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_033.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_034.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_035.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_036.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_037.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_038.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_039.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_040.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_041.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_042.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_043.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_044.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_045.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_046.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_047.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_048.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_049.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_050.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_051.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_052.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_053.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_054.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_055.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_056.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_057.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_058.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_059.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_060.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_061.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_062.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_063.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_064.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_065.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_066.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_067.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_068.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_069.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_070.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_071.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_072.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_073.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_074.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_075.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_076.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_077.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_078.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_079.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_080.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_081.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_082.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_083.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_084.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_085.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_086.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_087.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_088.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_089.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_090.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_091.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_092.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_093.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_094.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_095.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_096.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_097.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_098.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_099.png" />
-    <Resource Include="Resourses\Pictures\Indicators\Red_100.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resourses\Pictures\TitleBar\Top_back.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\Pictures\BUR\Automat_Locked_Dark%404x.png" />
     <Resource Include="Resourses\Pictures\BUR\Automat_Unlocked_Dark%404x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="new-logo-eternis4.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

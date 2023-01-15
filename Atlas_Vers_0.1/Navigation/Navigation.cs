@@ -8,11 +8,16 @@ namespace Atlas_Vers_0._1.Navigation
     public static class Navigation
     {
         private static NavigationService _instance = (Application.Current.MainWindow as MainWindow).GlobalFrame.NavigationService;
-
-        // public static void SetInstance(NavigationService navigationService) => _instance = navigationService;
-
+        /// <summary>
+        /// Навигация по страницам вперед
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public static bool GoTo(Page page) => _instance == null ? throw new InvalidOperationException("Can't go, instance is null") : _instance.Navigate(page);
-
+        /// <summary>
+        /// Навигация по страницам назад
+        /// </summary>
         public static void GoBack()
         {
             if (_instance.CanGoBack)

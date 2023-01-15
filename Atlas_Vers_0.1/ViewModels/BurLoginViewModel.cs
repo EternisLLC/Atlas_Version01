@@ -14,6 +14,9 @@ using System.Windows.Input;
 
 namespace Atlas_Vers_0._1.ViewModels
 {
+    /// <summary>
+    /// Основной класс ViewModel, где обрабатываются сообщения с COM-port'а, проверяется пароль
+    /// </summary>
     public class BurLoginViewModel : ViewModel, IObservable
     {
         public BurLoginViewModel()
@@ -23,15 +26,160 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Свойства
 
-        private static bool archiveReading = false;
-        private readonly List<IObserver> _observers = new List<IObserver>();
+        private static List<RadioChannelDevice> errorRadioChannelDevices = new List<RadioChannelDevice>(); // Список БОСов, у которых возникла проблема
+        private MainDevice mainDevice = new MainDevice(soundOff: false, statusDoor: false, loopIPR: false, noteAUTO: false, noteALARM: false,
+                                                        autoLock: false, loopUDP: false, loopUVOA: false, radioChannelDevice: errorRadioChannelDevices, bos: false,
+                                                            connectBos: false, smk: false, ipr: false, noteAuto: false, noteAlarm: false, pwr1: false, pwr2: false, udp: false,
+                                                                uvoa: false, situation: FireSituationMainDevice.normal, extSitation: FireSituationMainDevice.normal, handStartAll: false, startLoc: false);
 
-        //private static bool soundOff = false;
-        //private static bool doorOpen = false;
-        //private static bool LoopIPR = false;
-        //private static bool noteAuto = false;
-        //private static bool noteAlarm = false;
-        //private static bool autoLock = false;
+        private static bool archiveReading = false; // Флажок для чтения архива, если он true, то все сообщения идут в ArchiveResult, если false, то в MessageResult
+        private readonly List<IObserver> _observers = new List<IObserver>(); // Создание экземпляра списка наблюдателей
+
+        #region Свойства MainDevice, которые связаны с элементами интерфейса
+
+        private string _situation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+
+        public string Situation
+        {
+            get => _situation;
+            set => Set(ref _situation, value);
+        }
+
+        private string _extSituation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+
+        public string ExtSituation
+        {
+            get => _extSituation;
+            set => Set(ref _extSituation, value);
+        }
+
+        private string _soundOff = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string SoundOff
+        {
+            get => _soundOff;
+            set => Set(ref _soundOff, value);
+        }
+
+        private string _statusDoor = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string StatusDoor
+        {
+            get => _statusDoor;
+            set => Set(ref _statusDoor, value);
+        }
+
+        private string _loopIPR = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string LoopIPR
+        {
+            get => _loopIPR;
+            set => Set(ref _loopIPR, value);
+        }
+
+        private string _noteAUTO = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string NoteAUTO
+        {
+            get => _noteAUTO;
+            set => Set(ref _noteAUTO, value);
+        }
+
+        private string _noteAlARM = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string NoteALARM
+        {
+            get => _noteAlARM;
+            set => Set(ref _noteAlARM, value);
+        }
+
+        private string _autoLock = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string AutoLock
+        {
+            get => _autoLock;
+            set => Set(ref _autoLock, value);
+        }
+
+        private string _loopUDP = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string LoopUDP
+        {
+            get => _loopUDP;
+            set => Set(ref _loopUDP, value);
+        }
+
+        private string _loopUVOA = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string LoopUVOA
+        {
+            get => _loopUVOA;
+            set => Set(ref _loopUVOA, value);
+        }
+
+        private string _bos = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string BOS
+        {
+            get => _bos;
+            set => Set(ref _bos, value);
+        }
+
+        private string _connectBos = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string ConnectBos
+        {
+            get => _connectBos;
+            set => Set(ref _connectBos, value);
+        }
+
+        private string _smk = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string SMK
+        {
+            get => _smk;
+            set => Set(ref _smk, value);
+        }
+
+        private string _ipr = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string IPR
+        {
+            get => _ipr;
+            set => Set(ref _ipr, value);
+        }
+
+        private string _noteAuto = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string NoteAuto
+        {
+            get => _noteAuto;
+            set => Set(ref _noteAuto, value);
+        }
+
+        private string _noteAlarm = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string NoteAlarm
+        {
+            get => _noteAlarm;
+            set => Set(ref _noteAlarm, value);
+        }
+
+        private string _pwr1 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string Pwr1
+        {
+            get => _pwr1;
+            set => Set(ref _pwr1, value);
+        }
+
+        private string _pwr2 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string Pwr2
+        {
+            get => _pwr2;
+            set => Set(ref _pwr2, value);
+        }
+
+        private string _udp = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string UDP
+        {
+            get => _udp;
+            set => Set(ref _udp, value);
+        }
+
+        private string _uvoa = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+        public string UVOA
+        {
+            get => _uvoa;
+            set => Set(ref _uvoa, value);
+        }
+
+        #endregion
 
         #region COM-Port
 
@@ -105,7 +253,6 @@ namespace Atlas_Vers_0._1.ViewModels
         }
 
         #endregion
-
         #endregion
 
         #region Команды
@@ -114,6 +261,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// Команда авторизации через COM-порт
         /// </summary>
         public ICommand AuthorizationCommand =>
+            // Выполняется асинхронно, с проверкой
             new LambdaCommand(async (param) =>
             {
                 try
@@ -124,10 +272,10 @@ namespace Atlas_Vers_0._1.ViewModels
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }, (param) => SelectedComPort != null && Password != "");
+            }, (param) => SelectedComPort != null && Password != ""); // Пока свойства выполняют заданные условия, то команда активна, иначе она неактивна
 
         /// <summary>
-        /// Сохранение сообщений с БУР в текстовый файл
+        /// Команда сохранение сообщений с БУР в текстовый файл
         /// </summary>
         public ICommand SaveMessagesToFile =>
             new LambdaCommand((param) =>
@@ -143,7 +291,7 @@ namespace Atlas_Vers_0._1.ViewModels
             });
 
         /// <summary>
-        /// Сохранение сообщений с БУР в текстовый файл
+        /// Команда сохранение ахива в текстовый файл
         /// </summary>
         public ICommand SaveArchiveToFile =>
             new LambdaCommand((param) =>
@@ -157,7 +305,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команда получения архива
+        /// </summary>
         public ICommand GetArchiveCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -170,7 +320,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команда получения следующего сообщения из архива
+        /// </summary>
         public ICommand GetArchiveNextCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -183,7 +335,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команда получения предыдущего сообщения с архива
+        /// </summary>
         public ICommand GetArchivePreviusCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -196,7 +350,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
+        /// <summary>
+        /// Команада получения последнего сообщения с архива
+        /// </summary>
         public ICommand GetArchiveLastCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -209,13 +365,9 @@ namespace Atlas_Vers_0._1.ViewModels
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             });
-
-        public ICommand TestCommandForLockDors =>
-            new LambdaCommand(async (param) =>
-            {
-                await SendMessage(SelectedComPort, "Sound", null);
-            });
-
+        /// <summary>
+        /// Команда очистки архива от всех присланных сообщений
+        /// </summary>
         public ICommand ArchiveClearCommand =>
             new LambdaCommand(async (param) =>
             {
@@ -236,7 +388,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #endregion
 
-        #region Получение сообщений с архива
+        #region Получение всего архива
 
         private async Task GetArchiveMessage(SerialPort port, string password)
         {
@@ -249,7 +401,7 @@ namespace Atlas_Vers_0._1.ViewModels
 
         #region Настройка подключение порта
 
-        private bool PasswordChecked = false;
+        private bool PasswordChecked = false; // Флажок для пароля, если он true, то успешная авторизация, если false, то не успешная
 
         /// <summary>
         /// Настройка и подключение COM порта
@@ -258,7 +410,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <param name="password">Пароль COM порта</param>
         public async Task SerialPortConnection(SerialPort port, string password)
         {
-            if (port.IsOpen)
+            if (port.IsOpen) // Начальная проверка, если порт открыт
             {
                 port.Close();
                 PasswordChecked = false; // Отброс пароля к дефолту
@@ -276,7 +428,7 @@ namespace Atlas_Vers_0._1.ViewModels
             port.Open();
 
             //TODO: Если порт отключился во время подключения, обработать ошибки
-            MessageResult = await SendMessage(port, "checkPass ", password);
+            MessageResult = await SendMessage(port, "checkPass ", password); // Отправка запроса на проверку пароля в COM-port
 
             await Task.Delay(100);
 
@@ -300,9 +452,9 @@ namespace Atlas_Vers_0._1.ViewModels
         /// <param name="e"></param>
         private async void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            if (archiveReading)
+            if (archiveReading) // Если мы получили сообщения "Начало передачи архива", то этот флажок становится true, дальше все сообщения идут в ArchiveResult
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 ArchiveResult += await GetArchiveMessage(sender);
             }
             else
@@ -320,7 +472,7 @@ namespace Atlas_Vers_0._1.ViewModels
         /// Сохранение строки в файл
         /// </summary>
         /// <param name="message">Строку которую нужно сохранить</param>
-        public void SaveToFile(string message) // Метод пока находится в этой ViewModel, пока думаю как его перекинуть в другую
+        public void SaveToFile(string message)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text file (*.txt)|*.txt|C# file (*.cs)|*.cs";
@@ -392,10 +544,10 @@ namespace Atlas_Vers_0._1.ViewModels
         private async ValueTask<string> ArchiveParce(string archBuffer)
         {
             await Task.Delay(0);
-            StringBuilder outData = new StringBuilder();
+            StringBuilder outData = new StringBuilder(); // В этой перменной будут хранится обработнные сообщения Архива
             if (archBuffer.Contains("Ev"))
             {
-                switch (archBuffer)
+                switch (archBuffer) // Проверка определенных сообщений
                 {
                     case var _ when archBuffer.Contains("Текущее состояние направления"):
                         archBuffer = archBuffer.Remove(archBuffer.IndexOf("Текущее состояние направления"));
@@ -403,19 +555,19 @@ namespace Atlas_Vers_0._1.ViewModels
                     default:
                         break;
                 }
-                while (archBuffer.Contains("Ev"))
+                while (archBuffer.Contains("Ev")) // Очистка от Ev
                 {
                     archBuffer = archBuffer.Remove(archBuffer.IndexOf("Ev"), 3);
                     archBuffer = archBuffer.Replace("\r ", "\r");
                 }
 
-                while (archBuffer.Contains(";"))
+                while (archBuffer.Contains(";")) // Очистка от ";"
                 {
                     archBuffer = archBuffer.Replace(";", " ");
                 }
 
                 archBuffer = archBuffer.Trim();
-                outData.Append(archBuffer + "\r\n");
+                outData.Append(archBuffer + "\r");
             }
 
             if (outData.ToString().Contains("Передача архива завершена"))
@@ -449,6 +601,7 @@ namespace Atlas_Vers_0._1.ViewModels
                 return null;
             }
 
+            // Парсинг сообщения с COM-port'а
             int bytesToRead = senderPort.BytesToRead;
             byte[] buffer = new byte[bytesToRead];
 
@@ -475,10 +628,10 @@ namespace Atlas_Vers_0._1.ViewModels
 
             while (_buffer.Contains("\r"))
             {
-                switch (_buffer)
+                switch (_buffer) // Проверка на определенные сообщения
                 {
                     case var _ when _buffer.Contains("Текущее состояние направления"):
-                        await DirectionConditionParcer(_buffer);
+                        await DirectionConditionParcer(_buffer); // Парсинг текущего состояния направления
                         _buffer = _buffer.Remove(_buffer.IndexOf("Текущее состояние направления"));
                         continue;
                     case var _ when _buffer.Contains("sound"):
@@ -491,18 +644,18 @@ namespace Atlas_Vers_0._1.ViewModels
                         break;
                 }
 
-                _str = _buffer.Remove(_buffer.IndexOf("\r"));
-                _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1);
+                _str = _buffer.Remove(_buffer.IndexOf("\r")); // Добавление сообщения в строку хранения сообщений
+                _buffer = _buffer.Remove(0, _buffer.IndexOf("\r") + 1); // Очистка буфера
                 outdata.Append("[" + DateTime.Now.ToString() + "]: " + _str + "\r");
             }
 
             return outdata.ToString();
         }
 
+        #region Обработка сообщения "Текущее состояние направления"
         private async Task DirectionConditionParcer(string condition)
         {
-            await Task.Delay(0);
-
+            // Разделение цифр из текущего состояния направления
             condition = condition.Replace("Текущее состояние направления ", "");
             condition = condition.Trim();
 
@@ -515,43 +668,326 @@ namespace Atlas_Vers_0._1.ViewModels
                 nums.Add(BinaryCode);
             }
 
-            await DoChanges(nums);
+            await DoChanges(nums); // Передача запаршенных чисел в метод обработки чисел
         }
 
         private async Task DoChanges(List<string> nums)
         {
-            await Task.Delay(0);
-            for (int num = nums.Count; num > 0; num--)
+            await Task.Run(async () =>
             {
-                switch (Convert.ToString(num))
+                for (int num = nums.Count; num > 0; num--)
                 {
-                    case "3":
-                        string thirdDigit = nums[2];
-                        for (int i = thirdDigit.Length; i > 0; i--)
-                        {
-
-                        }
-                        break;
-                    case "2":
-                        string secondDigit = nums[1];
-                        for (int i = secondDigit.Length; i > 0; i--)
-                        {
-
-                        }
-                        break;
-                    case "1":
-                        string firstDigit = nums[0];
-                        for (int i = firstDigit.Length; i > 0; i--)
-                        {
-
-                        }
-                        break;
-                    default:
-                        break;
+                    switch (Convert.ToString(num)) // Обработка каждого числа, от последнего до первого
+                    {
+                        case "3":
+                            await ParceThirdNum(nums[2]);
+                            break;
+                        case "2":
+                            await ParceSecondNum(nums[1]);
+                            break;
+                        case "1":
+                            await ParceFirstNum(nums[0]);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
+            });
         }
 
+        #region Парсинг чисел из текущего состояния направления
+        private async Task ParceThirdNum(string thirdDigit)
+        {
+            await Task.Run(() =>
+            {
+                int currentNum = Convert.ToInt32(thirdDigit);
+
+                if ((currentNum & 1) > 0)
+                {
+                    mainDevice.BOS = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.BOS = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 2) > 0)
+                {
+                    mainDevice.ConnectBos = true;
+                    ConnectBos = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.ConnectBos = false;
+                    ConnectBos = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 4) > 0)
+                {
+                    mainDevice.SMK = true;
+                    SMK = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.SMK = false;
+                    SMK = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 8) > 0)
+                {
+                    mainDevice.IPR = true;
+                    IPR = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.IPR = false;
+                    IPR = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 16) > 0) // noteAUTO
+                {
+                    mainDevice.NoteAUTO = true;
+                    NoteAUTO = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.NoteAUTO = false;
+                    NoteAUTO = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 32) > 0) // NoteALARM
+                {
+                    mainDevice.NoteALARM = true;
+                    NoteAlarm = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.NoteAlarm = false;
+                    NoteAlarm = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 64) > 0) // Pwr1
+                {
+                    mainDevice.Pwr1 = true;
+                    Pwr1 = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.Pwr1 = false;
+                    Pwr1 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 128) > 0) // Pwr2
+                {
+                    mainDevice.Pwr2 = true;
+                    Pwr2 = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.Pwr2 = false;
+                    Pwr2 = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 256) > 0) // UDP
+                {
+                    mainDevice.UDP = true;
+                    UDP = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.UDP = false;
+                    UDP = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 512) > 0) // UVOA
+                {
+                    mainDevice.UVOA = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.UVOA = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+            });
+        }
+
+        private async Task ParceSecondNum(string secondDigit)
+        {
+            await Task.Run(() =>
+            {
+                int currentNum = Convert.ToInt32(secondDigit);
+
+                if ((currentNum & 1) > 0)
+                {
+                    mainDevice.SoundOff = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.SoundOff = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 2) > 0)
+                {
+                    mainDevice.StatusDoor = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.StatusDoor = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 4) > 0)
+                {
+                    mainDevice.LoopIPR = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.LoopIPR = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 8) > 0)
+                {
+                    mainDevice.NoteAUTO = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.NoteAUTO = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 16) > 0)
+                {
+                    mainDevice.NoteALARM = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.NoteALARM = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 32) > 0)
+                {
+                    mainDevice.AutoLock = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.AutoLock = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 64) > 0)
+                {
+                    mainDevice.LoopUDP = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.LoopUDP = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 128) > 0)
+                {
+                    mainDevice.LoopUVOA = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.LoopUVOA = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+            });
+        }
+
+        private async Task ParceFirstNum(string firstDigit)
+        {
+            await Task.Run(() =>
+            {
+                int currentNum = Convert.ToInt32(firstDigit);
+
+                if ((currentNum & 3) == 0)
+                {
+                    mainDevice.Situation = FireSituationMainDevice.normal;
+                    Situation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+                else if ((currentNum & 3) == 1)
+                {
+                    mainDevice.Situation = FireSituationMainDevice.attention;
+                    Situation = @"/Resourses/Pictures/BUR/FS_Attention_Dark@4x.png";
+                }
+                else if ((currentNum & 3) == 2)
+                {
+                    mainDevice.Situation = FireSituationMainDevice.fire;
+                    Situation = @"/Resourses/Pictures/BUR/FS_Fire_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.Situation = FireSituationMainDevice.normal;
+                    Situation = @"/Resourses/Pictures/BUR/BUR_Norm_Dark@4x.png";
+                }
+
+                if ((currentNum & 12) == 0)
+                {
+                    mainDevice.ExtSitation = FireSituationMainDevice.normal;
+                    ExtSituation = @"/Resourses/Pictures/BUR/Wireless_Norm_Dark@4x.png";
+                }
+                else if ((currentNum & 12) == 4)
+                {
+                    mainDevice.ExtSitation = FireSituationMainDevice.attention;
+                    ExtSituation = @"/Resourses/Pictures/BUR/Wireless_Fail_Dark@4x.png";
+                }
+                else if ((currentNum & 12) == 8)
+                {
+                    mainDevice.ExtSitation = FireSituationMainDevice.fire;
+                    ExtSituation = @"/Resourses/Pictures/BUR/FS_Fire_Dark@4x.png";
+                }
+                else if ((currentNum & 12) == 12)
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if ((currentNum & 16) > 1)
+                {
+                    mainDevice.HandStartAll = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.HandStartAll = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+
+                if ((currentNum & 32) > 1)
+                {
+                    mainDevice.StartLoc = true;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+                else
+                {
+                    mainDevice.StartLoc = false;
+                    BOS = @"/Resourses/Pictures/BUR/BUR_Fail_Dark@4x.png";
+                }
+            });
+        }
+
+        #endregion
+
+        #endregion
         #endregion
 
         #region Обновление доступных портов

@@ -25,7 +25,7 @@ namespace Atlas_Vers_0._1.View.Windows
             Loaded += Window_Loaded;
         }
 
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDownMove(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
